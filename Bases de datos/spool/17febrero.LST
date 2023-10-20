@@ -1,0 +1,2089 @@
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+HABITACION                                                                      
+SH                                                                              
+CLIENTE                                                                         
+RESERVAR                                                                        
+PROPORCIONAR                                                                    
+ORGANIZAR                                                                       
+PARTICIPAR                                                                      
+DEPART                                                                          
+EMPLE                                                                           
+DEPARTAMENTO                                                                    
+CURSO                                                                           
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+ENTIDADBANCARIA                                                                 
+NOMINA                                                                          
+CONTRATO                                                                        
+CURSAR                                                                          
+ENSENYAR                                                                        
+TRABAJAR                                                                        
+ECN                                                                             
+PROVEEDOR                                                                       
+ACTIVIDAD                                                                       
+PRODUCTO                                                                        
+MONITOR                                                                         
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+W                                                                               
+SUCURSAL                                                                        
+DEPT_RECURSOS_HUMANOS                                                           
+NOTAS_ALUMNOS                                                                   
+LIBRERIA                                                                        
+EMPLEADO                                                                        
+ASIGNATURAS                                                                     
+NOTAS                                                                           
+ALUMNOS                                                                         
+
+31 filas seleccionadas.
+
+SQL> desc SUCURSAL
+ Nombre                                    ¿Nulo?   Tipo
+ ----------------------------------------- -------- ----------------------------
+ TFNO_SU                                   NOT NULL VARCHAR2(12)
+ N_SU                                               NUMBER(5)
+ PROVINCIA                                          CHAR(20)
+ DIRECCION                                          VARCHAR2(50)
+ CODIGO_DPTO                                        NUMBER(5)
+
+SQL> set pagesize 300;
+SQL> set linesize 300;
+SQL> alter table sucursal drop column codigo_dpto
+  2  
+SQL> alter table sucursal drop column codigo_dpto;
+
+Tabla modificada.
+
+SQL> alter table sucursal add DNI Number(9);
+
+Tabla modificada.
+
+SQL> alter table sucursal add FOREIGN KEY (DNI) References Empleado;
+alter table sucursal add FOREIGN KEY (DNI) References Empleado
+                                      *
+ERROR en línea 1:
+ORA-02267: tipo de columna incompatible con tipo de columna a la que se hace referencia 
+
+
+SQL> drop table empleado
+  2  
+SQL> drop table empleado;
+drop table empleado
+           *
+ERROR en línea 1:
+ORA-02449: claves únicas/primarias en la tabla referidas por claves ajenas 
+
+
+SQL> drop table empleado;
+drop table empleado
+           *
+ERROR en línea 1:
+ORA-02449: claves únicas/primarias en la tabla referidas por claves ajenas 
+
+
+SQL> 
+SQL> drop table participar;
+
+Tabla borrada.
+
+SQL> drop table organizar;
+
+Tabla borrada.
+
+SQL> drop table proporcionar;
+
+Tabla borrada.
+
+SQL> drop table monitor;
+
+Tabla borrada.
+
+SQL> drop table producto;
+
+Tabla borrada.
+
+SQL> drop table actividad;
+
+Tabla borrada.
+
+SQL> drop table proveedor;
+
+Tabla borrada.
+
+SQL> drop table ecn;
+
+Tabla borrada.
+
+SQL> drop table trabajar;
+
+Tabla borrada.
+
+SQL> drop table ensenyar;
+
+Tabla borrada.
+
+SQL> drop table cursar;
+
+Tabla borrada.
+
+SQL> drop table contrato;
+
+Tabla borrada.
+
+SQL> drop table nomina;
+
+Tabla borrada.
+
+SQL> drop table entidadbancaria;
+
+Tabla borrada.
+
+SQL> drop table curso;
+
+Tabla borrada.
+
+SQL> drop table departamento;
+
+Tabla borrada.
+
+SQL> drop table empleado;
+
+Tabla borrada.
+
+SQL> drop table sh;
+
+Tabla borrada.
+
+SQL> drop table reservar;
+
+Tabla borrada.
+
+SQL> drop table habitacion;
+
+Tabla borrada.
+
+SQL> drop table cliente;
+
+Tabla borrada.
+
+SQL> drop table sucursar;
+drop table sucursar
+           *
+ERROR en línea 1:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> drop table sucursal;
+
+Tabla borrada.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+W                                                                                                                                                                                                                                                                                                           
+DEPT_RECURSOS_HUMANOS                                                                                                                                                                                                                                                                                       
+NOTAS_ALUMNOS                                                                                                                                                                                                                                                                                               
+LIBRERIA                                                                                                                                                                                                                                                                                                    
+ASIGNATURAS                                                                                                                                                                                                                                                                                                 
+NOTAS                                                                                                                                                                                                                                                                                                       
+ALUMNOS                                                                                                                                                                                                                                                                                                     
+
+9 filas seleccionadas.
+
+SQL> drop tabble dept_recursos_humanos;
+drop tabble dept_recursos_humanos
+     *
+ERROR en línea 1:
+ORA-00950: opción DROP no válida 
+
+
+SQL> drop table dept_recursos_humanos;
+
+Tabla borrada.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+W                                                                                                                                                                                                                                                                                                           
+NOTAS_ALUMNOS                                                                                                                                                                                                                                                                                               
+LIBRERIA                                                                                                                                                                                                                                                                                                    
+ASIGNATURAS                                                                                                                                                                                                                                                                                                 
+NOTAS                                                                                                                                                                                                                                                                                                       
+ALUMNOS                                                                                                                                                                                                                                                                                                     
+
+8 filas seleccionadas.
+
+SQL> CREATE TABLE EMPLEADO
+  2  (DNI Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20),
+  5  tlfno_empleado Varchar2(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  anyo_nacimiento Number(4));
+
+Tabla creada.
+
+SQL> CREATE TABLE SUCURSAL
+  2  (Tfno_su Varchar2 (12) PRIMARY KEY,
+  3  N_su Number (5),
+  4  Provincia char (20),
+  5  Direccion Varchar2 (50),
+  6  DNI Number(9),
+  7  FOREIGN KEY (DNI) References Empleado);
+FOREIGN KEY (DNI) References Empleado)
+             *
+ERROR en línea 7:
+ORA-02267: tipo de columna incompatible con tipo de columna a la que se hace referencia 
+
+
+SQL> CREATE TABLE SUCURSAL
+  2  (Tfno_su Varchar2 (12) PRIMARY KEY,
+  3  N_su Number (5),
+  4  Provincia char (20),
+  5  Direccion Varchar2 (50),
+  6  DNI Varchar2(9),
+  7  FOREIGN KEY (DNI) References Empleado);
+
+Tabla creada.
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Tfno_su Varchar2(12),
+  8  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  9  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+ 10  anyo_nacimiento Number(4),
+ 11  Foreign Key (Tfno_su) References Sucursal);
+
+Tabla creada.
+
+SQL> CREATE TABLE HABITACION
+  2  (Numero Number (3) PRIMARY KEY,
+  3  tipo Char (10) CHECK (tipo In('Quad','Doble','King')),
+  4  n_max_inquilinos Number (1) CHECK (n_max_inquilinos>0 AND n_max_inquilinos<7),
+  5  metro_cuadrados Number (3));
+
+Tabla creada.
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3),
+  4  metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 11  pension Varchar2(8) CHECK (pension='Completa' or pension='Media'),
+ 12  PRIMARY KEY (DNI, Numero),
+ 13  FOREIGN KEY (DNI) References Cliente,
+ 14  FOREIGN KEY (Numero) References Habitacion);
+
+Tabla creada.
+
+SQL> CREATE TABLE SH
+  2  (Tfno_su Varchar2(12),
+  3  numero  Number (3),
+  4  empleado_sucursar Number (5),
+  5  pension Varchar2(8) CHECK (pension='Completa' or pension='Media'),
+  6  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  7  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  8  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  9  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+ 10  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 11  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 12  Primary Key (Tfno_su, numero),
+ 13  Foreign Key (Tfno_su) References Sucursal);
+
+Tabla creada.
+
+SQL> CREATE TABLE DEPARTAMENTO
+  2  (codigo_dpto Number(5) PRIMARY KEY,
+  3  nombre_dpto Varchar2(30),
+  4  n_despacho Number(5),
+  5  DNI Varchar2(9),
+  6  Foreign key (DNI) References Empleado);
+
+Tabla creada.
+
+SQL> CREATE TABLE CURSO
+  2  (codigo_curso Number(5) PRIMARY KEY,
+  3  nombre_curso Varchar2(30),
+  4  n_horas Number(3));
+
+Tabla creada.
+
+SQL> CREATE TABLE ENTIDADBANCARIA
+  2  (Codigo_banco Number(5) PRIMARY KEY,
+  3  Nombre Char(20),
+  4  Direccion Varchar(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE NOMINA
+  2  (codigo_nomina Number(10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  salario_extra Number(4),
+  5  codigo_banco Number(5),
+  6  Foreign key (codigo_banco) References Entidadbancaria);
+
+Tabla creada.
+
+SQL> CREATE TABLE CONTRATO
+  2  (codigo_contrato Number (10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  horas_semanales Number(3),
+  5  tipo Char (25) CHECK (tipo='Permanente' or tipo='Tiempo_parcial' or tipo='Trabajo_parcial' or tipo='Formacion' or tipo='Relevo' or tipo='Trabajo_fijo_intermitente'));
+
+Tabla creada.
+
+SQL> CREATE TABLE CURSAR
+  2  (codigo_curso Number(5),
+  3  DNI Varchar2(9),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4),
+  7  PRIMARY KEY (codigo_curso, DNI),
+  8  FOREIGN KEY (DNI) References Empleado,
+  9  FOREIGN KEY (codigo_curso) References Curso);
+
+Tabla creada.
+
+SQL> CREATE TABLE ENSENYAR
+  2  (codigo_curso Number(5),
+  3  DNI Varchar2(9),
+  4  PRIMARY KEY (codigo_curso, DNI),
+  5  FOREIGN KEY (codigo_curso) References Curso,
+  6  FOREIGN KEY (DNI) References Empleado);
+
+Tabla creada.
+
+SQL> CREATE TABLE TRABAJAR
+  2  (codigo_dpto Number(5),
+  3  DNI Varchar2(9),
+  4  PRIMARY KEY (codigo_dpto, DNI),
+  5  FOREIGN KEY (DNI) References Empleado,
+  6  FOREIGN KEY (codigo_dpto) References Departamento);
+
+Tabla creada.
+
+SQL> CREATE TABLE ECN
+  2  (DNI Varchar2(9),
+  3  codigo_contrato Number (10),
+  4  codigo_nomina Number(10),
+  5  PRIMARY KEY (codigo_contrato, DNI, codigo_nomina),
+  6  FOREIGN KEY (DNI) References Empleado,
+  7  FOREIGN KEY (codigo_contrato) References Contrato,
+  8  FOREIGN KEY (codigo_nomina) References Nomina);
+
+Tabla creada.
+
+SQL> CREATE TABLE PROVEEDOR
+  2  (codigo_proveedor Number(10) PRIMARY KEY,
+  3  nombre_proveedor Char(20),
+  4  origen Varchar2(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE ACTIVIDAD
+  2  (codigo_actividad Number(5) PRIMARY KEY,
+  3  duracion Number(4);
+duracion Number(4)
+                 *
+ERROR en línea 3:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> nombre_actividad Varchar2(50),
+SP2-0734: inicio "nombre_act..." de comando desconocido - resto de la línea ignorado.
+SQL> lugar Varchar2(50));
+SP2-0734: inicio "lugar Varc..." de comando desconocido - resto de la línea ignorado.
+SQL> CREATE TABLE ACTIVIDAD
+  2  (codigo_actividad Number(5) PRIMARY KEY,
+  3  duracion Number(4),
+  4  nombre_actividad Varchar2(50),
+  5  lugar Varchar2(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE PRODUCTO
+  2  (codigo_producto Number(5) PRIMARY KEY,
+  3  nombre_producto Varchar2(50),
+  4  precio Number(7),
+  5  codigo_proveedor number(10),
+  6  FOREIGN KEY (codigo_proveedor) References Proveedor);
+
+Tabla creada.
+
+SQL> CREATE TABLE MONITOR
+  2  (DNI_monitor Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20),
+  5  tlfno_empleado Varchar(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  anyo_nacimiento Number(4),
+ 10  formacion Varchar2(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE PROPORCIONAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_producto Number(5),
+  4  incluido Char(2) CHECK (incluido in('si', 'no')),
+  5  PRIMARY KEY (codigo_producto, DNI_cliente),
+  6  FOREIGN KEY (codigo_producto) References Producto,
+  7  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> CREATE TABLE ORGANIZAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_proveedor Number(5),
+  4  DNI_monitor Varchar2(9),
+  5  PRIMARY KEY (codigo_proveedor , DNI_monitor, DNI_cliente),
+  6  FOREIGN KEY (codigo_proveedor ) References Proveedor,
+  7  FOREIGN KEY (DNI_monitor) References Monitor,
+  8  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> CREATE TABLE PARTICIPAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_actividad Number(5),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4) CHECK (anyo>2022),
+  7  n_participantes Number(2) CHECK(n_participantes>5),
+  8  PRIMARY KEY (codigo_actividad, DNI_cliente),
+  9  FOREIGN KEY (codigo_actividad) References Actividad,
+ 10  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('37289467N', 'Isabel', 'Gonzalez', '678911222', 'Espa¤a', 25, 5, 1991);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('84612735M', 'Juan', 'Rodriguez', '698745632', 'Francia', 3, 9, 1990);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('27359198T', 'Marta', 'Santos', '612345678', 'Italia', 21, 7, 1985);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('19287384R', 'Luis', 'Martinez', '694567812', 'Alemania', 29, 2, 1988);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('73849561A', 'Sara', 'Garcia', '624571893', 'Reino Unido', 5, 12, 1992);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('38456199Z', 'David', 'Perez', '673458219', 'Portugal', 8, 1, 1993);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('72466145C', 'Jos‚', 'D¡az', '689012345', 'Chile', 9, 7, 1984);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('83009147T', 'Carlos', 'Ruiz', '699012345', 'Ecuador', 30, 1, 1990);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('09845157G', 'Sof¡a', 'P‚rez', '610912345', 'Uruguay',  5, 12, 1987);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLEADO VALUES ('67380154K', 'Marta', 'G¢mez', '611912345', 'Paraguay', 2, 6, 1992);
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+551198765432', 1, 'SÆo Paulo', 'Avenida Paulista, 1234', 01,'37289467N');
+INSERT INTO SUCURSAL VALUES ('+551198765432', 1, 'SÆo Paulo', 'Avenida Paulista, 1234', 01,'37289467N')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+562265432198', 2, 'Santiago', 'Calle Principal, 5678', 02,'19287384R');
+INSERT INTO SUCURSAL VALUES ('+562265432198', 2, 'Santiago', 'Calle Principal, 5678', 02,'19287384R')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+3332198654', 3, 'Paris', 'Boulevard de la Madeleine, 91011', 03,'27359198T');
+INSERT INTO SUCURSAL VALUES ('+3332198654', 3, 'Paris', 'Boulevard de la Madeleine, 91011', 03,'27359198T')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+3919865432', 4, 'Roma', 'Via del Corso, 121314', 04,'19287384R');
+INSERT INTO SUCURSAL VALUES ('+3919865432', 4, 'Roma', 'Via del Corso, 121314', 04,'19287384R')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+441234567890', 5, 'London', 'Oxford Street, 123', 05,'73849561A');
+INSERT INTO SUCURSAL VALUES ('+441234567890', 5, 'London', 'Oxford Street, 123', 05,'73849561A')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+12021234567', 6, 'New York', '5th Avenue, 456', 06,'38456199Z');
+INSERT INTO SUCURSAL VALUES ('+12021234567', 6, 'New York', '5th Avenue, 456', 06,'38456199Z')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+81312345678', 7, 'Tokyo', 'Ginza, 789', 07,'72466145C');
+INSERT INTO SUCURSAL VALUES ('+81312345678', 7, 'Tokyo', 'Ginza, 789', 07,'72466145C')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+85212345678', 8, 'Hong Kong', 'Causeway Bay, 101112', 08,'73849561A');
+INSERT INTO SUCURSAL VALUES ('+85212345678', 8, 'Hong Kong', 'Causeway Bay, 101112', 08,'73849561A')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+35312341234', 9, 'Lisbon', 'Rua Augusta, 131415', 09,'09845157G');
+INSERT INTO SUCURSAL VALUES ('+35312341234', 9, 'Lisbon', 'Rua Augusta, 131415', 09,'09845157G')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+97112345678', 10, 'Dubai', 'Sheikh Zayed Road, 161718', 10,'09845157G');
+INSERT INTO SUCURSAL VALUES ('+97112345678', 10, 'Dubai', 'Sheikh Zayed Road, 161718', 10,'09845157G')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+55119876543', 1, 'SÆo Paulo', 'Avenida Paulista, 1234', 01,'37289467N');
+INSERT INTO SUCURSAL VALUES ('+55119876543', 1, 'SÆo Paulo', 'Avenida Paulista, 1234', 01,'37289467N')
+            *
+ERROR en línea 1:
+ORA-00913: demasiados valores 
+
+
+SQL> INSERT INTO SUCURSAL VALUES ('+55119876543', 1, 'SÆo Paulo', 'Avenida Paulista, 1234','37289467N');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+56226543219', 2, 'Santiago', 'Calle Principal, 5678','19287384R');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+3332198654', 3, 'Paris', 'Boulevard de la Madeleine, 91011','27359198T');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+3919865432', 4, 'Roma', 'Via del Corso, 121314','19287384R');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+44123456789', 5, 'London', 'Oxford Street, 123','73849561A');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+12021234567', 6, 'New York', '5th Avenue, 456', '38456199Z');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+81312345678', 7, 'Tokyo', 'Ginza, 789','72466145C');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+85212345678', 8, 'Hong Kong', 'Causeway Bay, 101112','73849561A');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+35312341234', 9, 'Lisbon', 'Rua Augusta, 131415','09845157G');
+
+1 fila creada.
+
+SQL> INSERT INTO SUCURSAL VALUES ('+97112345678', 10, 'Dubai', 'Sheikh Zayed Road, 161718','09845157G');
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('12349876A', 'Julian', 'Fernandez', '682937424', 'Espa¤a','',23,3,1985);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('65483927B','Maria', 'Garcia', '+54118765421', 'Argentina', '',22,11,1990);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('98765432C','Pedro', 'Sanchez', '+54688923743', 'Chile','+55119876543',29,02,1969);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('78945612D','Maria', 'Garcia', '+52155555555', 'M‚xico', '+56226543219',22, 11,1990);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('56781234E','Ana','Mart¡nez','+34654781234', 'Espa¤a','',12,6,1985);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('32145678F','Carlos', 'Rodr¡guez', '+4477745612', 'Reino Unido', '+3332198654',27, 2, 2000);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('14789563G','Sofia', 'Gonzalez', '+55119875432', 'Brasil', '',5, 8, 1992);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('96385214H','Gabriela', 'Garcia', '+562265198', 'Italia', '+3919865432',11, 3, 1984);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('78123465I','Federico', 'P‚rez', '+3332198654', 'Francia', '',19, 12, 1989);
+
+1 fila creada.
+
+SQL> INSERT INTO CLIENTE VALUES ('54321678J','Isabel', 'S nchez', '+3919865432', 'Italia', '',23, 7, 1995);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (101, 'Quad', 4, 20);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (102, 'Doble', 2, 15);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (103, 'King', 2, 25);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (104, 'Quad', 4, 30);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (105, 'Doble', 2, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (106, 'King', 2, 20);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (107, 'Quad', 4, 25);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (108, 'Doble', 2, 12);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (109, 'King', 2, 18);
+
+1 fila creada.
+
+SQL> INSERT INTO HABITACION VALUES (110, 'Quad', 4, 22);
+
+1 fila creada.
+
+SQL> INSERT INTO RESERVAR VALUES ('12349876A', 101, 'Internet', 1, 3, 2023, 7, 3, 2023,'Media');
+
+1 fila creada.
+
+SQL> INSERT INTO RESERVAR VALUES ('65483927B', 102, 'Llamada', 15, 4, 2023, 20, 4, 2023,'Completa');
+
+1 fila creada.
+
+SQL> INSERT INTO RESERVAR VALUES ('56781234E', 107, 'Llamada', 1, 6, 2023, 7, 6, 2023,'Completa');
+
+1 fila creada.
+
+SQL> INSERT INTO RESERVAR VALUES ('14789563G', 110, 'Internet', 1, 7, 2023, 7, 7, 2023,'Media');
+
+1 fila creada.
+
+SQL> INSERT INTO RESERVAR VALUES ('78123465I', 105, 'Internet', 1, 9, 2023, 7, 9, 2023,'Media');
+
+1 fila creada.
+
+SQL> INSERT INTO RESERVAR VALUES ('54321678J', 107, 'Llamada', 15, 10, 2023, 20, 10, 2023,'Media');
+
+1 fila creada.
+
+SQL> INSERT INTO SH VALUES ('+55119876543', 101, 12345, 'Completa', 14, 2, 2023, 18, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO SH VALUES ('+56226543219', 102, 23456, 'Media', 21, 2, 2023, 24, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO SH VALUES ('+3332198654', 103, 34567, 'Completa', 3, 3, 2023, 8, 3, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO SH VALUES ('+3919865432', 104, 45678, 'Media', 7, 4, 2023, 12, 4, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (45289, 'Recursos Humanos', 18, '64387596G');
+INSERT INTO DEPARTAMENTO VALUES (45289, 'Recursos Humanos', 18, '64387596G')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004227) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (21456, 'Marketing', 15, '93487695A');
+INSERT INTO DEPARTAMENTO VALUES (21456, 'Marketing', 15, '93487695A')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004227) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (14257, 'Ventas', 22, '85643721L');
+INSERT INTO DEPARTAMENTO VALUES (14257, 'Ventas', 22, '85643721L')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004227) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (75841, 'Soporte T‚cnico', 17, '94785631E');
+INSERT INTO DEPARTAMENTO VALUES (75841, 'Soporte T‚cnico', 17, '94785631E')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004227) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (63852, 'Finanzas', 19, '85419276P');
+INSERT INTO DEPARTAMENTO VALUES (63852, 'Finanzas', 19, '85419276P')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004227) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (23579, 'Desarrollo de producto', 11, '95867432C');
+INSERT INTO DEPARTAMENTO VALUES (23579, 'Desarrollo de producto', 11, '95867432C')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004227) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (14782, 'Inform tica', 27, '618738574A');
+INSERT INTO DEPARTAMENTO VALUES (14782, 'Inform tica', 27, '618738574A')
+                                                            *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."DEPARTAMENTO"."DNI" (real: 10, máximo: 9) 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (12384, 'Contabilidad', 40, '560482963C');
+INSERT INTO DEPARTAMENTO VALUES (12384, 'Contabilidad', 40, '560482963C')
+                                                            *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."DEPARTAMENTO"."DNI" (real: 10, máximo: 9) 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (18629, 'Recursos Humanos', 16, '914526703Z');
+INSERT INTO DEPARTAMENTO VALUES (18629, 'Recursos Humanos', 16, '914526703Z')
+                                                                *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."DEPARTAMENTO"."DNI" (real: 10, máximo: 9) 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (72486, 'Ventas', 50, '102587369F');
+INSERT INTO DEPARTAMENTO VALUES (72486, 'Ventas', 50, '102587369F')
+                                                      *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."DEPARTAMENTO"."DNI" (real: 10, máximo: 9) 
+
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10001, 'Ventas', 23, '37289467N');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10002, 'Marketing', 24, '84612735M');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10003, 'Recursos Humanos', 25, '27359198T');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10004, 'Desarrollo', 26, '19287384R');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10005, 'Contabilidad', 27, '73849561A');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10006, 'Compras', 28, '38456199Z');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10007, 'Producci¢n', 29, '72466145C');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10008, 'Log¡stica', 30, '83009147T');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10009, 'Ingenier¡a', 31, '09845157G');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPARTAMENTO VALUES (10010, 'Servicio al cliente', 32, '67380154K');
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (9, 'Desarrollo web', 45);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (10, 'Redes', 30);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (8, 'Seguridad inform tica', 40);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (6, 'Programaci¢n en Java', 40);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (7, 'Dise¤o de bases de datos', 35);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (8, 'Desarrollo web con HTML, CSS y JavaScript', 30);
+INSERT INTO CURSO VALUES (8, 'Desarrollo web con HTML, CSS y JavaScript', 30)
+                             *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."CURSO"."NOMBRE_CURSO" (real: 41, máximo: 30) 
+
+
+SQL> INSERT INTO CURSO VALUES (5, 'Introducci¢n a la inteligencia artificial', 45);
+INSERT INTO CURSO VALUES (5, 'Introducci¢n a la inteligencia artificial', 45)
+                             *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."CURSO"."NOMBRE_CURSO" (real: 42, máximo: 30) 
+
+
+SQL> INSERT INTO CURSO VALUES (4, 'Desarrollo de aplicaciones m¢viles', 50);
+INSERT INTO CURSO VALUES (4, 'Desarrollo de aplicaciones m¢viles', 50)
+                             *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."CURSO"."NOMBRE_CURSO" (real: 35, máximo: 30) 
+
+
+SQL> INSERT INTO CURSO VALUES (1, 'Bases de Datos', 35);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (2, 'An lisis y Dise¤o de Sistemas', 45);
+INSERT INTO CURSO VALUES (2, 'An lisis y Dise¤o de Sistemas', 45)
+                             *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."CURSO"."NOMBRE_CURSO" (real: 31, máximo: 30) 
+
+
+SQL> INSERT INTO CURSO VALUES (8, 'Ingl‚s', 30);
+INSERT INTO CURSO VALUES (8, 'Ingl‚s', 30)
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004228) violada 
+
+
+SQL> INSERT INTO CURSO VALUES (3, 'Ingl‚s', 30);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (5, 'Masaje y spa', 45);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (4, 'Sommelier', 50);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSO VALUES (2, 'Etiqueta y protocolo', 45);
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (1, 'BBVA', 'Calle Pizarro, 5');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (2, 'Santander', 'Calle Alcal , 200');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (3, 'CaixaBank', 'Calle Atocha, 17');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (4, 'Bankia', 'Calle Mayor, 7');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (5, 'BBK', 'Calle Gran V¡a, 15');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (6, 'Kutxabank', 'Calle Princesa, 3');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (7, 'Banco Sabadell', 'Calle Serrano, 72');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (8, 'Unicaja', 'Calle Vel zquez, 5');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (9, 'Cajamar', 'Calle Goya, 30');
+
+1 fila creada.
+
+SQL> INSERT INTO ENTIDADBANCARIA VALUES (10, 'Bankinter', 'Calle Castellana, 100');
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (1, 1500, 50, 3);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (2, 2000, 100, 1);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (3, 1750, 75, 2);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (4, 1600, 50, 4);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (5, 1800, 100, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (6, 1550, 50, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (7, 1650, 75, 5);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (8, 1700, 50, 9);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (9, 1900, 100, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO NOMINA VALUES (10, 1800, 75, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10001, 25000, 40, 'Permanente');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10002, 17000, 20, 'Tiempo_parcial');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10003, 18000, 25, 'Trabajo_parcial');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10004, 14000, 10, 'Formacion');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10005, 22000, 30, 'Relevo');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10006, 20000, 35, 'Trabajo_fijo_intermitente');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10007, 19000, 15, 'Tiempo_parcial');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10008, 25000, 40, 'Permanente');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10009, 22000, 30, 'Trabajo_fijo_intermitente');
+
+1 fila creada.
+
+SQL> INSERT INTO CONTRATO VALUES (10010, 16000, 20, 'Formacion');
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (1, '37289467N', 15, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (2, '84612735M', 7, 3, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (9, '27359198T', 20, 4, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (10, '19287384R', 30, 4, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (7, '73849561A', 10, 5, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (8, '38456199Z', 15, 5, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (6, '72466145C', 1, 6, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (8, '83009147T', 10, 6, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (4, '09845157G', 25, 7, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (5, '67380154K', 5, 8, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (10, '37289467N', 14, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (8, '84612735M', 7, 3, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (6, '27359198T', 20, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (6, '27359198T', 20, 2, 2023);
+INSERT INTO CURSAR VALUES (6, '27359198T', 20, 2, 2023)
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004236) violada 
+
+
+SQL> INSERT INTO CURSAR VALUES (8, '19287384R', 5, 3, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (7, '73849561A', 10, 3, 2023);
+INSERT INTO CURSAR VALUES (7, '73849561A', 10, 3, 2023)
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004236) violada 
+
+
+SQL> INSERT INTO CURSAR VALUES (4, '38456199Z', 15, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (5, '72466145C', 8, 3, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (1, '83009147T', 1, 3, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (2, '09845157G', 22, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO CURSAR VALUES (9, '67380154K', 16, 2, 2023);
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (9, '37289467N');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (10, '84612735M');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (8, '27359198T');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (6, '19287384R');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (7, '73849561A');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (8, '38456199Z');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (5, '72466145C');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (4, '83009147T');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (1, '09845157G');
+
+1 fila creada.
+
+SQL> INSERT INTO ENSENYAR VALUES (2, '67380154K');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (45289, '37289467N');
+INSERT INTO TRABAJAR VALUES (45289, '37289467N')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (21456, '84612735M');
+INSERT INTO TRABAJAR VALUES (21456, '84612735M')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (75841, '27359198T');
+INSERT INTO TRABAJAR VALUES (75841, '27359198T')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (23579, '19287384R');
+INSERT INTO TRABAJAR VALUES (23579, '19287384R')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (14782, '73849561A');
+INSERT INTO TRABAJAR VALUES (14782, '73849561A')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (63852, '38456199Z');
+INSERT INTO TRABAJAR VALUES (63852, '38456199Z')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (14257, '72466145C');
+INSERT INTO TRABAJAR VALUES (14257, '72466145C')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (12384, '83009147T');
+INSERT INTO TRABAJAR VALUES (12384, '83009147T')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (18629, '09845157G');
+INSERT INTO TRABAJAR VALUES (18629, '09845157G')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (72486, '67380154K');
+INSERT INTO TRABAJAR VALUES (72486, '67380154K')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (45289, '84612735M');
+INSERT INTO TRABAJAR VALUES (45289, '84612735M')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (75841, '27359198T');
+INSERT INTO TRABAJAR VALUES (75841, '27359198T')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (63852, '19287384R');
+INSERT INTO TRABAJAR VALUES (63852, '19287384R')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (23579, '73849561A');
+INSERT INTO TRABAJAR VALUES (23579, '73849561A')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (12384, '37289467N');
+INSERT INTO TRABAJAR VALUES (12384, '37289467N')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (14782, '38456199Z');
+INSERT INTO TRABAJAR VALUES (14782, '38456199Z')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (18629, '83009147T');
+INSERT INTO TRABAJAR VALUES (18629, '83009147T')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (72486, '09845157G');
+INSERT INTO TRABAJAR VALUES (72486, '09845157G')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (14257, '72466145C');
+INSERT INTO TRABAJAR VALUES (14257, '72466145C')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO TRABAJAR VALUES (21456, '67380154K');
+INSERT INTO TRABAJAR VALUES (21456, '67380154K')
+*
+ERROR en línea 1:
+ORA-02291: restricción de integridad (DAVIDROLDAN.SYS_C004244) violada - clave principal no encontrada 
+
+
+SQL> INSERT INTO ECN VALUES ('37289467N', 10001, 1);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('84612735M', 10002, 2);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('27359198T', 10003, 3);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('19287384R', 10004, 4);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('73849561A', 10005, 5);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('38456199Z', 10006, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('72466145C', 10007, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('83009147T', 10008, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('09845157G', 10009, 9);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('67380154K', 10010, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('37289467N', 10002, 3);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('84612735M', 10003, 4);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('27359198T', 10004, 5);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('19287384R', 10005, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('73849561A', 10006, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('38456199Z', 10007, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('72466145C', 10008, 9);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('83009147T', 10009, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('09845157G', 10010, 1);
+
+1 fila creada.
+
+SQL> INSERT INTO ECN VALUES ('67380154K', 10001, 2);
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (1, 'Supply Inc', 'Espa¤a'),
+  2  INSERT INTO PROVEEDOR VALUES (2, 'Proveedores S.A', 'China'),
+  3  INSERT INTO PROVEEDOR VALUES (3, 'Productos Ltd', 'Alemania'),
+  4  INSERT INTO PROVEEDOR VALUES (4, 'Materiales Co', 'Francia'),
+  5  INSERT INTO PROVEEDOR VALUES (5, 'Insumos S.L', 'USA'),
+  6  INSERT INTO PROVEEDOR VALUES (6, 'Fabricantes SA', 'Jap¢n'),
+  7  INSERT INTO PROVEEDOR VALUES (7, 'Comercializadora S.A.S', 'India'),
+  8  INSERT INTO PROVEEDOR VALUES (8, 'Distribuidores S.R.L', 'Italia'),
+  9  INSERT INTO PROVEEDOR VALUES (9, 'Importadores S.A.S', 'M‚xico'),
+ 10  INSERT INTO PROVEEDOR VALUES (10, 'Exportation Co', 'Brasil');
+INSERT INTO PROVEEDOR VALUES (1, 'Supply Inc', 'Espa¤a'),
+                                                         *
+ERROR en línea 1:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> INSERT INTO PROVEEDOR VALUES (1, 'Supply Inc', 'Espa¤a');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (2, 'Proveedores S.A', 'China');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (3, 'Productos Ltd', 'Alemania');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (4, 'Materiales Co', 'Francia');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (5, 'Insumos S.L', 'USA');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (6, 'Fabricantes SA', 'Jap¢n');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (7, 'Comercializadora S.A.S', 'India');
+INSERT INTO PROVEEDOR VALUES (7, 'Comercializadora S.A.S', 'India')
+                                 *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."PROVEEDOR"."NOMBRE_PROVEEDOR" (real: 22, máximo: 20) 
+
+
+SQL> INSERT INTO PROVEEDOR VALUES (8, 'Distribuidores S.R.L', 'Italia');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (9, 'Importadores S.A.S', 'M‚xico');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (10, 'Exportation Co', 'Brasil');
+
+1 fila creada.
+
+SQL> INSERT INTO PROVEEDOR VALUES (7, 'Comerciales S.A.S', 'India');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (1, 60, 'Yoga', 'Gimnasio');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (2, 45, 'Pilates', 'Gimnasio');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (3, 90, 'Spinning', 'Gimnasio');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (4, 60, 'Zumba', 'Gimnasio');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (5, 30, 'Crossfit', 'Gimnasio');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (6, 75, 'Nataci¢n', 'Piscina');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (7, 120, 'Aquagym', 'Piscina');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (8, 45, 'Boxeo', 'Gimnasio');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (9, 60, 'Escalada', 'Roc¢dromo');
+
+1 fila creada.
+
+SQL> INSERT INTO ACTIVIDAD VALUES (10, 90, 'Baile', 'Sala de baile');
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (1, 'Toallas de playa', 25, 1);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (2, 'Bloqueador solar', 15, 2);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (3, 'Gafas de sol', 30, 3);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (4, 'Sombrillas', 40, 4);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (5, 'Chalecos salvavidas', 50, 5);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (6, 'Raquetas de playa', 20, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (7, 'Juguetes inflables', 10, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (8, 'C maras submarinas', 150, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (9, 'Pulseras de identificaci¢n', 5, 9);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (10, 'Kits de pesca', 70, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (11, 'Paddle boards', 120, 1);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (12, 'Juegos de mesa', 15, 2);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (13, 'Accesorios para snorkel', 40, 3);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (14, 'Paraca¡das acu ticos', 100, 4);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (15, 'Cortinas para exteriores', 80, 5);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (16, 'Mesas de ping pong', 200, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (17, 'Redes de voleibol', 30, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (18, 'Piscinas inflables', 50, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (19, 'Casetas de playa', 90, 9);
+
+1 fila creada.
+
+SQL> INSERT INTO PRODUCTO VALUES (20, 'Kayaks', 110, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('12345678A', 'Juan', 'Garc¡a', '555-123-456', 'Espa¤a', 10, 4, 1995, 'Licenciatura en Educaci¢n F¡sica');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('23456789B', 'Pedro', 'Gonz lez', '555-234-567', 'M‚xico', 15, 6, 1990, 'T‚cnico Deportivo');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('34567890C', 'Laura', 'P‚rez', '555-345-678', 'Argentina', 22, 11, 1998, 'Grado en Ciencias de la Actividad F¡sica y del Deporte');
+INSERT INTO MONITOR VALUES ('34567890C', 'Laura', 'P‚rez', '555-345-678', 'Argentina', 22, 11, 1998, 'Grado en Ciencias de la Actividad F¡sica y del Deporte')
+                                                                                                       *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."MONITOR"."FORMACION" (real: 55, máximo: 50) 
+
+
+SQL> INSERT INTO MONITOR VALUES ('45678901D', 'Mar¡a', 'S nchez', '555-456-789', 'Colombia', 5, 9, 1992, 'Entrenador Personal');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('56789012E', 'Carlos', 'Mart¡nez', '555-567-890', 'Per£', 12, 2, 1994, 'T‚cnico en Actividades F¡sico-Deportivas');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('67890123F', 'Ana', 'L¢pez', '555-678-901', 'Chile', 18, 8, 1997, 'Grado en Ciencias de la Actividad F¡sica y del Deporte');
+INSERT INTO MONITOR VALUES ('67890123F', 'Ana', 'L¢pez', '555-678-901', 'Chile', 18, 8, 1997, 'Grado en Ciencias de la Actividad F¡sica y del Deporte')
+                                                                                               *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."MONITOR"."FORMACION" (real: 55, máximo: 50) 
+
+
+SQL> INSERT INTO MONITOR VALUES ('78901234G', 'David', 'Ruiz', '555-789-012', 'Uruguay', 27, 1, 1991, 'Entrenador Personal');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('89012345H', 'Elena', 'Fern ndez', '555-890-123', 'Brasil', 3, 7, 1996, 'T‚cnico Deportivo');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('90123456I', 'Sara', 'Moreno', '555-901-234', 'Paraguay', 9, 12, 1993, 'Licenciatura en Educaci¢n F¡sica');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('01234567J', 'Mario', 'Alvarez', '555-012-345', 'Bolivia', 16, 5, 1999, 'Grado en Ciencias de la Actividad F¡sica y del Deporte');
+INSERT INTO MONITOR VALUES ('01234567J', 'Mario', 'Alvarez', '555-012-345', 'Bolivia', 16, 5, 1999, 'Grado en Ciencias de la Actividad F¡sica y del Deporte')
+                                                                                                    *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."MONITOR"."FORMACION" (real: 55, máximo: 50) 
+
+
+SQL> INSERT INTO MONITOR VALUES ('12345670K', 'Lucas', 'G¢mez', '555-123-450', 'Venezuela', 23, 3, 1998, 'T‚cnico Deportivo');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('23456780L', 'Patricia', 'D¡az', '555-234-560', 'Ecuador', 30, 9, 1994, 'Entrenador Personal');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('34567890M', 'Daniel', 'Hern ndez', '555-345-670', 'Panam ', 7, 11, 1991, 'T‚cnico en Actividades F¡sico-Deportivas');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('45678900N', 'Carmen', 'Jim‚nez', '555-456-780', 'Guatemala', 14, 1, 1997, 'Grado en Ciencias de la Actividad F¡sica y del Deporte');
+INSERT INTO MONITOR VALUES ('45678900N', 'Carmen', 'Jim‚nez', '555-456-780', 'Guatemala', 14, 1, 1997, 'Grado en Ciencias de la Actividad F¡sica y del Deporte')
+                                                                                                         *
+ERROR en línea 1:
+ORA-12899: el valor es demasiado grande para la columna "DAVIDROLDAN"."MONITOR"."FORMACION" (real: 55, máximo: 50) 
+
+
+SQL> INSERT INTO MONITOR VALUES ('45678900N', 'Carmen', 'Jim‚nez', '555-456-780', 'Guatemala', 14, 1, 1997, 'Ciencias de la Actividad F¡sica y del Deporte');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('01234567J', 'Mario', 'Alvarez', '555-012-345', 'Bolivia', 16, 5, 1999, 'Ciencias de la Actividad F¡sica y del Deporte');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('67890123F', 'Ana', 'L¢pez', '555-678-901', 'Chile', 18, 8, 1997, 'Ciencias de la Actividad F¡sica y del Deporte');
+
+1 fila creada.
+
+SQL> INSERT INTO MONITOR VALUES ('34567890C', 'Laura', 'P‚rez', '555-345-678', 'Argentina', 22, 11, 1998, 'Ciencias de la Actividad F¡sica y del Deporte');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('12349876A', 1, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('12349876A', 2, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('12349876A', 3, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('65483927B', 5, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('65483927B', 6, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('65483927B', 7, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('98765432C', 9, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('98765432C', 10, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('78945612D', 12, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('78945612D', 14, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('78945612D', 15, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('56781234E', 16, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('56781234E', 18, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('32145678F', 20, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('54321678J', 1, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('78123465I', 3, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('96385214H', 11, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('12349876A', 2, 'no');
+INSERT INTO PROPORCIONAR VALUES ('12349876A', 2, 'no')
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004257) violada 
+
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('78945612D', 18, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('65483927B', 10, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('56781234E', 13, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('14789563G', 4, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('78123465I', 15, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('54321678J', 7, 'si');
+
+1 fila creada.
+
+SQL> INSERT INTO PROPORCIONAR VALUES ('32145678F', 6, 'no');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('12349876A', 1, '12345678A');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('65483927B', 2, '23456789B');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('98765432C', 3, '34567890C');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('78945612D', 4, '45678901D');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('56781234E', 5, '56789012E');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('32145678F', 6, '67890123F');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('14789563G', 7, '78901234G');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('96385214H', 8, '89012345H');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('78123465I', 9, '90123456I');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('54321678J', 10, '01234567J');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('12349876A', 2, '23456789B');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('65483927B', 3, '34567890C');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('98765432C', 4, '45678901D');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('78945612D', 5, '56789012E');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('56781234E', 6, '67890123F');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('32145678F', 7, '78901234G');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('14789563G', 8, '89012345H');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('96385214H', 9, '90123456I');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('78123465I', 10, '01234567J');
+
+1 fila creada.
+
+SQL> INSERT INTO ORGANIZAR VALUES ('54321678J', 1, '12345678A');
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('12349876A', 1, 16, 2, 2023, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('65483927B', 1, 17, 2, 2023, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('98765432C', 2, 16, 2, 2023, 12);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('78945612D', 2, 16, 2, 2023, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('56781234E', 3, 16, 2, 2023, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('32145678F', 3, 17, 2, 2023, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('14789563G', 4, 18, 2, 2023, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('96385214H', 4, 19, 2, 2023, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('78123465I', 5, 19, 2, 2023, 6);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('54321678J', 5, 20, 2, 2023, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('12349876A', 6, 16, 2, 2023, 10);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('65483927B', 6, 17, 2, 2023, 7);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('98765432C', 7, 16, 2, 2023, 12);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('78945612D', 7, 16, 2, 2023, 8);
+
+1 fila creada.
+
+SQL> INSERT INTO PARTICIPAR VALUES ('56781234E', 8, 16, 2, 2023, 6);
+
+1 fila creada.
+
+SQL> select * from trabajar;
+
+ninguna fila seleccionada
+
+SQL> select * from empleado;
+
+DNI       NOMBRE               APELLIDO             TLFNO_EMPLEA PAIS                                                     DIA_NACIMIENTO MES_NACIMIENTO ANYO_NACIMIENTO                                                                                                                                     
+--------- -------------------- -------------------- ------------ -------------------------------------------------------- -------------- -------------- ---------------                                                                                                                                     
+37289467N Isabel               Gonzalez             678911222    Espa¤a                                                               25              5            1991                                                                                                                                     
+84612735M Juan                 Rodriguez            698745632    Francia                                                               3              9            1990                                                                                                                                     
+27359198T Marta                Santos               612345678    Italia                                                               21              7            1985                                                                                                                                     
+19287384R Luis                 Martinez             694567812    Alemania                                                             29              2            1988                                                                                                                                     
+73849561A Sara                 Garcia               624571893    Reino Unido                                                           5             12            1992                                                                                                                                     
+38456199Z David                Perez                673458219    Portugal                                                              8              1            1993                                                                                                                                     
+72466145C Jos‚                 D¡az                 689012345    Chile                                                                 9              7            1984                                                                                                                                     
+83009147T Carlos               Ruiz                 699012345    Ecuador                                                              30              1            1990                                                                                                                                     
+09845157G Sof¡a                P‚rez                610912345    Uruguay                                                               5             12            1987                                                                                                                                     
+67380154K Marta                G¢mez                611912345    Paraguay                                                              2              6            1992                                                                                                                                     
+
+10 filas seleccionadas.
+
+SQL> INSERT INTO TRABAJAR VALUES (10001, '37289467N');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10002, '84612735M');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10003, '27359198T');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10004, '19287384R');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10005, '73849561A');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10006, '38456199Z');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10007, '72466145C');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10008, '83009147T');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10009, '09845157G');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10010, '67380154K');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10001, '84612735M');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10002, '37289467N');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10003, '73849561A');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10004, '27359198T');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10005, '19287384R');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10006, '72466145C');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10007, '83009147T');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10008, '09845157G');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10009, '67380154K');
+
+1 fila creada.
+
+SQL> INSERT INTO TRABAJAR VALUES (10010, '38456199Z');
+
+1 fila creada.
+
+SQL> select * from trabajar;
+
+CODIGO_DPTO DNI                                                                                                                                                                                                                                                                                             
+----------- ---------                                                                                                                                                                                                                                                                                       
+      10001 37289467N                                                                                                                                                                                                                                                                                       
+      10001 84612735M                                                                                                                                                                                                                                                                                       
+      10002 37289467N                                                                                                                                                                                                                                                                                       
+      10002 84612735M                                                                                                                                                                                                                                                                                       
+      10003 27359198T                                                                                                                                                                                                                                                                                       
+      10003 73849561A                                                                                                                                                                                                                                                                                       
+      10004 19287384R                                                                                                                                                                                                                                                                                       
+      10004 27359198T                                                                                                                                                                                                                                                                                       
+      10005 19287384R                                                                                                                                                                                                                                                                                       
+      10005 73849561A                                                                                                                                                                                                                                                                                       
+      10006 38456199Z                                                                                                                                                                                                                                                                                       
+      10006 72466145C                                                                                                                                                                                                                                                                                       
+      10007 72466145C                                                                                                                                                                                                                                                                                       
+      10007 83009147T                                                                                                                                                                                                                                                                                       
+      10008 09845157G                                                                                                                                                                                                                                                                                       
+      10008 83009147T                                                                                                                                                                                                                                                                                       
+      10009 09845157G                                                                                                                                                                                                                                                                                       
+      10009 67380154K                                                                                                                                                                                                                                                                                       
+      10010 38456199Z                                                                                                                                                                                                                                                                                       
+      10010 67380154K                                                                                                                                                                                                                                                                                       
+
+20 filas seleccionadas.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+W                                                                                                                                                                                                                                                                                                           
+NOTAS_ALUMNOS                                                                                                                                                                                                                                                                                               
+LIBRERIA                                                                                                                                                                                                                                                                                                    
+ASIGNATURAS                                                                                                                                                                                                                                                                                                 
+NOTAS                                                                                                                                                                                                                                                                                                       
+ALUMNOS                                                                                                                                                                                                                                                                                                     
+EMPLEADO                                                                                                                                                                                                                                                                                                    
+SUCURSAL                                                                                                                                                                                                                                                                                                    
+CLIENTE                                                                                                                                                                                                                                                                                                     
+HABITACION                                                                                                                                                                                                                                                                                                  
+RESERVAR                                                                                                                                                                                                                                                                                                    
+SH                                                                                                                                                                                                                                                                                                          
+DEPARTAMENTO                                                                                                                                                                                                                                                                                                
+CURSO                                                                                                                                                                                                                                                                                                       
+ENTIDADBANCARIA                                                                                                                                                                                                                                                                                             
+NOMINA                                                                                                                                                                                                                                                                                                      
+CONTRATO                                                                                                                                                                                                                                                                                                    
+CURSAR                                                                                                                                                                                                                                                                                                      
+ENSENYAR                                                                                                                                                                                                                                                                                                    
+TRABAJAR                                                                                                                                                                                                                                                                                                    
+ECN                                                                                                                                                                                                                                                                                                         
+PROVEEDOR                                                                                                                                                                                                                                                                                                   
+ACTIVIDAD                                                                                                                                                                                                                                                                                                   
+PRODUCTO                                                                                                                                                                                                                                                                                                    
+MONITOR                                                                                                                                                                                                                                                                                                     
+PROPORCIONAR                                                                                                                                                                                                                                                                                                
+ORGANIZAR                                                                                                                                                                                                                                                                                                   
+PARTICIPAR                                                                                                                                                                                                                                                                                                  
+
+30 filas seleccionadas.
+
+SQL> exit

@@ -1,0 +1,185 @@
+spool "C:\Users\david\Documents\DAM\Bases de datos\spool\23enero"
+connect davidroldan
+Hacer comentario --> rem
+exit
+select table_name from user_tables; --> Ver mis tablas
+desc nombre_tabla; --> Ver descripción tabla
+select * from nombre_tabla; --> Sacar contenido de la tabla
+set pagesize 300; --> Cambiar tamaño pag
+set linesize 300; --> Cambiar tamaño linea
+
+set pagesize 300;
+set linesize 300;
+
+
+
+
+EJERCICIOS:
+PRIMEROS EJEMPLOS DE CONSULTAS:
+REM 17.- seleccionar los empleados que no tienen comisión.
+select * from emple comision=0 or comision is null;
+
+REM 22.- Seleccionar los departamentos cuyo nombre acabe en 'on';
+select dnombre from depart where dnombre like '%ON';
+
+REM 19.- Seleccionar los empleados cuyo nº de departamento no sea ni 30, ni 20 ni 40.
+select * from emple where dept_no not in(20,30,40);
+
+REM 20.- Seleccionar los empleados cuya fecha de alta este entre entre el 8/9/61 y el 27/2/82.
+select apellido from emple where dept_no fecha_alt between'8/9/61' and '27/02/82';
+
+SEGUNDOS EJEMPLOS DE CONSULTAS:
+REM 1.- Seleccionar el apellido de los empleados que trabajen en Madrid o Barcelona.
+select apellido from emple where dept_no in (select dept_no from depart where loc in ('MADRID','BARCELONA'));
+
+REM 2.- Seleccionar el apellido y el oficio de todos los empleados del departamento 20 cuyo trabajo sea idéntico al de los empleados del departamento ventas.
+select apellido,oficio from emple where dept_no=20 and oficio in(select oficio from emple where dept_no in(select dept_no from depart where dnombre='VENTAS'));
+
+REM 3.- Obtener el departamento de los empleados con el mismo oficio y el salario de GIL.
+select dept_no,apellido from emple where oficio in (select oficio from emple where apellido='GIL') and salario in (select salario from emple where apellido='GIL');
+[otra opción]select dept_no,apellido,salario from emple where (oficio,salario)=(select oficio,salario from emple where apellido='GIL');
+
+REM 4.- Obtener el nombre de alumno, su asignatura y su nota.
+select apenom, nombre, nota from alumnos,notas,asignaturas where alumnos.dni=notas.dni and notas.cod=asignaturas.cod;
+
+REM 5.- Nombre de los alumnos matriculados en FOL.
+select apenom from alumnos,asignaturas,notas where alumnos.dni=notas.dni and notas.cod=asignaturas.cod and nombre='FOL';
+
+REM 6.- seleccionar de la tabla emple aquellas filas cuyo apellido empiece por A y el oficio tenga una e en cualquier posición.
+select apellido from emple where apellido like 'A%' and oficio like '%E%';
+
+REM 7.- Seleccionar el apellido, el oficio y la localidad de los departamentos donde trabajan los analistas.
+select apellido,oficio,loc from emple,depart where depart.dept_no=emple.dept_no and emple.dept_no in (select dept_no from emple where oficio='ANALISTA');
+
+REM 8.- Mostrar los empleados (nombre, oficio ,salario y fecha de alta) que desempeñen el mismo oficio que JIMÉNEZ o que tengan el salario mayor o igual a FERNÁNDEZ.
+select apellido,oficio,salario,fecha_alt from emple where oficio=(select oficio from emple where apellido='JIMENEZ') or salario>=(select salario from emple where apellido='JIMENEZ')
+
+REM 9.- Mostrar por pantalla el nombre, el oficio y el salario de los empleados del departamento de FERNÁNDEZ que tengan su mismo salario.
+select apellido,oficio,salario fry oficios de los empleados que tienen el mismo trabajo que JIMÉNEZ.
+
+REM 10.- Presentar los nombres y oficios de los empleados que tienen el mismo trabajo que JIMÉNEZ.
+select apellido,oficio from emple where oficio=(select oficio from emple where apellido='JIMENEZ');
+
+REM 11.- Visualizar los nombrese los alumnos que tengan una nota entre 7 y 8 en la asignatura de FOL.
+select apenom from alumnos,notas,asignaturas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD and asignaturas.nombre='FOL' and notas.nota in(7,8);
+
+REM 12.- Visualizar los nombrese asignaturas que no tengan suspensos.
+select nombre from asignaturas where cod not in(select cod from notas where nota < 5);
+
+REM 13.- Visualizar los nombrese alumnos de madrid que tengan alguna asignatura suspendida.
+select apenom from alumnos where pobla='Madrid' and dni in(select dni from notas where nota<5);
+
+REM 14.- Mostrar los nombres de alumnos que tengan la misma nota que tiene "Díaz Fernández, María" en FOL en alguna asignatura.
+select apenom from alumnos where dni in(select dni from notas where nota in(select nota from notas where dni in(select dni from alumnos where apenom='Díaz Fernández, María') and cod in(select cod from asignaturas where nombre='FOL')));
+
+TERCEROS EJEMPLOS DE CONSULTAS
+REM 1.- Visualizar los departamentos en los que el salario medio es mayor o igual que la media de todos los salarios;
+select dept_no, avg(salario) from emple group by dept_no having avg(salario)>=(select avg(salario) from emple);
+
+REM 2.- A partir de la tabla emple, visualizar el número de vendedores del departamentos 'VENTAS';  
+select count(*) from emple where dept_no=(select dept_no from depart where dnombre ='VENTAS' and oficio='VENDEDOR')
+
+REM 3.- Partiendo de la tabla EMPLE, visualizar por cada oficio de los empleados del departamento 'VENTAS' la suma de salarios.
+select sum(salario),oficio from emple where dept_no in(select dept_no from depart where dnombre='VENTAS') group by oficio;
+
+REM 4.- seleccionar aquellos pedidos de la tabla EMPLE cuyo salario sea igual a la media de su salario en su departamento.
+select apellido, salario from emple where (salario,dept_no) in (select avg(salario),dept_no from emple group by dept_no);
+
+REM 5.- A partir de la tabla emple, visualizar el numero de empleados de cada departamento cuyo oficio sea 'EMPLEADO'
+select dept_no, count(*) from emple where oficio like 'EMPLEADO' group by dept_no;
+
+REM 6.- Desde la tabla EMPLE, visualizar el departamento que tenga más empleados cuyo oficio sea 'EMPLEADO'
+select dept_no, count(*) from emple where oficio like 'EMPLEADO' group by dept_no having count(*) =  (select max(count(*)) from emple where oficio='EMPLEADO' group by dept_no);
+
+REM 7.- A partir de las tablas EMPLE y DEPART, visualizar el número de departamento y el nombre de departamento que tenga más empleados cuyo oficio sea 'EMPLEADO'
+select dept_no, dnombre from depart where dept_no=(select dept_no from emple where oficio= 'EMPLEADO' group by dept_no having count(*)=(select max(count(*)) from emple where oficio='EMPLEADO' group by dept_no));
+
+REM 8.- Buscar los departamentos que tienen más de dos personas trabajando en la misma profesión
+
+
+REM 9.- Dada la tabla LIBRERÍA, visualizar por cada estante la suma de los ejemplares.
+select estante, sum(ejemplares) from libreria group by estante;
+
+REM 10.- Visualizar el estante con más ejemplares de la tabla libreria.
+select estante, sum(ejemplares) from libreria group by estante having sum(ejemplares=(select max(sum(ejemplares)) from libreria group by estante););
+
+CUARTOS EJEMPLOS CONSULTAS
+REM 1.- mostrar el oficio y media de salarios de aquellos empleados cuya media de salario sea mayor que 200000
+select avg(salario), oficio from emple group by oficio having avg(salario)>200000;
+
+REM 2.- mostrar el nombre y la comisión de aquellos empleados que tengan una comisión mayor que la de sanchez
+select apellido,comision from emple where comision>(select comision from emple where apellido='SANCHEZ');
+
+REM 3.- mostrar el nombre salario y nº de departamento de aquellos empleados que ganan el salario máximo de su departamento
+select apellido,salario, dept_no from emple where salario in (select max(salario) from emple group by dept_no); 
+
+REM 4.- mostrar el nombre del departamento que tanga mas empleados cuyo oficio sea presidente
+select dept_no, dnombre from depart where dept_no=(select dept_no from emple where oficio= 'PRESIDENTE' group by dept_no having count(*)=(select max(count(*)) from emple where oficio='PRESIDENTE' group by dept_no));
+
+REM 5.- mostrar el numero de directores de la tabla emple que sean del departamento producción
+select count(*) from emple where oficio='DIRECTOR' and dept_no=(select dept_no from depart where dnombre='PRODUCCION');
+
+REM 6.- A partir de la tabla emple, visualizar cuantos apellidos de los empleados empiezan por la letra ‘A’
+select count(*) from emple where apellido like 'A%';
+
+REM 7.- Dada la tabla emple, obtener el sueldo medio, el número  de comisiones no nulas , el máximo sueldo y el minimo sueldo de los empleados del departamento 30.Emplear el formato adecuado para la salida y las cantidades adecuadas.
+SELECT AVG(SALARIO), COUNT(COMISION), MAX(SALARIO), MIN(SALARIO) FROM EMPLE WHERE DEPT_NO= 30;
+
+REM 8.- Contar las filas de librería cuyo tema tenga por lo menos una ‘A’.
+select count(TEMA) from libreria where tema like '%A%';
+
+REM 9.- Visualizar los temas con mayor número de ejemplares de la tabla librería y que tengan al menos una ‘E’ (pueden ser un tema o varios).
+SELECT  TEMA FROM LIBRERIA WHERE EJEMPLARES =(SELECT MAX(EJEMPLARES) FROM LIBRERIA )AND TEMA LIKE (‘%e%’);
+
+REM 10.- Visualizar el número de estantes diferentes que hay en la tabla librería.
+select count(distinct estante) from libreria;
+
+REM 11.- Visualizar el número de estantes distintos que hay en la tabla librería de aquellos temas que  contienen al menos una ‘E’.
+select count(distinct estante) from libreria where TEMA like '%e%';
+
+REM 12.- Dada la tabla librería, hacer una sentencia select que visualice el tema, el ultimo carácter del tema  que no sea blanco y el número de caracteres de tema (sin contar los blancos de la derecha) ordenados por tema.
+select tema ,substr(tema,instr(tema,’ ’)-1), instr(tema,’ ’)-1 from libreria order by tema;
+
+REM 13.- Convertir la cadena ‘01051998’ a fecha y visualizar su nombre de mes en mayúsculas.
+SELECT UPPER(TO_CHAR(TO_DATE(‘01051998’),’MONTH’)) FROM DUAL;
+
+REM 14.- A partir de la tabla emple, obtener el apellido de los empleados que lleven mas de 19 años trabajando.
+SELECT APELLIDO FROM EMPLE WHERE 2023 – TO_NUMBER(TO_CHAR(FECHA_ALT,’YYYY’))>30;
+
+REM 15.- Seleccionar el apellido de los empleados de la tabla emple que lleven mas de 18 años trabajando en el en el departamento ‘ventas’.
+
+
+REM 16.- Visualizar el apellido, el salario y el número de departamento de aquellos empleados de la tabla emple cuyo salario sea el mayor de su departamento.
+
+
+REM 17.- Visualizar el apellido, el salario y el número de departamento de aquellos empleados de la tabla emple  cuyo salario supere a la media en su departamento.
+
+
+REM 18.- visualizar los departamentos con mayor numero de empleados y que tengan un salario mayor que 200000.
+
+
+REM 19.- seleccionar los empleados que hayan trabajado mas de 5 años y sumarles 10000 pts a su salario.
+
+
+REM 20.- Dada la tabla emple, sumar dos meses a la fecha de alta.
+
+	
+REM 21.- Dada la tabla emple, restar dos meses a la fecha de alta.
+
+	
+REM 22.- Obtener de la tabla emple el ultimo día del mes para cada uno de las fechas de alta.
+
+
+REM 23.- A partir de la tabla emple obtener la fecha de alta de manera que aparezca el nombre del mes con todas sus letras el numero del dia del mes y el año.
+
+
+REM 24.- A partir de la tabla emple, obtener la fecha de lata de forma que aparezca el nombre del mes con tres letras (month), el numero del día del año (ddd), el ultimo dígito del año(y)y los tres dígitos últimos del año(yyy).
+
+	
+REM 25.- Obtener la fecha de hoy con el siguiente formato: Hoy es NOMBRE_DIA,DIA_MES de NOMBRE_MES de AÑO.
+
+	
+REM 26.- Convertir la cadena 01012001 a tipo date.
+
+
+REM 27.- Obtener el nombre del dia, el nombre del mes, el día y el año en ingles a partir de la fecha '12121997'

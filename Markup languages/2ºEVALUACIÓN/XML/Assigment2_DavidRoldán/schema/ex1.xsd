@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Customer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="IDCust" type="idType" />
+                <xs:element name="NameCust" type="nameType" />
+                <xs:element name="Street" type="streetType" />
+                <xs:element name="NumStreet" type="numStreet" />
+                <xs:element name="PostalCode" type="postalCode" />
+                <xs:element name="City" type="city" />
+                <xs:element name="Phone" type="phone" />
+                <xs:element name="DateOfBirth" type="xs:date" />
+                <xs:element name="Discount" type="xs:boolean" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="idType">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="[0-9]{5}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="nameType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="2" />
+            <xs:maxLength value="8" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="streetType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="numStreet">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1" />
+            <xs:maxInclusive value="5000" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="postalCode">
+        <xs:restriction base="xs:integer">
+            <xs:pattern value="[0-9]{5}" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="city">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Madrid" />
+            <xs:enumeration value="Barcelona" />
+            <xs:enumeration value="Sevilla" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="phone">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}-[0-9]{3}-[0-9]{3}"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

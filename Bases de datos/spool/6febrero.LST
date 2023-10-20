@@ -1,0 +1,274 @@
+SQL> connect davidroldan
+Conectado.
+SQL> select * from emple
+  2  
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                 
+        20                                                                      
+                                                                                
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      43000      
+        30                                                                      
+                                                                                
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000      
+        30                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                 
+        20                                                                      
+                                                                                
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000      
+        30                                                                      
+                                                                                
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                 
+        30                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                 
+        10                                                                      
+                                                                                
+      7788 GIL        ANALISTA         7566 09/11/81     390000                 
+        20                                                                      
+                                                                                
+      7839 REY        PRESIDENTE            17/11/81      50000                 
+        10                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0      
+        30                                                                      
+                                                                                
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                 
+        20                                                                      
+                                                                                
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                 
+        30                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                 
+        20                                                                      
+                                                                                
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                 
+        10                                                                      
+                                                                                
+
+14 filas seleccionadas.
+
+SQL> set pagesize 300;
+SQL> set linesize 300;
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION    DEPT_NO                                                                                                                                                                                                                       
+---------- ---------- ---------- ---------- -------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                    20                                                                                                                                                                                                                       
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      43000         30                                                                                                                                                                                                                       
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000         30                                                                                                                                                                                                                       
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                    20                                                                                                                                                                                                                       
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000         30                                                                                                                                                                                                                       
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                    30                                                                                                                                                                                                                       
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                    10                                                                                                                                                                                                                       
+      7788 GIL        ANALISTA         7566 09/11/81     390000                    20                                                                                                                                                                                                                       
+      7839 REY        PRESIDENTE            17/11/81      50000                    10                                                                                                                                                                                                                       
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0         30                                                                                                                                                                                                                       
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                    20                                                                                                                                                                                                                       
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                    30                                                                                                                                                                                                                       
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                    20                                                                                                                                                                                                                       
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                    10                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> select count* oficio from emple;
+select count* oficio from emple
+       *
+ERROR en línea 1:
+ORA-00904: "COUNT": identificador no válido 
+
+
+SQL> select count* "OFICIO" from emple;
+select count* "OFICIO" from emple
+       *
+ERROR en línea 1:
+ORA-00904: "COUNT": identificador no válido 
+
+
+SQL> select count* from emple;
+select count* from emple
+              *
+ERROR en línea 1:
+ORA-00936: falta una expresión 
+
+
+SQL> select count(*) from emple;
+
+  COUNT(*)                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        14                                                                                                                                                                                                                                                                                                  
+
+SQL> select count(*) "OFICIO" from emple;
+
+    OFICIO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        14                                                                                                                                                                                                                                                                                                  
+
+SQL> select count(DISTINC OFICIO) from emple;
+select count(DISTINC OFICIO) from emple
+                     *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select count(*) , OFICIO from emple group by OFICIO;
+
+  COUNT(*) OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+         1 PRESIDENTE                                                                                                                                                                                                                                                                                       
+         4 EMPLEADO                                                                                                                                                                                                                                                                                         
+         4 VENDEDOR                                                                                                                                                                                                                                                                                         
+         2 ANALISTA                                                                                                                                                                                                                                                                                         
+         3 DIRECTOR                                                                                                                                                                                                                                                                                         
+
+SQL> select count(*) , OFICIO from emple group by OFICIO having count(*)>1;
+
+  COUNT(*) OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+         4 EMPLEADO                                                                                                                                                                                                                                                                                         
+         4 VENDEDOR                                                                                                                                                                                                                                                                                         
+         2 ANALISTA                                                                                                                                                                                                                                                                                         
+         3 DIRECTOR                                                                                                                                                                                                                                                                                         
+
+SQL> select * from depar
+  2  ;
+select * from depar
+              *
+ERROR en línea 1:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> select * from depar;
+select * from depar
+              *
+ERROR en línea 1:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> select * from depart;
+
+   DEPT_NO DNOMBRE        LOC              TELEFONO                                                                                                                                                                                                                                                         
+---------- -------------- -------------- ----------                                                                                                                                                                                                                                                         
+        10 CONTABILIDAD   SEVILLA         679334586                                                                                                                                                                                                                                                         
+        20 INVESTIGACION  MADRID          684987723                                                                                                                                                                                                                                                         
+        30 VENTAS         BARCELONA       623009872                                                                                                                                                                                                                                                         
+        40 PRODUCCION     BILBAO          682074902                                                                                                                                                                                                                                                         
+        50 otros                                                                                                                                                                                                                                                                                            
+        99 RECURSOSHUM    CUENCA                                                                                                                                                                                                                                                                            
+        22                                                                                                                                                                                                                                                                                                  
+        32                CACERES                                                                                                                                                                                                                                                                           
+
+8 filas seleccionadas.
+
+SQL> select count* from emple;
+select count* from emple
+              *
+ERROR en línea 1:
+ORA-00936: falta una expresión 
+
+
+SQL> select * from emple
+  2  select * from emple;
+select * from emple
+*
+ERROR en línea 2:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION    DEPT_NO                                                                                                                                                                                                                       
+---------- ---------- ---------- ---------- -------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                    20                                                                                                                                                                                                                       
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      43000         30                                                                                                                                                                                                                       
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000         30                                                                                                                                                                                                                       
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                    20                                                                                                                                                                                                                       
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000         30                                                                                                                                                                                                                       
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                    30                                                                                                                                                                                                                       
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                    10                                                                                                                                                                                                                       
+      7788 GIL        ANALISTA         7566 09/11/81     390000                    20                                                                                                                                                                                                                       
+      7839 REY        PRESIDENTE            17/11/81      50000                    10                                                                                                                                                                                                                       
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0         30                                                                                                                                                                                                                       
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                    20                                                                                                                                                                                                                       
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                    30                                                                                                                                                                                                                       
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                    20                                                                                                                                                                                                                       
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                    10                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> select dept_no from depart where loc='MADRID' or loc='BARCELONA';
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+
+SQL> select apellido from emple where dept_no in (select dept_no from depart where loc in ('MADRID','BARCELONA'));
+
+APELLIDO                                                                                                                                                                                                                                                                                                    
+----------                                                                                                                                                                                                                                                                                                  
+SANCHEZ                                                                                                                                                                                                                                                                                                     
+ARROYO                                                                                                                                                                                                                                                                                                      
+SALA                                                                                                                                                                                                                                                                                                        
+JIMENEZ                                                                                                                                                                                                                                                                                                     
+MARTIN                                                                                                                                                                                                                                                                                                      
+NEGRO                                                                                                                                                                                                                                                                                                       
+GIL                                                                                                                                                                                                                                                                                                         
+TOVAR                                                                                                                                                                                                                                                                                                       
+ALONSO                                                                                                                                                                                                                                                                                                      
+JIMENO                                                                                                                                                                                                                                                                                                      
+FERNANDEZ                                                                                                                                                                                                                                                                                                   
+
+11 filas seleccionadas.
+
+SQL> select apellido,oficio from emple where oficio in (select oficio from emple where oficio='DIRECTOR')
+  2  
+SQL> select apellido,oficio from emple where oficio in (select oficio from emple where oficio='DIRECTOR');
+
+APELLIDO   OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+CEREZO     DIRECTOR                                                                                                                                                                                                                                                                                         
+NEGRO      DIRECTOR                                                                                                                                                                                                                                                                                         
+JIMENEZ    DIRECTOR                                                                                                                                                                                                                                                                                         
+
+SQL> select apellido,oficio from emple where oficio in (select oficio from emple where apellido='JIMENEZ');
+
+APELLIDO   OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+CEREZO     DIRECTOR                                                                                                                                                                                                                                                                                         
+NEGRO      DIRECTOR                                                                                                                                                                                                                                                                                         
+JIMENEZ    DIRECTOR                                                                                                                                                                                                                                                                                         
+
+SQL> select apellido,oficio from emple where oficio in (select oficio from emple where apellido='JIMENEZ') and apellido<>'JIMENEZ';
+
+APELLIDO   OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+CEREZO     DIRECTOR                                                                                                                                                                                                                                                                                         
+NEGRO      DIRECTOR                                                                                                                                                                                                                                                                                         
+
+SQL> exit

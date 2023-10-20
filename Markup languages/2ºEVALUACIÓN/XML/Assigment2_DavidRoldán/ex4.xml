@@ -1,0 +1,56 @@
+<books xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="schema/ex4.xsd">
+    <book isbn="a1">
+        <title type="P">Pepe pepe</title>
+        <edition>12</edition>
+        <author>
+            <first>lqwj</first>
+            <middle>r</middle>
+            <last>sldfjsl</last>
+        </author>
+        <author>
+            <first>lqwj</first>
+            <middle>r</middle>
+            <last>sldfjsl</last>
+        </author>
+        <publishedDate>
+            <month>2</month>
+            <day>1</day>
+            <year>1999</year>
+        </publishedDate>
+        <type>nonfiction</type>
+        <price>003.21</price>
+    </book>
+    <book isbn="b2">
+        <title type="H">SKJFH</title>
+        <edition>13</edition>
+        <author>
+            <first>lqwj</first>
+            <middle>r</middle>
+            <last>sldfjsl</last>
+        </author>
+        <publishedDate>
+            <month>2</month>
+            <day>1</day>
+            <year>1979</year>
+        </publishedDate>
+        <type>fiction</type>
+        <price>012.45</price>
+    </book>
+    <book isbn="c3">
+        <title type="H">ALIJSCLK</title>
+        <edition>14</edition>
+        <author>
+            <first>lqwj</first>
+            <middle>r</middle>
+            <last>sldfjsl</last>
+        </author>
+        <publishedDate>
+            <month>5</month>
+            <day>1</day>
+            <year>1989</year>
+        </publishedDate>
+        <type>fiction</type>
+        <price>031.45</price>
+    </book>
+</books>

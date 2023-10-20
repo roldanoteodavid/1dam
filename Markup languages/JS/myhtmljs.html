@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My first JS project</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", assignEvents);
+        function assignEvents() {
+            document.getElementById("bClickMe").addEventListener("click", showMessage);
+            document.getElementById("tbNameofuser").addEventListener("change", changefunction)
+        }
+        function changefunction() {
+            alert("Textbox changed")
+        }
+        function showMessage() {
+            let name = document.getElementById("tbNameofuser").value;
+            document.getElementById("lmessage").innerHTML = "Helloooo " + name;
+            //alert("Hello "+name)
+        }
+    </script>
+</head>
+
+<body>
+    <h1>My first JS project</h1>
+    <input type="text" id="tbNameofuser" />
+
+    <button id="bClickMe">Click Me!</button>
+    <label id="lmessage"></label>
+</body>
+
+</html>

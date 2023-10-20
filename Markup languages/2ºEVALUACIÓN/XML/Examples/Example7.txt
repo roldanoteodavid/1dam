@@ -1,0 +1,151 @@
+a.
+XPath Query: /bookShop/book/author
+
+[Line 5] author: Giada De Laurentiis
+[Line 12] author: J K. Rowling
+[Line 18] author: James McGovern
+[Line 19] author: Per Bothner
+[Line 20] author: Kurt Cagle
+[Line 21] author: James Linn
+[Line 22] author: Vaidyanathan Nagarajan
+[Line 38] author: Erik T. Ray
+
+b.
+XPath Query: /bookShop/book/section/chapter/title | /bookShop/book/chapter/title
+
+[Line 25] title: XML The foundation of XQuery
+[Line 29] title: Understanding the XPath specification
+[Line 40] title: Introduction
+[Line 44] title: Markup and Core Concepts
+
+c.
+XPath Query: /bookShop/book
+
+[Line 3] book: 
+        Everyday Italian
+        Giada De Laurentiis
+        2005
+        30.00
+    
+[Line 9] book: 
+        Harry Potter and the prisoner of
+            azkaban
+        J K. Rowling
+        2005
+        29.99
+    
+[Line 16] book: 
+        XQuery Kick Start
+        James McGovern
+        Per Bothner
+        Kurt Cagle
+        James Linn
+        Vaidyanathan Nagarajan
+        
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                35
+            
+        
+        2003
+        49.99
+    
+[Line 36] book: 
+        Learning XML
+        Erik T. Ray
+        
+            Introduction
+            24
+        
+        
+            Markup and Core Concepts
+            34
+        
+        2003
+        39.95
+
+d.
+XPath Query: /bookShop/book/author[1]
+
+[Line 5] author: Giada De Laurentiis
+[Line 12] author: J K. Rowling
+[Line 18] author: James McGovern
+[Line 38] author: Erik T. Ray
+
+e.
+XPath Query: /bookShop/book[year<2005]/author[1]
+
+[Line 18] author: James McGovern
+[Line 38] author: Erik T. Ray
+
+f.
+XPath Query: /bookShop/book[year<2005][price<40]/author[1]
+
+[Line 38] author: Erik T. Ray
+
+g. 
+XPath Query: /bookShop/book/@category
+
+[Line 3] category: cooking
+[Line 9] category: children
+[Line 16] category: web
+[Line 36] category: web
+
+h.
+XPath Query: /bookShop/book[price<30]/title/@language
+
+[Line 10] language: en
+
+i. Books with more than one author
+XPath Query: /bookShop/book[count(author) > 1]
+
+[Line 16] book: 
+        XQuery Kick Start
+        James McGovern
+        Per Bothner
+        Kurt Cagle
+        James Linn
+        Vaidyanathan Nagarajan
+        
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                35
+            
+        
+        2003
+        49.99
+
+j. Harry Potter’s books
+XPath Query: /bookShop/book[starts-with(title,'Harry Potter')]
+//(también válida) XPath Query: /bookShop/book[title[contains(text(), 'Harry Potter')]]
+
+[Line 9] book: 
+        Harry Potter and the prisoner of
+            azkaban
+        J K. Rowling
+        2005
+        29.99
+
+k. Author/s of Harry Potter’s books
+XPath Query: /bookShop/book[starts-with(title,'Harry Potter')]/author
+
+[Line 12] author: J K. Rowling
+
+l. All elements of a chapter that are not in a section 
+XPath Query: //chapter[not(ancestor::section)]
+
+[Line 39] chapter: 
+            Introduction
+            24
+        
+[Line 43] chapter: 
+            Markup and Core Concepts
+            34

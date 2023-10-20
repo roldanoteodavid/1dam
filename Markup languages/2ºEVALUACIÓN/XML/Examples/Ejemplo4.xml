@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookstore [
+ <!ELEMENT bookstore (topic+)>
+ <!ELEMENT topic (name,book*)>
+ <!ELEMENT name (#PCDATA)>
+ <!ELEMENT book (title,author,(yearB|dateB))>
+ <!ELEMENT title (#PCDATA)>
+ <!ELEMENT author (#PCDATA)>
+ <!ELEMENT dateB (#PCDATA)>
+ <!ELEMENT yearB (#PCDATA)>
+ <!ELEMENT isbn (#PCDATA)>
+ <!ATTLIST book isbn CDATA "0">
+ <!ENTITY copyright "Copyright W3Schools.">
+ ]>
+ <bookstore>
+    <topic>
+        <name>Novela</name>
+        <book isbn="234234234">
+                <title>Don Quijote</title>
+                <title>Cervantes</title>
+                <yearB>1605</yearB>
+        </book>
+        <book isbn="32141234124">
+            <title>Harry</title>
+            <author>J.k.Rowling</author>
+            <yearB>2006</yearB>
+        </book>
+    </topic>
+    <topic>
+        <name>Poesía</name>
+    </topic>
+ </bookstore>

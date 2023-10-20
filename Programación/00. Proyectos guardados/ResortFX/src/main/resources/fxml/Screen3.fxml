@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="640.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.TerceraPantallaClientesController">
+    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <Label layoutX="422.0" layoutY="57.0" text="Deja un mensaje antes de irte" />
+            <TextField layoutX="425.0" layoutY="85.0" />
+            <MFXButton fx:id="botonSalir" layoutX="480.0" layoutY="123.0" mnemonicParsing="false" onAction="#Salir" text="Salir" />
+            <ImageView fitHeight="308.0" fitWidth="451.0" layoutX="286.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/logo_resort.png" />
+                </image>
+            </ImageView>
+            <!--<StackPane prefHeight="640.0" prefWidth="1000.0" />-->
+        </children>
+    </AnchorPane>
+</StackPane>

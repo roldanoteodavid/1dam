@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <day name="monday">
+        <meal time="breakfast">
+            <item>Orange juice</item>
+            <item>Toast</item>
+            <item>Black Coffee</item>
+        </meal>
+        <meal time="lunch">
+            <item>Tuna sandwich</item>
+            <item>Apple</item>
+        </meal>
+        <meal time="dinner">
+            <item>Hamburger steak</item>
+            <item>Mached potatoes</item>
+            <item>Green beans</item>
+            <item>Jello</item>
+        </meal>
+    </day>
+</menu>

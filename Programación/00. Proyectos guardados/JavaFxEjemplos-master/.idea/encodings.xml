@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Ej1HelloWorld/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej1HelloWorld/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej2AlertCombo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej2AlertCombo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej3GridImageView/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej3GridImageView/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej4Localizacion/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej4Localizacion/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej5dataFakeJavaFx/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej5dataFakeJavaFx/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej6EjemploAhorcado/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Ej6EjemploAhorcado/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

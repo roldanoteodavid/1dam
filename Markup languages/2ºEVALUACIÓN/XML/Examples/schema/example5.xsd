@@ -1,0 +1,24 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Song">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:integer" />
+                <xs:element name="Title">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:minLength value="2" />
+                            <xs:maxLength value="15" />
+                            <xs:pattern value="[A-Z]([a-z])*" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="Published" type="xs:boolean" default="0" />
+                <xs:element name="DatePub" type="xs:date" />
+                <xs:element name="Artist" type="xs:string" />
+                <xs:element name="Company" type="xs:string" fixed="ACME" />
+            </xs:sequence>
+            <xs:attribute name="lang" type="xs:string" default="EN" />
+            <xs:attribute name="prod" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

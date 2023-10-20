@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="sports">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sport">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="sportType">
+                                <xs:attribute name="code" type="codeType" />
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!--Types-->
+    <xs:simpleType name="sportType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Football" />
+            <xs:enumeration value="BasketBall" />
+            <xs:enumeration value="TableTennis" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="codeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FB" />
+            <xs:enumeration value="BB" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

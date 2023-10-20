@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="CRUDFX (2)" />
+        <module name="javafxFaker2" />
+        <module name="Ej1HelloWorld" />
+        <module name="Ej3GridImageView" />
+        <module name="Ej4Localizacion" />
+        <module name="CRUDFX (1)" />
+        <module name="Ej2AlertCombo" />
+        <module name="EjemploAhorcado" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CRUDFX" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

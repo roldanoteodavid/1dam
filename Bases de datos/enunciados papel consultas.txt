@@ -1,0 +1,24 @@
+EJERCICIOS PAPEL CONSULTAS:
+Ejercicio 1.
+a) select NombreEmpleado from empleado,vendedor where empleado.DNI=vendedor.DNI && vendedor.Zona='Norte';
+b) select NombreEmpleado from empleado,vendedor,empleado-jefe where vendedor.DNI=emplado-jefe.DNI and vendedor.NºVendedor = 113.654 and empleado-jefe.DNIjefe=empleado.DNI;
+c) select NºPoliza,Importe from poliza,empleado,empleado-jefe,vendedor where empleado.NombreEmpleado='Pablo Collado' and empleado.DNI=empleado-jefe.DNI and empleado-jefe.DNI=vendedor.DNI and vendedor.NºVendedor=poliza.NºVendedor
+
+Ejercicio 2.
+a) select edificio.nombre from edificio,departamento-edificio where edificio.IdEfidicio=departamento-edificio.IdEdificio and departamento-edificio.NombreDepartamento='Contabilidad' and departamento-edificios.NºDespachos>5;
+b) select DEPARTAMENTO-EDIFICIO.NombreDepartamento, DEPARTAMENTO-EDIFICIO.NºDespacho from DEPARTAMENTO-EDIFICIO, EDIFICIO where DEPARTAMENTO-EDIFICIO.IdEdificio = EDIFICIO.IdEdificio and EDIFICIO.Nombre = 'La Campana';
+c) select DEPARTAMENTO.NombreDepartamento from DEPARTAMENTO, DEPARTAMENTO-EDIFICIO, EDIFICIO, POLIGONO where DEPARTAMENTO.NombreDepartamento = DEPARTAMENTO-EDIFICIO.NombreDepartamento and DEPARTAMENTO-EDIFICIO.IdEdificio = EDIFICIO.IdEdificio and EDIFICIO.IdPoligono = POLIGONO.IdPoligono and POLIGONO.Ciudad = 'Logroño';
+d) select EDIFICIO.Nombre, EDIFICIO.NºDespachos from EDIFICIO,POLIGONO where EDIFICIO.IdPoligono = POLIGONO.IdPoligono and POLIGONO.Nombre in('Cantabria','La Portalada');
+
+Ejercicio 3.
+a) select CIUDAD.Nombre, CIUDAD.NºHabitantes from CIUDAD, COMUNIDADAUTONOMA where CIUDAD.NombreAutonomia = COMUNIDADAUTONOMA.NombreAutonomia and COMUNIDADAUTONOMA.NombreAutonomia = 'La Rioja';
+b) select RIO.NombreRio, RIO.Longitud from RIO, COMUNIDADAUTONOMA_RIO where RIO.NombreRio = COMUNIDADAUTONOMA_RIO.NombreRio and COMUNIDADAUTONOMA_RIO.NombreAutonomia = 'Aragón';
+c) select RIO.NombreRio from RIO, COMUNIDADAUTONOMA_RIO where RIO.NombreRio = COMUNIDADAUTONOMA_RIO.NombreRio and COMUNIDADAUTONOMA_RIO.NombreAutonomia IN ('Castilla-La Mancha', 'Andalucía');
+select NombreRio from comunidadautonoma-rio where NombreRio in (select nombrerio from comunidadautonoma-rio where nombreautonomia = 'Andalucia') and nombreRio in (select nombrerio from comunidadautonoma-rio where nombreautonomia = 'Castilla la mancha');
+select NombreRio from comunidadautonoma-rio where NombreAutonomia='Andalucia' or NombreAutonomia='Castilla la Mancha' group by NombreRio having count (NombreAutonomia) = 2;
+d) select SUM(RIO.Caudal) FROM RIO, COMUNIDADAUTONOMA_RIO where RIO.NombreRio = COMUNIDADAUTONOMA_RIO.NombreRio and COMUNIDADAUTONOMA_RIO.NombreAutonomia = 'Navarra';
+
+Ejercicio 4.
+a) select DNI from CONDUCTOR, CONDUCTOR-VEHICULO, MOTO where CONDUCTOR.DNI = CONDUCTOR-VEHICULO.DNI and CONDUCTOR-VEHICULO.Matricula = MOTO.Matricula;
+b) select VEHICULO.Marca from CONDUCTOR, CONDUCTOR-VEHICULO, VEHICULO where CONDUCTOR.DNI = CONDUCTOR-VEHICULO.DNI and CONDUCTOR-VEHICULO.Matricula = VEHICULO.Matricula and Nombre = 'Pepe' AND Apellido = 'Pérez';
+c) select VEHICULO.Marca, CAMION.Tara, CONDUCTOR.NºAños from CONDUCTOR, CONDUCTOR-VEHICULO, VEHICULO, CAMION where CONDUCTOR.DNI = CONDUCTOR-VEHICULO.DNI and CONDUCTOR-VEHICULO.Matricula = VEHICULO.Matricula and VEHICULO.Matricula = CAMION.Matricula and CONDUCTOR.DNI = '111111111';

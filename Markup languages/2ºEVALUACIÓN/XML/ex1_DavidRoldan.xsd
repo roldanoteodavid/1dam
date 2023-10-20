@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="restaurant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="order" type="orderType" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="orderType">
+    <xs:sequence>
+      <xs:element name="table_id" type="xs:string" minOccurs="1" />
+      <xs:element name="order_date" type="xs:date" />
+      <xs:element name="total" type="xs:string" />
+      <xs:element name="status" type="statusType" />
+      <xs:element name="items" type="itemsType"/>
+    </xs:sequence>
+    <xs:attribute name="orderId" use="required" type="orderidType" />
+  </xs:complexType>
+  <xs:complexType name="itemsType">
+    <xs:sequence>
+      <xs:element name="item" type="itemType" minOccurs="0" maxOccurs="10" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="itemType">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="name" type="xs:string" />
+        <xs:element name="description" type="descriptionType" />
+      </xs:choice>
+      <xs:element name="price" type="priceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="orderidType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][0-9][0-9][0-9]" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="descriptionType">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="0" />
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="statusType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="pending|completed|canceled" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="priceType">
+    <xs:restriction base="xs:decimal">
+      <xs:maxInclusive value="200" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,110 @@
+1.- Hola mundo
+BEGIN
+  dbms_output.put_line('Hola mundo!');
+END;
+/
+
+2.- Contar el número de filas en la tabla "emple"
+DECLARE
+  v_num NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_num FROM emple;
+  dbms_output.put_line('El número de filas en la tabla emple es: ' || v_num);
+END;
+/
+
+3.- Mostrar del 1 al 10
+BEGIN
+  FOR i IN 1..10 LOOP
+    dbms_output.put_line(i);
+  END LOOP;
+END;
+/
+
+4.- Mostrar del 10 al 1
+BEGIN
+  FOR i IN 10..1 LOOP
+    dbms_output.put_line(i);
+  END LOOP;
+END;
+/
+
+5.- Tabla de multiplicar del 1
+DECLARE
+  resultado NUMBER;
+BEGIN
+  FOR i IN 1..10 LOOP
+    resultado := 1 * i;
+    dbms_output.put_line('1 x ' || i || ' = ' || resultado);
+  END LOOP;
+END;
+/
+
+6.- Tablas de multiplicar en cascada
+DECLARE
+  resultado NUMBER;
+BEGIN
+  FOR i IN 1..10 LOOP
+    FOR j IN 1..10 LOOP
+      resultado := i * j;
+      dbms_output.put_line(i || ' x ' || j || ' = ' || resultado);
+    END LOOP;
+  END LOOP;
+END;
+/
+
+7.- Imprimir un mensaje si el valor de la variable "c" es igual a 0
+DECLARE
+  c NUMBER := 0;
+BEGIN
+  IF c = 0 THEN
+    dbms_output.put_line('El valor de c es igual a 0');
+  END IF;
+END;
+/
+
+8.- Mostrar la fecha actual
+BEGIN
+  dbms_output.put_line('La fecha actual es: ' || TO_CHAR(SYSDATE, 'DD/MM/YYYY'));
+END;
+/
+
+9.- Calcular la distancia entre dos puntos en un plano cartesiano
+DECLARE
+  x1 NUMBER := 3;
+  y1 NUMBER := 2;
+  x2 NUMBER := 5;
+  y2 NUMBER := 8;
+  distancia NUMBER;
+BEGIN
+  distancia := sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  dbms_output.put_line('La distancia entre los puntos (' || x1 || ',' || y1 || ') y (' || x2 || ',' || y2 || ') es: ' || distancia);
+END;
+/
+
+10.- Sumar números aleatorios un número aleatorio de veces
+DECLARE
+  iteraciones NUMBER := ceil(dbms_random.value(1, 10));
+  suma NUMBER := 0;
+BEGIN
+  FOR i IN 1..iteraciones LOOP
+    numero_aleatorio := ceil(dbms_random.value(10, 100));
+    suma := suma + numero_aleatorio;
+    dbms_output.put_line('Número aleatorio: ' || numero_aleatorio);
+  END LOOP;
+  dbms_output.put_line('La suma de los números aleatorios es: ' || suma);
+END;
+/
+
+11.- Contar la cantidad de números múltiplos de 3 del 1 al 100
+DECLARE
+  contador NUMBER := 0;
+BEGIN
+  FOR i IN 1..100 LOOP
+    IF i mod 3 = 0 THEN
+      contador := contador + 1;
+    END IF;
+  END LOOP;
+  dbms_output.put_line('La cantidad de números múltiplos de 3 del 1 al 100 es: ' || contador);
+END;
+/

@@ -1,0 +1,310 @@
+SQL> connect davidroldan
+Conectado.
+SQL> REM 9.- Mostrar por pantalla el nombre, el oficio y el salario de los empleados del departamento de FERNµNDEZ que tengan su mismo salario.
+SQL> select apellido,oficio,salario from emple where dept_no=(select dept_no from emple where apellido='FERNANDEZ') and salario=(select salario from emple where apellido='FERNANDEZ');
+
+APELLIDO   OFICIO        SALARIO                                                
+---------- ---------- ----------                                                
+GIL        ANALISTA       390000                                                
+FERNANDEZ  ANALISTA       390000                                                
+
+SQL> select apellido,oficio,loc from emple,depart where depart.dept_no=emple.dept_no and emple.dept_no in (select dept_no from emple where oficio='ANALISTA);
+ERROR:
+ORA-01756: la cadena entrecomillada no está terminada correctamente 
+
+
+SQL> select apellido,oficio,loc from emple,depart where depart.dept_no=emple.dept_no and emple.dept_no in (select dept_no from emple where oficio='ANALISTA');
+
+APELLIDO   OFICIO     LOC                                                       
+---------- ---------- --------------                                            
+FERNANDEZ  ANALISTA   MADRID                                                    
+ALONSO     EMPLEADO   MADRID                                                    
+GIL        ANALISTA   MADRID                                                    
+JIMENEZ    DIRECTOR   MADRID                                                    
+SANCHEZ    EMPLEADO   MADRID                                                    
+
+SQL> REM 10.- Presentar los nombres y oficios de los empleados que tienen el mismo trabajo que JIMNEZ.
+SQL> select apellido,oficio from emple where oficio=(select oficio from emple where apellido='JIMENEZ')
+  2  
+SQL> select apellido,oficio from emple where oficio=(select oficio from emple where apellido='JIMENEZ');
+
+APELLIDO   OFICIO                                                               
+---------- ----------                                                           
+JIMENEZ    DIRECTOR                                                             
+NEGRO      DIRECTOR                                                             
+CEREZO     DIRECTOR                                                             
+
+SQL> REM 11.- Visualizar los nombrese los alumnos que tengan una nota entre 7 y 8 en la asignatura de FOL.
+SQL> select apenom from alumnos,notas,asignaturas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD and asignaturas.nombre='FOL' and notas.nota in(7,8);
+
+APENOM                                                                          
+------------------------------                                                  
+D¡az Fern ndez, Mar¡a                                                           
+
+SQL> select * from alumnos;
+
+DNI        APENOM                         DIREC                                 
+---------- ------------------------------ ------------------------------        
+POBLA           TELEF                                                           
+--------------- ----------                                                      
+12344345   Alcalde Garc¡a, Elena          C/Las Matas,                          
+                                          24                                    
+Madrid          917766545                                                       
+                                                                                
+4448242    Cerrato Vela, Luis             C/Mina 28 - 3A                        
+Madrid          916566545                                                       
+                                                                                
+56882942   D¡az Fern ndez, Mar¡a          C/Luis Vives 25                       
+M¢stoles        915577545                                                       
+
+DNI        APENOM                         DIREC                                 
+---------- ------------------------------ ------------------------------        
+POBLA           TELEF                                                           
+--------------- ----------                                                      
+                                                                                
+
+SQL> select * from notas;
+
+DNI               COD       NOTA                                                
+---------- ---------- ----------                                                
+12344345            1          6                                                
+12344345            2          5                                                
+12344345            3          6                                                
+4448242             4          6                                                
+4448242             5          8                                                
+4448242             6          4                                                
+4448242             7          5                                                
+56882942            4          8                                                
+56882942            5          7                                                
+56882942            6          8                                                
+56882942            7          9                                                
+
+11 filas seleccionadas.
+
+SQL> select * from asignaturas;
+
+       COD NOMBRE                                                               
+---------- -------------------------                                            
+         1 Prog. Leng. Estr.                                                    
+         2 Sist. Inform ticos                                                   
+         3 An lisis                                                             
+         4 FOL                                                                  
+         5 RET                                                                  
+         6 Entornos Gr ficos                                                    
+         7 Aplic. Entornos 4¦Gen                                                
+
+7 filas seleccionadas.
+
+SQL> set pagesize 300;
+SQL> set linesize 300;
+SQL> REM 12.- Visualizar los nombrese asignaturas que no tengan suspensos.
+SQL> select nombre from asignaturas,notas where asignaturas.cod=notas.cod and notas.nota>5;
+
+NOMBRE                                                                                                                                                                                                                                                                                                      
+-------------------------                                                                                                                                                                                                                                                                                   
+Prog. Leng. Estr.                                                                                                                                                                                                                                                                                           
+An lisis                                                                                                                                                                                                                                                                                                    
+FOL                                                                                                                                                                                                                                                                                                         
+RET                                                                                                                                                                                                                                                                                                         
+FOL                                                                                                                                                                                                                                                                                                         
+RET                                                                                                                                                                                                                                                                                                         
+Entornos Gr ficos                                                                                                                                                                                                                                                                                           
+Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                                       
+
+8 filas seleccionadas.
+
+SQL> select nombre from asignaturas,notas where asignaturas.cod=notas.cod and notas.nota>=5;
+
+NOMBRE                                                                                                                                                                                                                                                                                                      
+-------------------------                                                                                                                                                                                                                                                                                   
+Prog. Leng. Estr.                                                                                                                                                                                                                                                                                           
+Sist. Inform ticos                                                                                                                                                                                                                                                                                          
+An lisis                                                                                                                                                                                                                                                                                                    
+FOL                                                                                                                                                                                                                                                                                                         
+RET                                                                                                                                                                                                                                                                                                         
+Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                                       
+FOL                                                                                                                                                                                                                                                                                                         
+RET                                                                                                                                                                                                                                                                                                         
+Entornos Gr ficos                                                                                                                                                                                                                                                                                           
+Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                                       
+
+10 filas seleccionadas.
+
+SQL> SELECT NOMBRE
+  2  FROM ASIGNATURAS
+  3  WHERE COD NOT IN (SELECT COD FROM NOTAS WHERE NOTA < 5);
+
+NOMBRE                                                                                                                                                                                                                                                                                                      
+-------------------------                                                                                                                                                                                                                                                                                   
+RET                                                                                                                                                                                                                                                                                                         
+An lisis                                                                                                                                                                                                                                                                                                    
+Prog. Leng. Estr.                                                                                                                                                                                                                                                                                           
+Sist. Inform ticos                                                                                                                                                                                                                                                                                          
+Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                                       
+FOL                                                                                                                                                                                                                                                                                                         
+
+6 filas seleccionadas.
+
+SQL> REM 13.- Visualizar los nombrese alumnos de madrid que tengan alguna asignatura suspendida.
+SQL> select apenom from alumnos,notas where pobla='Madrid' and dni in(select dni from notas where nota<5);
+select apenom from alumnos,notas where pobla='Madrid' and dni in(select dni from notas where nota<5)
+                                                          *
+ERROR en línea 1:
+ORA-00918: columna definida de forma ambigua 
+
+
+SQL> SELECT APENOM
+  2  FROM ALUMNOS
+  3  WHERE POBLA = 'Madrid' AND DNI IN (SELECT DNI FROM NOTAS WHERE NOTA < 5);
+
+APENOM                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+
+SQL> select apenom from alumnos where pobla='Madrid' and dni in(select dni from notas where nota<5);
+
+APENOM                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+
+SQL> select * from notas;
+
+DNI               COD       NOTA                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+12344345            1          6                                                                                                                                                                                                                                                                            
+12344345            2          5                                                                                                                                                                                                                                                                            
+12344345            3          6                                                                                                                                                                                                                                                                            
+4448242             4          6                                                                                                                                                                                                                                                                            
+4448242             5          8                                                                                                                                                                                                                                                                            
+4448242             6          4                                                                                                                                                                                                                                                                            
+4448242             7          5                                                                                                                                                                                                                                                                            
+56882942            4          8                                                                                                                                                                                                                                                                            
+56882942            5          7                                                                                                                                                                                                                                                                            
+56882942            6          8                                                                                                                                                                                                                                                                            
+56882942            7          9                                                                                                                                                                                                                                                                            
+
+11 filas seleccionadas.
+
+SQL> REM 14.- Mostrar los nombres de alumnos que tengan la misma nota que tiene "D¡az Fern ndez, Mar¡a" en FOL en alguna asignatura.
+SQL> select apenom from alumnos where dni in(select dni from notas where nota=(select nota from notas where dni='D¡az Fern ndez, Mar¡a' and COD='FOL'));
+
+ninguna fila seleccionada
+
+SQL> SELECT APENOM
+  2  FROM ALUMNOS
+  3  WHERE DNI IN (SELECT DNI FROM NOTAS WHERE NOTA = (SELECT NOTA FROM NOTAS WHERE DNI = 'D¡az Fern ndez, Mar¡a' AND COD = 'FOL'));
+
+ninguna fila seleccionada
+
+SQL> select apenom from alumnos where nota in(select dni from notas where nota=(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL');
+select apenom from alumnos where nota in(select dni from notas where nota=(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL')
+                                                                           *
+ERROR en línea 1:
+ORA-00921: fin inesperado de un comando SQL 
+
+
+SQL> select apenom from alumnos where nota in(select dni from notas where nota=(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL'));
+select apenom from alumnos where nota in(select dni from notas where nota=(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL'))
+                                                                                                                                                                                                                  *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select apenom from alumnos where nota in(select dni from notas where nota=(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL')));
+select apenom from alumnos where nota in(select dni from notas where nota=(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL')))
+                                                                                                                                                                                                                  *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select apenom from alumnos where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL'));
+select apenom from alumnos where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL'))
+                                                                                                                                                                               *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select apenom from alumnos where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL')));
+select apenom from alumnos where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas='FOL')))
+                                                                                                                                                                               *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select apenom from alumnos,notas where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas where cod='FOL'));
+select apenom from alumnos,notas where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas where cod='FOL'))
+                                                                                                                                                                                                *
+ERROR en línea 1:
+ORA-01722: número no válido 
+
+
+SQL> select apenom from alumnos,notas where nota in(select dni from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas where nombre='FOL'));
+
+ninguna fila seleccionada
+
+SQL> select apenom from alumnos,notas where notas.nota in(select nota from notas where DNI=(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod=(select cod from asignaturas where nombre='FOL'));
+
+APENOM                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+D¡az Fern ndez, Mar¡a                                                                                                                                                                                                                                                                                       
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+Alcalde Garc¡a, Elena                                                                                                                                                                                                                                                                                       
+D¡az Fern ndez, Mar¡a                                                                                                                                                                                                                                                                                       
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+Alcalde Garc¡a, Elena                                                                                                                                                                                                                                                                                       
+D¡az Fern ndez, Mar¡a                                                                                                                                                                                                                                                                                       
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+Alcalde Garc¡a, Elena                                                                                                                                                                                                                                                                                       
+
+9 filas seleccionadas.
+
+SQL> select * from alumnos;
+
+DNI        APENOM                         DIREC                          POBLA           TELEF                                                                                                                                                                                                              
+---------- ------------------------------ ------------------------------ --------------- ----------                                                                                                                                                                                                         
+12344345   Alcalde Garc¡a, Elena          C/Las Matas,                   Madrid          917766545                                                                                                                                                                                                          
+                                          24                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                            
+4448242    Cerrato Vela, Luis             C/Mina 28 - 3A                 Madrid          916566545                                                                                                                                                                                                          
+56882942   D¡az Fern ndez, Mar¡a          C/Luis Vives 25                M¢stoles        915577545                                                                                                                                                                                                          
+
+SQL> select * from notas;
+
+DNI               COD       NOTA                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+12344345            1          6                                                                                                                                                                                                                                                                            
+12344345            2          5                                                                                                                                                                                                                                                                            
+12344345            3          6                                                                                                                                                                                                                                                                            
+4448242             4          6                                                                                                                                                                                                                                                                            
+4448242             5          8                                                                                                                                                                                                                                                                            
+4448242             6          4                                                                                                                                                                                                                                                                            
+4448242             7          5                                                                                                                                                                                                                                                                            
+56882942            4          8                                                                                                                                                                                                                                                                            
+56882942            5          7                                                                                                                                                                                                                                                                            
+56882942            6          8                                                                                                                                                                                                                                                                            
+56882942            7          9                                                                                                                                                                                                                                                                            
+
+11 filas seleccionadas.
+
+SQL> select * from asignaturas;
+
+       COD NOMBRE                                                                                                                                                                                                                                                                                           
+---------- -------------------------                                                                                                                                                                                                                                                                        
+         1 Prog. Leng. Estr.                                                                                                                                                                                                                                                                                
+         2 Sist. Inform ticos                                                                                                                                                                                                                                                                               
+         3 An lisis                                                                                                                                                                                                                                                                                         
+         4 FOL                                                                                                                                                                                                                                                                                              
+         5 RET                                                                                                                                                                                                                                                                                              
+         6 Entornos Gr ficos                                                                                                                                                                                                                                                                                
+         7 Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                            
+
+7 filas seleccionadas.
+
+SQL> select apenom from alumnos where dni in(select dni from notas where nota in(select nota from notas where dni in(select dni from alumnos where apenom='D¡az Fern ndez, Mar¡a') and cod in(select cod from asignaturas where nombre='FOL')));
+
+APENOM                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+D¡az Fern ndez, Mar¡a                                                                                                                                                                                                                                                                                       
+
+SQL> EXIT

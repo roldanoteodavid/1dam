@@ -1,0 +1,34 @@
+[
+  {
+    "studentId": 9,
+    "studentName": "Student9",
+    "studentPhoneNumbers": [
+      {
+        "phoneId": 101,
+        "phoneType": "LandLinePhone",
+        "phoneNumber": "0987654321"
+      },
+      {
+        "phoneId": 100,
+        "phoneType": "MobilePhone",
+        "phoneNumber": "1234567890"
+      }
+    ]
+  },
+  {
+    "studentId": 2,
+    "studentName": "Student2",
+    "studentPhoneNumbers": [
+      {
+        "phoneId": 101,
+        "phoneType": "LandLinePhone",
+        "phoneNumber": "0987654321"
+      },
+      {
+        "phoneId": 100,
+        "phoneType": "MobilePhone",
+        "phoneNumber": "1234567890"
+      }
+    ]
+  }
+]

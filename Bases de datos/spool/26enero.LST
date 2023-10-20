@@ -1,0 +1,332 @@
+SQL> connect davidroldan
+Conectado.
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+DEPARTAMENTO                                                                    
+CURSO                                                                           
+ENTIDADBANCARIA                                                                 
+NOMINA                                                                          
+CONTRATO                                                                        
+CURSAR                                                                          
+ENSENYAR                                                                        
+TRABAJAR                                                                        
+ECN                                                                             
+PROVEEDOR                                                                       
+ACTIVIDAD                                                                       
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+PRODUCTO                                                                        
+MONITOR                                                                         
+PROPORCIONAR                                                                    
+ORGANIZAR                                                                       
+PARTICIPAR                                                                      
+W                                                                               
+DEPART                                                                          
+EMPLE                                                                           
+CLIENTE                                                                         
+SUCURSAL                                                                        
+DEPT_RECURSOS_HUMANOS                                                           
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+RESERVAR                                                                        
+HABITACION                                                                      
+SH                                                                              
+EMPLEADO                                                                        
+
+26 filas seleccionadas.
+
+SQL> set pagesize 300;
+SQL> set linesize 300;
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+DEPARTAMENTO                                                                                                                                                                                                                                                                                                
+CURSO                                                                                                                                                                                                                                                                                                       
+ENTIDADBANCARIA                                                                                                                                                                                                                                                                                             
+NOMINA                                                                                                                                                                                                                                                                                                      
+CONTRATO                                                                                                                                                                                                                                                                                                    
+CURSAR                                                                                                                                                                                                                                                                                                      
+ENSENYAR                                                                                                                                                                                                                                                                                                    
+TRABAJAR                                                                                                                                                                                                                                                                                                    
+ECN                                                                                                                                                                                                                                                                                                         
+PROVEEDOR                                                                                                                                                                                                                                                                                                   
+ACTIVIDAD                                                                                                                                                                                                                                                                                                   
+PRODUCTO                                                                                                                                                                                                                                                                                                    
+MONITOR                                                                                                                                                                                                                                                                                                     
+PROPORCIONAR                                                                                                                                                                                                                                                                                                
+ORGANIZAR                                                                                                                                                                                                                                                                                                   
+PARTICIPAR                                                                                                                                                                                                                                                                                                  
+W                                                                                                                                                                                                                                                                                                           
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+CLIENTE                                                                                                                                                                                                                                                                                                     
+SUCURSAL                                                                                                                                                                                                                                                                                                    
+DEPT_RECURSOS_HUMANOS                                                                                                                                                                                                                                                                                       
+RESERVAR                                                                                                                                                                                                                                                                                                    
+HABITACION                                                                                                                                                                                                                                                                                                  
+SH                                                                                                                                                                                                                                                                                                          
+EMPLEADO                                                                                                                                                                                                                                                                                                    
+
+26 filas seleccionadas.
+
+SQL> DROP TABLE RESERVAR
+  2  
+SQL> DROP TABLE RESERVAR;
+
+Tabla borrada.
+
+SQL> DROP TABLE participar;
+
+Tabla borrada.
+
+SQL> DROP TABLE organizar;
+
+Tabla borrada.
+
+SQL> DROP TABLE organizar;
+DROP TABLE organizar
+           *
+ERROR en línea 1:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> DROP TABLE cliente;
+DROP TABLE cliente
+           *
+ERROR en línea 1:
+ORA-02449: claves únicas/primarias en la tabla referidas por claves ajenas 
+
+
+SQL> DROP TABLE proporcionar;
+
+Tabla borrada.
+
+SQL> DROP TABLE cliente;
+
+Tabla borrada.
+
+SQL> DROP TABLE sh;
+
+Tabla borrada.
+
+SQL> DROP TABLE habitacion;
+
+Tabla borrada.
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Edad Number (3),
+  8  FOREIGN KEY (Tfno_su) References Sucursal);
+FOREIGN KEY (Tfno_su) References Sucursal)
+             *
+ERROR en línea 8:
+ORA-00904: "TFNO_SU": identificador no válido 
+
+
+SQL> select * from sucursal
+  2  ‡
+  3  
+SQL> select * from sucursal;
+
+ninguna fila seleccionada
+
+SQL> desc sucursal;
+ Nombre                                                                                                                                                                        ¿Nulo?   Tipo
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- --------------------------------------------------------------------------------------------------------------------
+ TFNO_SU                                                                                                                                                                       NOT NULL VARCHAR2(12)
+ N_SU                                                                                                                                                                                   NUMBER(5)
+ PROVINCIA                                                                                                                                                                              CHAR(20)
+ DIRECCION                                                                                                                                                                              VARCHAR2(50)
+ CODIGO_DPTO                                                                                                                                                                            NUMBER(5)
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Edad Number (3),
+  8  FOREIGN KEY (Tfno_su) References Sucursal);
+FOREIGN KEY (Tfno_su) References Sucursal)
+             *
+ERROR en línea 8:
+ORA-00904: "TFNO_SU": identificador no válido 
+
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Edad Number (3),
+  8  Foreign Key (Tfno_su) References Sucursal);
+Foreign Key (Tfno_su) References Sucursal)
+             *
+ERROR en línea 8:
+ORA-00904: "TFNO_SU": identificador no válido 
+
+
+SQL> CREATE TABLE HABITACION
+  2  (Numero Number (3) PRIMARY KEY,
+  3  tipo Char (10) CHECK (tipo In('Quad','Doble','King')),
+  4  n_max_inquilinos Number (1) CHECK (n_max_inquilinos>0 AND n_max_inquilinos<7),
+  5  metro_cuadrados Number (3));
+
+Tabla creada.
+
+SQL> CREATE TABLE SH
+  2  (Tfno_su Varchar2(12),
+  3  numero  Number (3),
+  4  empleado_sucursar Number (5),
+  5  pension Varchar2(8) CHECK (pension='Completa' or pension='Media'),
+  6  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  7  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  8  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  9  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+ 10  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 11  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 12  Primary Key (Tfno_su, numero),
+ 13  Foreign Key (Tfno_su) References Sucursal);
+
+Tabla creada.
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Edad Number (3),
+  8  Foreign Key (Tfno_su) References Sucursal);
+Foreign Key (Tfno_su) References Sucursal)
+             *
+ERROR en línea 8:
+ORA-00904: "TFNO_SU": identificador no válido 
+
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  anyo_nacimiento Number(4),
+ 10  Foreign Key (Tfno_su) References Sucursal);
+Foreign Key (Tfno_su) References Sucursal)
+             *
+ERROR en línea 10:
+ORA-00904: "TFNO_SU": identificador no válido 
+
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Tfno_su Varchar2(12),
+  8  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  9  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+ 10  anyo_nacimiento Number(4),
+ 11  Foreign Key (Tfno_su) References Sucursal);
+
+Tabla creada.
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3),
+  4  metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 11  PRIMARY KEY (DNI, Numero),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Numero) References Habitacion);
+
+Tabla creada.
+
+SQL> CREATE TABLE PROPORCIONAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_producto Number(5),
+  4  incluido Char(2) CHECK (incluido in('si', 'no')),
+  5  PRIMARY KEY (codigo_producto, DNI_cliente),
+  6  FOREIGN KEY (codigo_producto) References Producto,
+  7  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> 
+SQL> CREATE TABLE ORGANIZAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_proveedor Number(5),
+  4  DNI_monitor Varchar2(9),
+  5  PRIMARY KEY (codigo_proveedor , DNI_monitor, DNI_cliente),
+  6  FOREIGN KEY (codigo_proveedor ) References Proveedor,
+  7  FOREIGN KEY (DNI_monitor) References Monitor,
+  8  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> 
+SQL> CREATE TABLE PARTICIPAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_actividad Number(5),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4) CHECK (anyo>2022),
+  7  n_participantes Number(2) CHECK(n_participantes>5),
+  8  PRIMARY KEY (codigo_actividad, DNI_cliente),
+  9  FOREIGN KEY (codigo_actividad) References Actividad,
+ 10  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+HABITACION                                                                                                                                                                                                                                                                                                  
+SH                                                                                                                                                                                                                                                                                                          
+CLIENTE                                                                                                                                                                                                                                                                                                     
+RESERVAR                                                                                                                                                                                                                                                                                                    
+PROPORCIONAR                                                                                                                                                                                                                                                                                                
+ORGANIZAR                                                                                                                                                                                                                                                                                                   
+PARTICIPAR                                                                                                                                                                                                                                                                                                  
+DEPARTAMENTO                                                                                                                                                                                                                                                                                                
+CURSO                                                                                                                                                                                                                                                                                                       
+ENTIDADBANCARIA                                                                                                                                                                                                                                                                                             
+NOMINA                                                                                                                                                                                                                                                                                                      
+CONTRATO                                                                                                                                                                                                                                                                                                    
+CURSAR                                                                                                                                                                                                                                                                                                      
+ENSENYAR                                                                                                                                                                                                                                                                                                    
+TRABAJAR                                                                                                                                                                                                                                                                                                    
+ECN                                                                                                                                                                                                                                                                                                         
+PROVEEDOR                                                                                                                                                                                                                                                                                                   
+ACTIVIDAD                                                                                                                                                                                                                                                                                                   
+PRODUCTO                                                                                                                                                                                                                                                                                                    
+MONITOR                                                                                                                                                                                                                                                                                                     
+W                                                                                                                                                                                                                                                                                                           
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+SUCURSAL                                                                                                                                                                                                                                                                                                    
+DEPT_RECURSOS_HUMANOS                                                                                                                                                                                                                                                                                       
+EMPLEADO                                                                                                                                                                                                                                                                                                    
+
+26 filas seleccionadas.
+
+SQL> exit

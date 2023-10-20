@@ -1,0 +1,17 @@
+{
+    "calendar": {
+        "event": [
+            {
+                "eventname": "Dentist",
+                "startdate": "2015-10-12",
+                "starttime": "9:30:00",
+                "duration": [
+                    {
+                        "units": "hours",
+                        "duration": "1.5"
+                    }
+                ]
+            }
+        ]
+    }
+}

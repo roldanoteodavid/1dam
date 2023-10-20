@@ -1,0 +1,60 @@
+<!DOCTYPE CATALOG [
+<!ELEMENT CATALOG (PRODUCT+)>
+
+<!ELEMENT PRODUCT 
+(SPECIFICATIONS+,OPTIONS?,PRICE+,NOTES?)>
+<!ATTLIST PRODUCT 
+NAME CDATA #IMPLIED 
+CATEGORY (HandTool|Table|Shop-Professional) "HandTool" 
+PARTNUM CDATA #IMPLIED 
+PLANT (Pittsburgh|Milwaukee|Chicago) "Chicago"
+INVENTORY (InStock|Backordered|Discontinued) "InStock">
+ 
+<!ELEMENT SPECIFICATIONS (#PCDATA)>
+<!ATTLIST SPECIFICATIONS
+WEIGHT CDATA #IMPLIED
+POWER CDATA #IMPLIED>
+
+<!ELEMENT OPTIONS (#PCDATA)>
+<!ATTLIST OPTIONS
+FINISH (Metal|Polished|Matte) "Matte"
+ADAPTER (Included|Optional|NotApplicable) "Included"
+CASE (HardShell|Soft|NotApplicable) "HardShell">
+
+<!ELEMENT PRICE (#PCDATA)>
+<!ATTLIST PRICE
+MSRP CDATA #IMPLIED
+WHOLESALE CDATA #IMPLIED
+STREET CDATA #IMPLIED
+SHIPPING CDATA #IMPLIED>
+
+<!ELEMENT NOTES (#PCDATA)>
+]>
+
+<CATALOG>
+    <PRODUCT NAME="asd" CATEGORY="Table" PARTNUM="asd" PLANT="Chicago" INVENTORY="InStock">
+        <SPECIFICATIONS WEIGHT="23" POWER="12">
+
+        </SPECIFICATIONS>
+        <OPTIONS FINISH="Metal" ADAPTER="Included" CASE="Soft">
+
+        </OPTIONS>
+        <PRICE MSRP="das" WHOLESALE="ads" STREET="asd" SHIPPING="asd">
+
+        </PRICE>
+        <NOTES>
+
+        </NOTES>
+    </PRODUCT>
+    <PRODUCT NAME="asd" CATEGORY="HandTool" PARTNUM="asd" PLANT="Milwaukee" INVENTORY="Backordered">
+        <SPECIFICATIONS WEIGHT="23" POWER="12">
+
+        </SPECIFICATIONS>
+        <OPTIONS FINISH="Matte" ADAPTER="Optional" CASE="NotApplicable">
+
+        </OPTIONS>
+        <PRICE MSRP="das" WHOLESALE="ads" STREET="asd" SHIPPING="asd">
+
+        </PRICE>
+    </PRODUCT>
+</CATALOG>

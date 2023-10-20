@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="POO4" />
+        <module name="Granja" />
+        <module name="POO1" />
+        <module name="POO0" />
+        <module name="POO3" />
+        <module name="POO2" />
+        <module name="Medico" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.boxes {
+    background-color: lightblue;
+    float: left;
+    height: 28em;
+    text-align: center;
+}
+
+.box12 {
+    border: 0.25em solid black;
+    width: 50%;
+}
+
+.box34 {
+    width: 48%;
+    margin: 1%;
+    padding: 1em;
+}
+
+#menu {
+    background-color: lightgreen;
+    float: left;
+    width: 20%;
+    height: 35em;
+    text-align: center;
+}
+
+#main {
+    background-color: blueviolet;
+    float: right;
+    width: 78%;
+    height: 35em;
+    text-align: center;
+}
+
+#limenu {
+    background-color: lightgreen;
+    float: left;
+    height: 20em;
+    width: 30%;
+    margin-right: 1em;
+}
+
+.option {
+    background-color: orange;
+    border: dotted;
+    height: 4.5em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#articles {
+    padding: 1em;
+    margin-left: 1em;
+}
+
+#article1 {
+    background-color: palevioletred;
+    width: 30%;
+    float: left;
+    padding: 1em;
+    height: 18em;
+}
+
+#darticle1 {
+    width: 100%;
+    background-color: lightyellow;
+}
+
+#article23 {
+    background-color: palevioletred;
+    width: 40%;
+    float: right;
+    height: 15em;
+}
+
+.text {
+    background-color: lightyellow;
+    width: 100%;
+    height: 3em;
+}
+
+.article23 {
+    border: solid purple;
+    padding: 0.5em;
+    height: 50%;
+}
+
+#menu4 {
+    background-color: lightgreen;
+}
+
+.option2 {
+    display: inline;
+    background-color: orange;
+    border: dotted;
+    margin-left: 30px;
+}
+
+.chapter {
+    display: inline;
+    margin-left: 30px;
+}
+
+.imagen {
+    display: inline;
+    width: 110px;
+}

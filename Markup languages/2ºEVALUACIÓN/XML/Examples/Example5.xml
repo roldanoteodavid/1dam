@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Song xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="schema/example5.xsd" prod="John Hill" lang="EN">
+    <Id>123</Id>
+    <Title>Skinandbones</Title>
+    <Published>true</Published>
+    <DatePub>2018-06-13</DatePub>
+    <Artist>Cage the Elephant</Artist>
+    <Company>ACME</Company>
+</Song>

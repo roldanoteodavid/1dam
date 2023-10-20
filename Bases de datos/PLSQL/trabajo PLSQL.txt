@@ -1,0 +1,139 @@
+SET SERVEROUTPUT ON
+
+EX1.
+SQL> exec total_gastado(‘12349876A’);
+El cliente con DNI 12349876A ha gastado un total de 15 en productos.
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> exec total_gastado(‘78945612D’);
+El cliente con DNI 78945612D ha gastado un total de 100 en productos.
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> exec total_gastado(‘0000000A’);
+No se encontró un cliente con el DNI especificado.
+
+Procedimiento PL/SQL terminado correctamente.
+
+EJ2.
+SQL> select * from contrato;
+
+CODIGO_CONTRATO SALARIO_BASE HORAS_SEMANALES TIPO
+--------------- ------------ --------------- -------------------------
+          10001        25000              40 Permanente
+          10002        17000              20 Tiempo_parcial
+          10003        18000              25 Trabajo_parcial
+          10004        14000              10 Formacion
+          10005        22000              30 Relevo
+          10006        20000              35 Trabajo_fijo_intermitente
+          10007        19000              15 Tiempo_parcial
+          10008        25000              40 Permanente
+          10009        22000              30 Trabajo_fijo_intermitente
+          10010        16000              20 Formacion
+
+10 filas seleccionadas.
+
+SQL> exec aumentar_salario(100002, 10);
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> select * from contrato;
+
+CODIGO_CONTRATO SALARIO_BASE HORAS_SEMANALES TIPO
+--------------- ------------ --------------- -------------------------
+          10001        36603              40 Permanente
+          10002        20570              20 Tiempo_parcial
+          10003        21780              25 Trabajo_parcial
+          10004        16940              10 Formacion
+          10005        26620              30 Relevo
+          10006        24200              35 Trabajo_fijo_intermitente
+          10007        22990              15 Tiempo_parcial
+          10008        30250              40 Permanente
+          10009        26620              30 Trabajo_fijo_intermitente
+          10010        16000              20 Formacion
+
+10 filas seleccionadas.
+
+SQL> exec aumentar_salario(100002, -10);
+BEGIN aumentar_salario(100002, -10); END;
+
+*
+ERROR en lÝnea 1:
+ORA-20001: El porcentaje de aumento no puede ser negativo
+
+EJ3.
+SQL> EXEC calcular_costo_estancia('12349876A', 101);
+El costo de la estancia del cliente 12349876A en la habitación 101 es de 2400 euros.
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> EXEC calcular_costo_estancia('12349876A', 101);
+El costo de la estancia del cliente 12349876A en la habitación 101 es de 2400 euros.
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> EXEC calcular_costo_estancia('65483927B', 102);
+El costo de la estancia del cliente 65483927B en la habitación 102 es de 2500 euros.
+
+EXCEPCIÓN:
+SQL> EXEC calcular_costo_estancia('99999999Z', 101);
+No se encontró un cliente con el DNI especificado
+
+EJ4.
+SQL> EXEC calcular_salario('37289467N');
+El salario del empleado con DNI 37289467N es: 1550
+
+EJ5.
+SQL> exec contar_empleados_dpto;
+El departamento Ventas tiene 2 empleados.
+El departamento Marketing tiene 2 empleados.
+El departamento Recursos Humanos tiene 2 empleados.
+El departamento Desarrollo tiene 2 empleados.
+El departamento Contabilidad tiene 2 empleados.
+El departamento Compras tiene 2 empleados.
+El departamento Producción tiene 2 empleados.
+El departamento Logística tiene 2 empleados.
+El departamento Ingeniería tiene 2 empleados.
+El departamento Servicio al cliente tiene 2 empleados.
+
+Procedimiento PL/SQL terminado correctamente.
+
+EJextra.
+SQL> select * from departamento;
+
+CODIGO_DPTO NOMBRE_DPTO                    N_DESPACHO DNI
+----------- ------------------------------ ---------- ---------
+      10001 Ventas                                 23 37289467N
+      10002 Marketing                              24 84612735M
+      10003 Recursos Humanos                       25 27359198T
+      10004 Desarrollo                             26 19287384R
+      10005 Contabilidad                           27 73849561A
+      10006 Compras                                28 38456199Z
+      10007 Producción                             29 72466145C
+      10008 Logística                              30 83009147T
+      10009 Ingeniería                             31 09845157G
+      10010 Servicio al cliente                    32 67380154K
+
+10 filas seleccionadas.
+
+SQL> exec actualizar_jefe_dpto('10001','84612735M');
+
+Procedimiento PL/SQL terminado correctamente.
+
+SQL> select * from departamento;
+
+CODIGO_DPTO NOMBRE_DPTO                    N_DESPACHO DNI
+----------- ------------------------------ ---------- ---------
+      10001 Ventas                                 23 84612735M
+      10002 Marketing                              24 84612735M
+      10003 Recursos Humanos                       25 27359198T
+      10004 Desarrollo                             26 19287384R
+      10005 Contabilidad                           27 73849561A
+      10006 Compras                                28 38456199Z
+      10007 Producción                             29 72466145C
+      10008 Logística                              30 83009147T
+      10009 Ingeniería                             31 09845157G
+      10010 Servicio al cliente                    32 67380154K
+
+10 filas seleccionadas.

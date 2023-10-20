@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <h2 class="text-center">Bootstrap-Grid exercise</h2>
+
+    <h3 class="container">Container types</h3>
+    <div class="container bg-danger">
+        <h6>.container</h6>
+        Responsive container with padding-right y padding-left value "15px", margin-right and margin-left
+        value "auto"; and with 3 media query for the responsiviness.
+    </div>
+    <div class="container-fluid bg-info">
+        <h6>.container-fluid</h6>
+        Resposive container with "width" of 100% and a flexible structure.
+    </div>
+
+    <div class="container">
+        <h3>Grid System</h3>
+        <div class="row">
+            <div class="bg-danger col-sm-8 col-md-4 col-lg-2">
+                <h3>column 1</h3>
+                Column dimensions: <br>
+                col-12: 12 grills for extra small devices.<br>
+                col-sm-8: 8 grills for small devices.<br>
+                col-md-4: 4 grills for medium devices.<br>
+                col-lg-2: 2 grills for large, extralarge and XXLarge devices.
+            </div>
+            <div class="bg-info col-sm-2 col-md-4 col-lg-2">
+                <h3>column 2</h3>
+                Column dimensions: <br>
+                col-12: 12 grills for extra small devices.<br>
+                col-sm-8: 8 grills for small devices.<br>
+                col-md-4: 4 grills for medium devices.<br>
+                col-lg-2: 2 grills for large, extralarge and XXLarge devices.
+            </div>
+            <div class="bg-danger col-sm-2 col-md-4 col-lg-8">
+                <h3>column 3</h3>
+                Column dimensions: <br>
+                col-12: 12 grills for extra small devices.<br>
+                col-sm-8: 8 grills for small devices.<br>
+                col-md-4: 4 grills for medium devices.<br>
+                col-lg-2: 2 grills for large, extralarge and XXLarge devices.
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3>Offsetting columns</h3>
+        <div class="row">
+            <div class="bg-danger col-lg-4 col-md-4 col-sm-12">
+                <h3>column 1</h3>
+                <p>Dimensions ofthis column: 4 grills....</p>
+                <p>Lorem ipsum dolor sit amet,...</p>
+            </div>
+            <div class="bg-info col-lg-4 col-md-4 col-sm-12 offset-lg-4 offset-md-4">
+                <h3>column 2</h3>
+                <p>Dimensions of this column: 4 grills with an offset of 4 grills to the right...</p>
+                <p>Lorem ipsum dolor sit amet,...</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3>Column ordening</h3>
+        <h4>Order changed columns</h4>
+        <div class="row">
+            <div class="bg-danger col-lg-8 col-md-12 col-sm-12 order-lg-2">
+                <h2>Column1</h2>
+                <p>Lorem ipsum dolor sit amet, ...</p>
+            </div>
+            <div class="bg-info col-lg-4 col-md-12 col-sm-12 order-lg-1">
+                <h2>Column2</h2>
+                <p>Lorem ipsum dolor sit amet, ...</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3>Hiding columns</h3>
+        <p>To hide columns for a space problem or for another reason, use the 'hidden-*'class, where"*" represents
+            the class for each screen resolution. In this example we will hide column 2 when we are in a cellphone
+            resolution "xs", and the third when we are in tablet resolution "md". <br>
+            NOTE: Columns that are not hidde must have values that add up to the 12 grids.</p>
+        <div class="row">
+            <div class="bg-danger col-lg-4 col-md-4 col-sm-4 col-8">
+                <h2>Column1</h2>
+                This column will remain visible for any resolution... <br>
+                Lorem ipsum dolor sit arnet, ...
+            </div>
+            <div class="bg-info col-lg-4 col-md-4 col-sm-8 d-none d-sm-block">
+                <h2>Column 2</h2>
+                This column will be hidden for extrasmall devices... <br>
+                Lorem ipsum dolor sit arnet, ...
+            </div>
+            <div class="bg-warning col-lg-4 col-md-4 d-col-4 col-4 d-sm-none d-md-block">
+                <h2>Column 3</h2>
+                This column will be hidden for small-size devices... <br>
+                Lorem ipsum dolor sit arnet, ...
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

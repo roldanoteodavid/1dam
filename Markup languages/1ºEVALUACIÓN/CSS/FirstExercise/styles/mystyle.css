@@ -1,0 +1,12 @@
+*{font-family: Verdana, Geneva, Tahoma, sans-serif;}
+body{background-color: rgb(177, 231, 231);}
+header {color:orange;background-color:rgb(202, 35, 202);}
+#selector {width: 20%;}
+a:link{color:red; background-color: rgb(173, 173, 173);text-decoration: none;padding: 14px 25px;text-align: center;display: inline-block;}
+a:visited{color: blue;}
+a:hover{color: blueviolet;}
+a:active{color:coral}
+.title{color: peru;}
+li{list-style-type: square;}
+table, th, td {border: 2px solid;width: 50%;}
+#p1, #p2 {color:crimson;}

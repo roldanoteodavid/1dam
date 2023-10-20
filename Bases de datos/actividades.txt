@@ -1,0 +1,18 @@
+set headsep |
+
+ttitle 'Actividades realizadas por clientes|================================='
+
+column nombre_actividad format A15 truncated heading 'Actividad'
+column lugar format A15 heading 'Lugar'
+column dni_cliente format A10 heading 'DNI Clientes'
+
+break on nombre_actividad skip 2
+
+SELECT actividad.nombre_actividad, actividad.lugar, participar.dni_cliente
+FROM actividad, participar
+WHERE actividad.codigo_actividad = participar.codigo_actividad
+ORDER BY actividad.nombre_actividad, actividad.lugar;
+
+ttitle off
+
+spool listado.lst

@@ -1,0 +1,7 @@
+<Employee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="schema/example5.2.xsd">
+    <NameE>Ann Smith</NameE>
+    <PW>MyPassword</PW>
+    <Salary>90000.00</Salary>
+    <Title>Sales Manager</Title>
+</Employee>

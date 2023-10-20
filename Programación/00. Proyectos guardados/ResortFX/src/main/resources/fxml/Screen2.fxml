@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="556.0" prefWidth="878.0" style="-fx-background-color: #e6e9eb" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.SegundaPantallaClientesController">
+    <children>
+        <MFXButton fx:id="botonDelete" layoutX="281.0" layoutY="90.0" mnemonicParsing="false" onAction="#deleteActividad" text="Eliminar" />
+        <MFXButton fx:id="botonAdd" layoutX="44.0" layoutY="90.0" mnemonicParsing="false" onAction="#addActividad" text="Añadir" />
+        <MFXButton fx:id="botonUpdate" layoutX="148.0" layoutY="90.0" mnemonicParsing="false" onAction="#updateActividad" text="Actualizar" />
+        <MFXTextField fx:id="id" alignment="CENTER" layoutX="564.0" layoutY="103.0" prefHeight="50.0" prefWidth="240.0" promptText="id" />
+        <MFXTextField fx:id="nombre" alignment="CENTER" layoutX="564.0" layoutY="162.0" prefHeight="50.0" prefWidth="240.0" promptText="Nombre" />
+        <MFXTextField fx:id="lugar" alignment="CENTER" layoutX="564.0" layoutY="220.0" prefHeight="50.0" prefWidth="240.0" promptText="Lugar" />
+        <MFXTextField fx:id="precio" alignment="CENTER" layoutX="564.0" layoutY="278.0" prefHeight="50.0" prefWidth="240.0" promptText="Precio" />
+        <TableView fx:id="tablaActividades" layoutX="24.0" layoutY="177.0" prefHeight="210.0" prefWidth="487.0">
+            <columns>
+                <TableColumn fx:id="columna1" prefWidth="40" text="id" />
+                <TableColumn fx:id="columna2" prefWidth="126.19998168945312" text="Nombre" />
+                <TableColumn fx:id="columna3" prefWidth="127.80000305175781" text="Lugar" />
+                <TableColumn fx:id="columna4" prefWidth="74.60003662109375" text="Precio" />
+                <TableColumn fx:id="columna5" prefWidth="118.60000610351562" text="Fecha" />
+            </columns>
+        </TableView>
+        <MFXDatePicker fx:id="fecha" alignment="CENTER" layoutX="564.0" layoutY="336.0" prefHeight="60.0" prefWidth="240.0" promptText="Fecha" />
+        <MFXToggleButton fx:id="toggleidioma" layoutX="721.0" layoutY="440.0" length="40.0" onAction="#cambioIdioma" prefHeight="49.0" prefWidth="7.0" text="Español" />
+        <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="426.0" layoutY="90.0" onMouseClicked="#ayuda" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/ayuda.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="label" alignment="CENTER" layoutX="214.0" layoutY="28.0" prefHeight="49.0" prefWidth="470.0" text="Gestión Actividades">
+            <font>
+                <Font name="Calibri Bold" size="28.0" />
+            </font>
+        </Label>
+        <MFXToggleButton fx:id="modooscuro" layoutX="721.0" layoutY="484.0" length="40.0" onAction="#modoOscuro" prefHeight="49.0" prefWidth="7.0" text="Modo Oscuro" />
+    </children>
+</AnchorPane>

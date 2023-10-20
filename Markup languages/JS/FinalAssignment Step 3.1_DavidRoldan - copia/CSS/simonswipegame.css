@@ -1,0 +1,18 @@
+fieldset {
+    width: 40em;
+}
+
+h1 {
+    margin-left: 3em;
+    color: blue;
+}
+
+#counters {
+    float: left;
+    margin-right: 3em;
+    height: 10em;
+}
+
+div {
+    font-size: x-large;
+}

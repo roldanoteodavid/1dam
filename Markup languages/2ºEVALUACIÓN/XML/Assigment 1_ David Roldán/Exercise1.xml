@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groceries>
+    <grocerie name="milk">
+        <price>$3.00</price>
+        <quantity>1</quantity>
+        <aislenumber>A3</aislenumber>
+    </grocerie>
+    <grocerie name="Whole Wheat Bread">
+        <price>$2.85</price>
+        <quantity>1</quantity>
+        <aislenumber>A5</aislenumber>
+    </grocerie>
+    <grocerie name="Carrots">
+        <price>$2.00</price>
+        <quantity>2</quantity>
+        <aislenumber>C2</aislenumber>
+    </grocerie>
+    <grocerie name="Apples">
+        <price>$3.00</price>
+        <quantity>4</quantity>
+        <aislenumber>C2</aislenumber>
+    </grocerie>
+</groceries>

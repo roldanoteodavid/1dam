@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="schema/Example6.2.xsd">
+    <book available="true" id="asd123">
+        <isbn>234</isbn>
+        <title>The Lord of the Rings</title>
+        <author id="gaf12">
+            <name>Tolkien</name>
+            <born>1900-03-03</born>
+            <dead>1985-05-13</dead>
+        </author>
+        <author id="oal53">
+            <name>Bilbo</name>
+            <born>1001-04-12</born>
+            <dead>1203-09-20</dead>
+        </author>
+    </book>
+    <book available="false" id="pka23">
+        <isbn>532</isbn>
+        <title>Ready Player One</title>
+        <author>
+            <name>Ernest Cline</name>
+            <born>1934-09-14</born>
+            <dead>2006-04-18</dead>
+        </author>
+        <character id="przl">
+            <name>Parzival</name>
+            <born>2025-06-15</born>
+            <qualification>8</qualification>
+        </character>
+    </book>
+</library>

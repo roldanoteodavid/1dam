@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First term exam</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+
+<body>
+    <header>
+        <h2>MADRID</h2>
+        <h3>Plan your trip</h3>
+    </header>
+    <main>
+        <div id="left">
+            <ul id="lista">
+                <li class="element"><a href="#footer">Homepage</a></li>
+                <li class="element"><a href="documents/exerciseBS.html">Discover Madrid</a></li>
+                <li class="element"><a href="https://es.wikipedia.org/wiki/Madrid">More info</a></li>
+            </ul>
+            <h3>Discover Madrid</h3>
+            <img src="images/Madrid.jpg" alt="Madrid">
+        </div>
+        <div id="center">
+            <table>
+                <tr>
+                    <th colspan="3">Density</th>
+                </tr>
+                <tr>
+                    <th rowspan="2" colspan="2">Urban area & metropolitan</th>
+                    <th>6,211,000</th>
+                </tr>
+                <tr>
+                    <th colspan="3">6,791,667</th>
+                </tr>
+                <tr>
+                    <th colspan="3"><a href="#top"><span id="welcome">Welcome to Madrid</span></a></th>
+                </tr>
+            </table>
+        </div>
+        <div id="right">
+            <form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post">
+                <h2>Receive more information</h2>
+                <fieldset>
+                    <legend>Personal data</legend>
+                    <div class="namesur">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="namesur">
+                        <label for="surname">Surname</label><br>
+                        <input type="text" id="surname" name="surname" maxlength="20">
+                    </div>
+                    <label for="gender">Gender</label>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                    <input type="radio" id="other" name="gender" value="other" checked>
+                    <label for="other">Other</label>
+                </fieldset>
+                <div class="subsection">
+                    <label for="topic">Select a topic</label>
+                    <select id="topic" name="topic">
+                        <option value="volvo">Festivals</option>
+                        <option value="saab">Food</option>
+                        <option value="fiat">Turism</option>
+                    </select>
+                    <div id="comments">
+                        <label for="comments">Comments</label>
+                        <textarea name="comments" id="comments" rows="5" cols="45"
+                            placeholder="Write your comments"></textarea>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <input type="checkbox" id="terms" name="terms" value="terms" required>
+                    <label for="terms">I agree to terms and conditions</label>
+                </div>
+                <input type="submit" value="Send" id="send">
+                <input type="reset" value="Delete" id="delete">
+            </form>
+        </div>
+    </main>
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+</body>
+
+</html>

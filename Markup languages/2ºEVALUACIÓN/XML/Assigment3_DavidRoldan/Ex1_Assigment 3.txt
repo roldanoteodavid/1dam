@@ -1,0 +1,288 @@
+a. All titles of the document
+XPath Query: //title
+
+[Line 4] title: Everyday Italian
+[Line 10] title: Harry Potter
+[Line 16] title: XQuery Kick Start
+[Line 24] title: XML The foundation of XQuery
+[Line 28] title: Understanding the XPath specification
+[Line 36] title: Learning XML
+[Line 39] title: Introduction
+[Line 43] title: Markup and Core Concepts
+
+b. All titles of a book of the document
+XPath Query: /bookShop/book/title
+
+[Line 4] title: Everyday Italian
+[Line 10] title: Harry Potter
+[Line 16] title: XQuery Kick Start
+[Line 36] title: Learning XML
+
+c. All elements of a chapter
+XPath Query: /bookShop/book/chapter/*
+
+[Line 39] title: Introduction
+[Line 40] npages: 24
+[Line 43] title: Markup and Core Concepts
+[Line 44] npages: 34
+
+d. All elements of a chapter in a section
+XPath Query: /bookShop/book/section/chapter/*
+
+[Line 24] title: XML The foundation of XQuery
+[Line 25] npages: 14
+[Line 28] title: Understanding the XPath specification
+[Line 29] npages: 15
+
+
+e. All elements
+XPath Query: /*
+
+[Line 2] bookShop: 
+    
+        Everyday Italian
+        Giada De Laurentiis
+        2005
+        30.00
+    
+    
+        Harry Potter
+        J K. Rowling
+        2005
+        29.99
+    
+    
+        XQuery Kick Start
+        James McGovern
+        Per Bothner
+        Kurt Cagle
+        James Linn
+        Vaidyanathan Nagarajan
+        
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                15
+            
+        
+        2003
+        49.99
+    
+    
+        Learning XML
+        Erik T. Ray
+        
+            Introduction
+            24
+        
+        
+            Markup and Core Concepts
+            34
+        
+        2003
+        39.95
+
+f. Titles that have a chapter 1
+XPath Query: /bookShop/book[chapter/@num='1']/title
+
+[Line 36] title: Learning XML
+
+g. The third book with all its information
+XPath Query: /bookShop/book[3]
+
+[Line 15] book: 
+        XQuery Kick Start
+        James McGovern
+        Per Bothner
+        Kurt Cagle
+        James Linn
+        Vaidyanathan Nagarajan
+        
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                15
+            
+        
+        2003
+        49.99
+
+h. All elements with attributes
+XPath Query: //*[@*]
+
+[Line 3] book: 
+        Everyday Italian
+        Giada De Laurentiis
+        2005
+        30.00
+    
+[Line 4] title: Everyday Italian
+[Line 9] book: 
+        Harry Potter
+        J K. Rowling
+        2005
+        29.99
+    
+[Line 10] title: Harry Potter
+[Line 15] book: 
+        XQuery Kick Start
+        James McGovern
+        Per Bothner
+        Kurt Cagle
+        James Linn
+        Vaidyanathan Nagarajan
+        
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                15
+            
+        
+        2003
+        49.99
+    
+[Line 16] title: XQuery Kick Start
+[Line 22] section: 
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                15
+            
+        
+[Line 23] chapter: 
+                XML The foundation of XQuery
+                14
+            
+[Line 27] chapter: 
+                Understanding the XPath specification
+                15
+            
+[Line 35] book: 
+        Learning XML
+        Erik T. Ray
+        
+            Introduction
+            24
+        
+        
+            Markup and Core Concepts
+            34
+        
+        2003
+        39.95
+    
+[Line 36] title: Learning XML
+[Line 38] chapter: 
+            Introduction
+            24
+        
+[Line 42] chapter: 
+            Markup and Core Concepts
+            34
+
+i. All elements with a category attribute
+XPath Query: //*[@category]
+
+[Line 3] book: 
+        Everyday Italian
+        Giada De Laurentiis
+        2005
+        30.00
+    
+[Line 9] book: 
+        Harry Potter
+        J K. Rowling
+        2005
+        29.99
+    
+[Line 15] book: 
+        XQuery Kick Start
+        James McGovern
+        Per Bothner
+        Kurt Cagle
+        James Linn
+        Vaidyanathan Nagarajan
+        
+            
+                XML The foundation of XQuery
+                14
+            
+            
+                Understanding the XPath specification
+                15
+            
+        
+        2003
+        49.99
+    
+[Line 35] book: 
+        Learning XML
+        Erik T. Ray
+        
+            Introduction
+            24
+        
+        
+            Markup and Core Concepts
+            34
+        
+        2003
+        39.95
+
+j. Books with no cover attribute
+XPath Query: //book[not(@cover)]
+
+[Line 3] book: 
+        Everyday Italian
+        Giada De Laurentiis
+        2005
+        30.00
+    
+[Line 9] book: 
+        Harry Potter
+        J K. Rowling
+        2005
+        29.99
+
+k. Elements with two chapters
+XPath Query: //book[count(chapter)=2]
+
+[Line 35] book: 
+        Learning XML
+        Erik T. Ray
+        
+            Introduction
+            24
+        
+        
+            Markup and Core Concepts
+            34
+        
+        2003
+        39.95
+
+l. Book’s about markup languages
+XPath Query: /bookShop/book[title[contains(text(), 'Markup')]]
+
+m. Titles whose author’s name value has more than 15 characters
+XPath Query: //book[string-length(author) > 15]/title
+
+[Line 4] title: Everyday Italian
+
+
+n. Title of paperback books with more than 30 pages in any chapter
+XPath Query: //book[@cover='paperback' and chapter/npages > 30]/title
+
+[Line 36] title: Learning XML

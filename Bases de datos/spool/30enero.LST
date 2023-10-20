@@ -1,0 +1,265 @@
+SQL> connect davidroldan
+ERROR:
+ORA-01017: invalid username/password; logon denied 
+
+
+SQL> connect davidroldan
+Conectado.
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+HABITACION                                                                      
+SH                                                                              
+CLIENTE                                                                         
+RESERVAR                                                                        
+PROPORCIONAR                                                                    
+ORGANIZAR                                                                       
+PARTICIPAR                                                                      
+DEPART                                                                          
+EMPLE                                                                           
+DEPARTAMENTO                                                                    
+CURSO                                                                           
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+ENTIDADBANCARIA                                                                 
+NOMINA                                                                          
+CONTRATO                                                                        
+CURSAR                                                                          
+ENSENYAR                                                                        
+TRABAJAR                                                                        
+ECN                                                                             
+PROVEEDOR                                                                       
+ACTIVIDAD                                                                       
+PRODUCTO                                                                        
+MONITOR                                                                         
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+W                                                                               
+SUCURSAL                                                                        
+DEPT_RECURSOS_HUMANOS                                                           
+EMPLEADO                                                                        
+
+26 filas seleccionadas.
+
+SQL> set pagesize 300;
+SQL> set linesize 300;
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+HABITACION                                                                                                                                                                                                                                                                                                  
+SH                                                                                                                                                                                                                                                                                                          
+CLIENTE                                                                                                                                                                                                                                                                                                     
+RESERVAR                                                                                                                                                                                                                                                                                                    
+PROPORCIONAR                                                                                                                                                                                                                                                                                                
+ORGANIZAR                                                                                                                                                                                                                                                                                                   
+PARTICIPAR                                                                                                                                                                                                                                                                                                  
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+DEPARTAMENTO                                                                                                                                                                                                                                                                                                
+CURSO                                                                                                                                                                                                                                                                                                       
+ENTIDADBANCARIA                                                                                                                                                                                                                                                                                             
+NOMINA                                                                                                                                                                                                                                                                                                      
+CONTRATO                                                                                                                                                                                                                                                                                                    
+CURSAR                                                                                                                                                                                                                                                                                                      
+ENSENYAR                                                                                                                                                                                                                                                                                                    
+TRABAJAR                                                                                                                                                                                                                                                                                                    
+ECN                                                                                                                                                                                                                                                                                                         
+PROVEEDOR                                                                                                                                                                                                                                                                                                   
+ACTIVIDAD                                                                                                                                                                                                                                                                                                   
+PRODUCTO                                                                                                                                                                                                                                                                                                    
+MONITOR                                                                                                                                                                                                                                                                                                     
+W                                                                                                                                                                                                                                                                                                           
+SUCURSAL                                                                                                                                                                                                                                                                                                    
+DEPT_RECURSOS_HUMANOS                                                                                                                                                                                                                                                                                       
+EMPLEADO                                                                                                                                                                                                                                                                                                    
+
+26 filas seleccionadas.
+
+SQL> select distinc dept_no from emple;
+select distinc dept_no from emple
+       *
+ERROR en línea 1:
+ORA-00904: "DISTINC": identificador no válido 
+
+
+SQL> select distinct dept_no from emple;
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+
+SQL> select dept_no from emple;
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+
+14 filas seleccionadas.
+
+SQL> select distinct dept_no from emple where dept_no<>20;
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+
+SQL> select distinct dept_no from emple order by dept_no;
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+
+SQL> select distinct dept_no from emple order by dept_no desc;
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        30                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+        10                                                                                                                                                                                                                                                                                                  
+
+SQL> select apellido,dept_no from emple order by dept_no desc,apellido;
+
+APELLIDO      DEPT_NO                                                                                                                                                                                                                                                                                       
+---------- ----------                                                                                                                                                                                                                                                                                       
+ARROYO             30                                                                                                                                                                                                                                                                                       
+JIMENO             30                                                                                                                                                                                                                                                                                       
+MARTIN             30                                                                                                                                                                                                                                                                                       
+NEGRO              30                                                                                                                                                                                                                                                                                       
+SALA               30                                                                                                                                                                                                                                                                                       
+TOVAR              30                                                                                                                                                                                                                                                                                       
+ALONSO             20                                                                                                                                                                                                                                                                                       
+FERNANDEZ          20                                                                                                                                                                                                                                                                                       
+GIL                20                                                                                                                                                                                                                                                                                       
+JIMENEZ            20                                                                                                                                                                                                                                                                                       
+SANCHEZ            20                                                                                                                                                                                                                                                                                       
+CEREZO             10                                                                                                                                                                                                                                                                                       
+MUNOZ              10                                                                                                                                                                                                                                                                                       
+REY                10                                                                                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> select count(*) from emple;
+
+  COUNT(*)                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        14                                                                                                                                                                                                                                                                                                  
+
+SQL> select avg(salario) from emple;
+
+AVG(SALARIO)                                                                                                                                                                                                                                                                                                
+------------                                                                                                                                                                                                                                                                                                
+  226660,714                                                                                                                                                                                                                                                                                                
+
+SQL> select apellido AND salario and salario*0.1 from emple;
+select apellido AND salario and salario*0.1 from emple
+                *
+ERROR en línea 1:
+ORA-00923: palabra clave FROM no encontrada donde se esperaba 
+
+
+SQL> select from emple apellido AND salario and salario*0.1;
+select from emple apellido AND salario and salario*0.1
+       *
+ERROR en línea 1:
+ORA-00936: falta una expresión 
+
+
+SQL> select from emple apellido AND salario AND salario*0.1;
+select from emple apellido AND salario AND salario*0.1
+       *
+ERROR en línea 1:
+ORA-00936: falta una expresión 
+
+
+SQL> select apellido,salario from emple;
+
+APELLIDO      SALARIO                                                                                                                                                                                                                                                                                       
+---------- ----------                                                                                                                                                                                                                                                                                       
+SANCHEZ        104000                                                                                                                                                                                                                                                                                       
+ARROYO         208000                                                                                                                                                                                                                                                                                       
+SALA           162500                                                                                                                                                                                                                                                                                       
+JIMENEZ        386750                                                                                                                                                                                                                                                                                       
+MARTIN         162500                                                                                                                                                                                                                                                                                       
+NEGRO          370500                                                                                                                                                                                                                                                                                       
+CEREZO         318500                                                                                                                                                                                                                                                                                       
+GIL            390000                                                                                                                                                                                                                                                                                       
+REY             50000                                                                                                                                                                                                                                                                                       
+TOVAR          195000                                                                                                                                                                                                                                                                                       
+ALONSO         143000                                                                                                                                                                                                                                                                                       
+JIMENO         123500                                                                                                                                                                                                                                                                                       
+FERNANDEZ      390000                                                                                                                                                                                                                                                                                       
+MUNOZ          169000                                                                                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> select apellido,salario from emple salario*0.1;
+select apellido,salario from emple salario*0.1
+                                          *
+ERROR en línea 1:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> select apellido,salario,salario*0.1 from emple;
+
+APELLIDO      SALARIO SALARIO*0.1                                                                                                                                                                                                                                                                           
+---------- ---------- -----------                                                                                                                                                                                                                                                                           
+SANCHEZ        104000       10400                                                                                                                                                                                                                                                                           
+ARROYO         208000       20800                                                                                                                                                                                                                                                                           
+SALA           162500       16250                                                                                                                                                                                                                                                                           
+JIMENEZ        386750       38675                                                                                                                                                                                                                                                                           
+MARTIN         162500       16250                                                                                                                                                                                                                                                                           
+NEGRO          370500       37050                                                                                                                                                                                                                                                                           
+CEREZO         318500       31850                                                                                                                                                                                                                                                                           
+GIL            390000       39000                                                                                                                                                                                                                                                                           
+REY             50000        5000                                                                                                                                                                                                                                                                           
+TOVAR          195000       19500                                                                                                                                                                                                                                                                           
+ALONSO         143000       14300                                                                                                                                                                                                                                                                           
+JIMENO         123500       12350                                                                                                                                                                                                                                                                           
+FERNANDEZ      390000       39000                                                                                                                                                                                                                                                                           
+MUNOZ          169000       16900                                                                                                                                                                                                                                                                           
+
+14 filas seleccionadas.
+
+SQL> select apellido,salario,salario*0.1 "10porciento" from emple;
+
+APELLIDO      SALARIO 10porciento                                                                                                                                                                                                                                                                           
+---------- ---------- -----------                                                                                                                                                                                                                                                                           
+SANCHEZ        104000       10400                                                                                                                                                                                                                                                                           
+ARROYO         208000       20800                                                                                                                                                                                                                                                                           
+SALA           162500       16250                                                                                                                                                                                                                                                                           
+JIMENEZ        386750       38675                                                                                                                                                                                                                                                                           
+MARTIN         162500       16250                                                                                                                                                                                                                                                                           
+NEGRO          370500       37050                                                                                                                                                                                                                                                                           
+CEREZO         318500       31850                                                                                                                                                                                                                                                                           
+GIL            390000       39000                                                                                                                                                                                                                                                                           
+REY             50000        5000                                                                                                                                                                                                                                                                           
+TOVAR          195000       19500                                                                                                                                                                                                                                                                           
+ALONSO         143000       14300                                                                                                                                                                                                                                                                           
+JIMENO         123500       12350                                                                                                                                                                                                                                                                           
+FERNANDEZ      390000       39000                                                                                                                                                                                                                                                                           
+MUNOZ          169000       16900                                                                                                                                                                                                                                                                           
+
+14 filas seleccionadas.
+
+SQL> exit

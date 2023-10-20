@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "nombre": "Escalada en rocodromo",
+    "lugar": "Rocodromo",
+    "precio": 25.99,
+    "fecha": "2023-05-15"
+  },
+  {
+    "id": 2,
+    "nombre": "Clase de yoga en la playa",
+    "lugar": "Playa",
+    "precio": 10.5,
+    "fecha": "2023-05-12"
+  },
+  {
+    "id": 3,
+    "nombre": "Rutina de ejercicios en el gimnasio",
+    "lugar": "Gimnasio",
+    "precio": 15.0,
+    "fecha": "2023-05-14"
+  },
+  {
+    "id": 6,
+    "nombre": "Sesión de masajes en la piscina",
+    "lugar": "Piscina",
+    "precio": 50.0,
+    "fecha": "2023-05-18"
+  },
+  {
+    "id": 7,
+    "nombre": "Reto de carreras en el gimnasio",
+    "lugar": "Gimnasio",
+    "precio": 20.0,
+    "fecha": "2023-05-16"
+  },
+  {
+    "id": 9,
+    "nombre": "Meditación al amanecer en la playa",
+    "lugar": "Playa",
+    "precio": 5.0,
+    "fecha": "2023-05-20"
+  },
+  {
+    "id": 10,
+    "nombre": "Hidrogimnasia en la piscina",
+    "lugar": "Piscina",
+    "precio": 7.99,
+    "fecha": "2023-05-19"
+  },
+  {
+    "id": 11,
+    "nombre": "Rapel",
+    "lugar": "Rocodromo",
+    "precio": 20.0,
+    "fecha": "2023-05-31"
+  },
+  {
+    "id": 5,
+    "nombre": "Paseo en kayak por la playa",
+    "lugar": "Playa",
+    "precio": 40.0,
+    "fecha": "2023-05-26"
+  },
+  {
+    "id": 8,
+    "nombre": "Escalada en rocodromo con instructor",
+    "lugar": "Rocodromo",
+    "precio": 45.0,
+    "fecha": "2023-06-23"
+  },
+  {
+    "id": 4,
+    "nombre": "Snorkeling en mi casa",
+    "lugar": "Piscina",
+    "precio": 5.99,
+    "fecha": "2038-06-16"
+  }
+]

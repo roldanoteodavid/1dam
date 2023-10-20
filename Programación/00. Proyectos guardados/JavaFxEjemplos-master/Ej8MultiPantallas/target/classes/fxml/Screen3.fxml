@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane prefHeight="150.0" prefWidth="200.0" fx:controller="ui.TerceraPantallaClientesController" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <children>
+            <Label layoutX="274.0" layoutY="40.0" text="Deja un mensaje antes de irte"/>
+            <TextField layoutX="274.0" layoutY="71.0" />
+            <MFXButton fx:id="botonSalir" layoutX="289.0" layoutY="157.0" mnemonicParsing="false" text="Salir" onAction="#Salir"/>
+            <ImageView fitHeight="161.0" fitWidth="187.0" layoutX="263.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/Logo_Quevedo.jpg"/>
+                </image>
+            </ImageView>
+            <StackPane prefHeight="150.0" prefWidth="200.0"/>
+        </children>
+    </AnchorPane>
+</StackPane>

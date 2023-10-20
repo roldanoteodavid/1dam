@@ -1,0 +1,32 @@
+SET SERVEROUTPUT ON
+
+	Creamos un procedimiento que recibe el nombre de una editorial y luego aumenta en un 10% los precios de los libros de tal editorial:
+SQL> CREATE OR REPLACE PROCEDURE aumentar_precio_editorial (p_editorial IN VARCHAR2) IS
+  2  BEGIN
+  3    UPDATE libros
+  4    SET precio = precio * 1.1
+  5    WHERE editorial = p_editorial;
+  6  END;
+  7  /
+
+Procedimiento creado.
+
+SQL> BEGIN
+  2    aumentar_precio_editorial('Planeta');
+  3  END;
+  4  /
+
+Procedimiento PL/SQL terminado correctamente.
+
+
+	Creamos otro procedimiento que recibe 2 parámetros, el nombre de una editorial y el valor de incremento (que tiene por defecto el valor 10):
+CREATE OR REPLACE PROCEDURE pa_libros_insertar (
+  titulo IN VARCHAR2,
+  autor IN VARCHAR2,
+  editorial IN VARCHAR2,
+  precio IN NUMBER
+) IS
+BEGIN
+  insert into libros values (titulo, autor, editorial, precio);
+END;
+/

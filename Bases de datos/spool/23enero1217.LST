@@ -1,0 +1,957 @@
+SQL> connect davidroldan
+Conectado.
+SQL> CREATE TABLE DEPART (
+  2   DEPT_NO  NUMBER(2) primary key,
+  3   DNOMBRE  VARCHAR2(14),
+  4   LOC      VARCHAR2(14) ) ;
+
+Tabla creada.
+
+SQL> INSERT INTO DEPART VALUES (10,'CONTABILIDAD','SEVILLA');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPART VALUES (20,'INVESTIGACION','MADRID');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPART VALUES (30,'VENTAS','BARCELONA');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPART VALUES (40,'PRODUCCION','BILBAO');
+
+1 fila creada.
+
+SQL> INSERT INTO DEPART VALUES (50,'otros',null);
+
+1 fila creada.
+
+SQL> INSERT INTO DEPART VALUES (10,'Contabilidad','SEVILLA');
+INSERT INTO DEPART VALUES (10,'Contabilidad','SEVILLA')
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004050) violada 
+
+
+SQL> INSERT INTO DEPART VALUES (20,NULL,'MADRID');
+INSERT INTO DEPART VALUES (20,NULL,'MADRID')
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004050) violada 
+
+
+SQL> INSERT INTO DEPART VALUES (30,'VENTAS',NULL);
+INSERT INTO DEPART VALUES (30,'VENTAS',NULL)
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004050) violada 
+
+
+SQL> INSERT INTO DEPART VALUES (40,'PRODUCCION','bilbao');
+INSERT INTO DEPART VALUES (40,'PRODUCCION','bilbao')
+*
+ERROR en línea 1:
+ORA-00001: restricción única (DAVIDROLDAN.SYS_C004050) violada 
+
+
+SQL> CREATE TABLE EMPLE (
+  2   EMP_NO    NUMBER(4) primary key,
+  3   APELLIDO  VARCHAR2(10)  ,
+  4   OFICIO    VARCHAR2(10)  ,
+  5   DIR       NUMBER(4) ,
+  6   FECHA_ALT DATE      ,
+  7   SALARIO   NUMBER(10),
+  8   COMISION  NUMBER(10),
+  9   DEPT_NO  NUMBER(2),
+ 10   foreign key (DEPT_NO) references depart;
+ foreign key (DEPT_NO) references depart
+                                       *
+ERROR en línea 10:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE EMPLE (
+  2   EMP_NO    NUMBER(4) primary key,
+  3   APELLIDO  VARCHAR2(10)  ,
+  4   OFICIO    VARCHAR2(10)  ,
+  5   DIR       NUMBER(4) ,
+  6   FECHA_ALT DATE      ,
+  7   SALARIO   NUMBER(10),
+  8   COMISION  NUMBER(10),
+  9   DEPT_NO  NUMBER(2),
+ 10   foreign key (DEPT_NO) references depart);
+
+Tabla creada.
+
+SQL> INSERT INTO EMPLE VALUES (7369,'SANCHEZ','EMPLEADO',7902,'17/12/1980',104000,NULL,20);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7499,'ARROYO','VENDEDOR',7698,'20/02/1980',208000,39000,30);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7521,'SALA','VENDEDOR',7698,'22/02/1981',162500,65000,30);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7566,'JIMENEZ','DIRECTOR',7839,'02/04/1981',386750,NULL,20);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7654,'MARTIN','VENDEDOR',7698,'29/09/1981',162500,182000,30);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7698,'NEGRO','DIRECTOR',7839,'01/05/1981',370500,NULL,30);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7782,'CEREZO','DIRECTOR',7839,'09/06/1981',318500,NULL,10);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7788,'GIL','ANALISTA',7566,'09/11/1981',390000,NULL,20);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7839,'REY','PRESIDENTE',NULL,'17/11/1981',50000,NULL,10);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7844,'TOVAR','VENDEDOR',7698,'08/09/1981',195000,0,30);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7876,'ALONSO','EMPLEADO',7788,'23/09/1981',143000,NULL,20);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7900,'JIMENO','EMPLEADO',7698,'03/12/1981',123500,NULL,30);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7902,'FERNANDEZ','ANALISTA',7566,'03/12/1981',390000,NULL,20);
+
+1 fila creada.
+
+SQL> INSERT INTO EMPLE VALUES (7934,'MUNOZ','EMPLEADO',7782,'23/01/1982',169000,NULL,10);
+
+1 fila creada.
+
+SQL> rem Como ver mis tablas
+SQL> select table_name from user_tables
+  2  
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+W                                                                               
+DEPART                                                                          
+EMPLE                                                                           
+
+SQL> rem Como ver la descripcion
+SQL> desc depart
+ Nombre                                    ¿Nulo?   Tipo
+ ----------------------------------------- -------- ----------------------------
+ DEPT_NO                                   NOT NULL NUMBER(2)
+ DNOMBRE                                            VARCHAR2(14)
+ LOC                                                VARCHAR2(14)
+
+SQL> rem Sacar todo el contenido de la tabla
+SQL> select * from emple
+  2  
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                 
+        20                                                                      
+                                                                                
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      39000      
+        30                                                                      
+                                                                                
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000      
+        30                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                 
+        20                                                                      
+                                                                                
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000      
+        30                                                                      
+                                                                                
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                 
+        30                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                 
+        10                                                                      
+                                                                                
+      7788 GIL        ANALISTA         7566 09/11/81     390000                 
+        20                                                                      
+                                                                                
+      7839 REY        PRESIDENTE            17/11/81      50000                 
+        10                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0      
+        30                                                                      
+                                                                                
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                 
+        20                                                                      
+                                                                                
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                 
+        30                                                                      
+                                                                                
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION      
+---------- ---------- ---------- ---------- -------- ---------- ----------      
+   DEPT_NO                                                                      
+----------                                                                      
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                 
+        20                                                                      
+                                                                                
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                 
+        10                                                                      
+                                                                                
+
+14 filas seleccionadas.
+
+SQL> rem Cambiar tama¤o p gina
+SQL> set pagesize 300;
+SQL> set linesize 300;
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION    DEPT_NO                                                                                                                                                                                                                       
+---------- ---------- ---------- ---------- -------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                    20                                                                                                                                                                                                                       
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      39000         30                                                                                                                                                                                                                       
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000         30                                                                                                                                                                                                                       
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                    20                                                                                                                                                                                                                       
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000         30                                                                                                                                                                                                                       
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                    30                                                                                                                                                                                                                       
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                    10                                                                                                                                                                                                                       
+      7788 GIL        ANALISTA         7566 09/11/81     390000                    20                                                                                                                                                                                                                       
+      7839 REY        PRESIDENTE            17/11/81      50000                    10                                                                                                                                                                                                                       
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0         30                                                                                                                                                                                                                       
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                    20                                                                                                                                                                                                                       
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                    30                                                                                                                                                                                                                       
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                    20                                                                                                                                                                                                                       
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                    10                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> CREATE TABLE CLIENTE
+  2  (DNI Varchar2 (9) PRIMARY KEY,
+  3  Nombre Char (20),
+  4  Apellido Char (20),
+  5  Tfno_cl Varchar2 (12),
+  6  Pais Char (56),
+  7  Edad Number (3),
+  8  Tfno_su Varchar2 (12));
+
+Tabla creada.
+
+SQL> CREATE TABLE SUCURSAL
+  2  (Tfno_su Varchar2 (12) PRIMARY KEY,
+  3  N_su Number (5),
+  4  Provincia char (20),
+  5  Direccion Varchar2 (50),
+  6  codigo_dpto Number(5));
+
+Tabla creada.
+
+SQL> CREATE TABLE DEPT_RECURSOS_HUMANOS
+  2  (Codigo_dpto Number(5) PRIMARY KEY,
+  3  n_ empleados Number(2),
+  4  despacho Number(2));
+n_ empleados Number(2),
+             *
+ERROR en línea 3:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE DEPT_RECURSOS_HUMANOS
+  2  (Codigo_dpto Number(5) PRIMARY KEY,
+  3  n_empleados Number(2),
+  4  despacho Number(2));
+
+Tabla creada.
+
+SQL> CREATE TABLE HABITACION
+  2  (Numero Number (3) PRIMARY KEY,
+  3  tipo Char (10),
+  4  n_max_inquilinos Number (1) CHECK (n_max_inquilinos>1 AND n_max_inquilinos<7),
+  5  metro_cuadrados Number (3));
+
+Tabla creada.
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3)
+  4  metodo Char(8) CHECK (Internet, Llamada)
+  5  dia_entrada Number(2) CHECK (dia_entrada>1 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>1 AND mes_entrada<13),
+  7  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>1 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>1 AND mes_salida<13),
+ 10  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+metodo Char(8) CHECK (Internet, Llamada)
+*
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3)
+  4  metodo Char(8) CHECK (Internet, Llamada),
+  5  dia_entrada Number(2) CHECK (dia_entrada>1 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>1 AND mes_entrada<13),
+  7  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>1 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>1 AND mes_salida<13),
+ 10  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+metodo Char(8) CHECK (Internet, Llamada),
+*
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> drop table habitacion;
+
+Tabla borrada.
+
+SQL> CREATE TABLE HABITACION
+  2  (Numero Number (3) PRIMARY KEY,
+  3  tipo Char (10),
+  4  n_max_inquilinos Number (1) CHECK (n_max_inquilinos>0 AND n_max_inquilinos<7),
+  5  metro_cuadrados Number (3));
+
+Tabla creada.
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3)
+  4  metodo Char(8) CHECK (Internet, Llamada),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+metodo Char(8) CHECK (Internet, Llamada),
+*
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3)
+  4  metodo Char(8) CHECK (metodo="Internet" or metodo="Llamada"),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+metodo Char(8) CHECK (metodo="Internet" or metodo="Llamada"),
+*
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select table_name from user_tables
+  2  
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+W                                                                                                                                                                                                                                                                                                           
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+CLIENTE                                                                                                                                                                                                                                                                                                     
+SUCURSAL                                                                                                                                                                                                                                                                                                    
+DEPT_RECURSOS_HUMANOS                                                                                                                                                                                                                                                                                       
+HABITACION                                                                                                                                                                                                                                                                                                  
+
+7 filas seleccionadas.
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3)
+  4  metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+*
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3)
+  4  metodo Char(8),
+  5  dia_entrada Number(2),
+  6  mes_entrada Number(2),
+  7  a¤o_entrada Number(4),
+  8  dia_salida Number(2),
+  9  mes_salida Number(2),
+ 10  a¤o_salida Number(4),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+metodo Char(8),
+*
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3),
+  4  metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+ *
+ERROR en línea 7:
+ORA-00911: carácter no válido 
+
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3),
+  4  metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 11  PRIMARY KEY (DNI, Number),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Number) References Habitacion);
+PRIMARY KEY (DNI, Number),
+                  *
+ERROR en línea 11:
+ORA-00936: falta una expresión 
+
+
+SQL> CREATE TABLE RESERVAR
+  2  (DNI Varchar2(9),
+  3  Numero Number(3),
+  4  metodo Char(8) CHECK (metodo In('Internet','Llamada')),
+  5  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  6  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  7  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  8  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+  9  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 10  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 11  PRIMARY KEY (DNI, Numero),
+ 12  FOREIGN KEY (DNI) References Cliente,
+ 13  FOREIGN KEY (Numero) References Habitacion);
+
+Tabla creada.
+
+SQL> CREATE TABLE SH
+  2  (Tfno_su Varchar2(12),
+  3  numero  Number (3),
+  4  empleado_sucursar Number (5),
+  5  pension Varchar2(8) CHECK (pension="Completa" or pension="Media"),
+  6  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  7  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  8  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  9  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+ 10  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 11  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 12  Primary Key (Tfno_su, numero),
+ 13  Foreign Key (Tfno_su) References Sucursal,
+ 14  Foreign Key (numero) References Habitacion);
+pension Varchar2(8) CHECK (pension="Completa" or pension="Media"),
+                                                                 *
+ERROR en línea 5:
+ORA-02438: La restricción de control de columna no puede hacer referencia a otras columnas 
+
+
+SQL> CREATE TABLE SH
+  2  (Tfno_su Varchar2(12),
+  3  numero  Number (3),
+  4  empleado_sucursar Number (5),
+  5  pension Varchar2(8) CHECK (pension='Completa' or pension='Media'),
+  6  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  7  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  8  a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+  9  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+ 10  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 11  a¤o_salida Number(4) CHECK (a¤o_salida>2022),
+ 12  Primary Key (Tfno_su, numero),
+ 13  Foreign Key (Tfno_su) References Sucursal,
+ 14  Foreign Key (numero) References Habitacion);
+a¤o_entrada Number(4) CHECK (a¤o_entrada>2022),
+ *
+ERROR en línea 8:
+ORA-00911: carácter no válido 
+
+
+SQL> CREATE TABLE SH
+  2  (Tfno_su Varchar2(12),
+  3  numero  Number (3),
+  4  empleado_sucursar Number (5),
+  5  pension Varchar2(8) CHECK (pension='Completa' or pension='Media'),
+  6  dia_entrada Number(2) CHECK (dia_entrada>0 AND dia_entrada<32),
+  7  mes_entrada Number(2) CHECK (mes_entrada>0 AND mes_entrada<13),
+  8  anyo_entrada Number(4) CHECK (anyo_entrada>2022),
+  9  dia_salida Number(2) CHECK (dia_salida>0 AND dia_salida<32),
+ 10  mes_salida Number(2) CHECK (mes_salida>0 AND mes_salida<13),
+ 11  anyo_salida Number(4) CHECK (anyo_salida>2022),
+ 12  Primary Key (Tfno_su, numero),
+ 13  Foreign Key (Tfno_su) References Sucursal,
+ 14  Foreign Key (numero) References Habitacion);
+
+Tabla creada.
+
+SQL> CREATE TABLE EMPLEADO
+  2  (DNI Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20,
+  5  tlfno_empleado Varchar(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  a¤o_nacimiento Number(4));
+apellido Char(20,
+                *
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE EMPLEADO
+  2  (DNI Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20),
+  5  tlfno_empleado Varchar2(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  a¤o_nacimiento Number(4));
+a¤o_nacimiento Number(4))
+ *
+ERROR en línea 9:
+ORA-00911: carácter no válido 
+
+
+SQL> CREATE TABLE EMPLEADO
+  2  (DNI Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20),
+  5  tlfno_empleado Varchar2(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  anyo_nacimiento Number(4));
+
+Tabla creada.
+
+SQL> CREATE TABLE DEPARTAMENTO
+  2  (codigo_dpto Number(5) PRIMARY KEY,
+  3  nombre_dpto Varchar2(30),
+  4  n_despacho Number(5),
+  5  DNI Varchar2(9)
+  6  Foreign key (DNI) References Empleado);
+Foreign key (DNI) References Empleado)
+*
+ERROR en línea 6:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE DEPARTAMENTO
+  2  (codigo_dpto Number(5) PRIMARY KEY,
+  3  nombre_dpto Varchar2(30),
+  4  n_despacho Number(5),
+  5  DNI Varchar2(9),
+  6  Foreign key (DNI) References Empleado);
+
+Tabla creada.
+
+SQL> CREATE TABLE CURSO
+  2  (codigo_curso Number(5) PRIMARY KEY,
+  3  nombre_curso Varchar2(30),
+  4  n_horas Number(3));
+
+Tabla creada.
+
+SQL> CREATE TABLE ENTIDADBANCARIA
+  2  (Codigo_banco(5) PRIMARY KEY,
+  3  Nombre Char(20),
+  4  Direccion Varchar(50));
+(Codigo_banco(5) PRIMARY KEY,
+             *
+ERROR en línea 2:
+ORA-00902: tipo de dato no válido 
+
+
+SQL> CREATE TABLE ENTIDADBANCARIA
+  2  (Codigo_banco Number(5) PRIMARY KEY,
+  3  Nombre Char(20),
+  4  Direccion Varchar(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE NOMINA
+  2  (codigo_nomina Number(10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  salario_extra Number(4),
+  5  codigo_banco Number(5),
+  6  Foreign key (codigo_banco) References Entidadbancaria);
+
+Tabla creada.
+
+SQL> CREATE TABLE CONTRATO
+  2  (codigo_contrato Number (10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  horas_semanales Number(3);
+horas_semanales Number(3)
+                        *
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> tipo Char (25) CHECK (tipo="Permanente" or tipo="Tiempo_parcial" or tipo="Trabajo_parcial" or tipo="Formacion" or tipo="Relevo" or tipo="Trabajo_fijo_intermitente"));
+SP2-0734: inicio "tipo Char ..." de comando desconocido - resto de la línea ignorado.
+SQL> CREATE TABLE CONTRATO
+  2  (codigo_contrato Number (10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  horas_semanales Number(3);
+horas_semanales Number(3)
+                        *
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> tipo Char (25) CHECK (tipo='Permanente' or tipo='Tiempo_parcial' or tipo='Trabajo_parcial' or tipo='Formacion" or tipo='Relevo' or tipo='Trabajo_fijo_intermitente'));
+SP2-0734: inicio "tipo Char ..." de comando desconocido - resto de la línea ignorado.
+SQL> CREATE TABLE CONTRATO
+  2  (codigo_contrato Number (10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  horas_semanales Number(3),
+  5  tipo Char (25) CHECK (tipo='Permanente' or tipo='Tiempo_parcial' or tipo='Trabajo_parcial' or tipo='Formacion" or tipo='Relevo' or tipo='Trabajo_fijo_intermitente'));
+tipo Char (25) CHECK (tipo='Permanente' or tipo='Tiempo_parcial' or tipo='Trabajo_parcial' or tipo='Formacion" or tipo='Relevo' or tipo='Trabajo_fijo_intermitente'))
+                                                                                                                        *
+ERROR en línea 5:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE CONTRATO
+  2  (codigo_contrato Number (10) PRIMARY KEY,
+  3  salario_base Number(7),
+  4  horas_semanales Number(3),
+  5  tipo Char (25) CHECK (tipo='Permanente' or tipo='Tiempo_parcial' or tipo='Trabajo_parcial' or tipo='Formacion' or tipo='Relevo' or tipo='Trabajo_fijo_intermitente'));
+
+Tabla creada.
+
+SQL> CREATE TABLE CURSAR
+  2  (codigo_curso Number(5),
+  3  DNI Varchar2(9),
+  4  dia Number(2) CHECK (1-31),
+  5  mes Number(2) CHECK (1-12),
+  6  anyo Number(4) CHECK (>2022),
+  7  PRIMARY KEY (codigo_curso, DNI),
+  8  FOREIGN KEY (DNI) References Empleado,
+  9  FOREIGN KEY (codigo_curso) References Curso);
+dia Number(2) CHECK (1-31),
+                         *
+ERROR en línea 4:
+ORA-00920: operador relacional no válido 
+
+
+SQL> CREATE TABLE CURSAR
+  2  (codigo_curso Number(5),
+  3  DNI Varchar2(9),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4),
+  7  PRIMARY KEY (codigo_curso, DNI),
+  8  FOREIGN KEY (DNI) References Empleado,
+  9  FOREIGN KEY (codigo_curso) References Curso);
+
+Tabla creada.
+
+SQL> CREATE TABLE ENSE¥AR
+  2  (codigo_curso Number(5),
+  3  DNI Varchar2(9),
+  4  PRIMARY KEY (codigo_curso, DNI),
+  5  FOREIGN KEY (codigo_curso) References Curso,
+  6  FOREIGN KEY (DNI) References Empleado);
+CREATE TABLE ENSE¥AR
+                 *
+ERROR en línea 1:
+ORA-00911: carácter no válido 
+
+
+SQL> CREATE TABLE ENSENYAR
+  2  (codigo_curso Number(5),
+  3  DNI Varchar2(9),
+  4  PRIMARY KEY (codigo_curso, DNI),
+  5  FOREIGN KEY (codigo_curso) References Curso,
+  6  FOREIGN KEY (DNI) References Empleado);
+
+Tabla creada.
+
+SQL> CREATE TABLE TRABAJAR
+  2  (codigo_dpto Number(5),
+  3  DNI Varchar2(9),
+  4  PRIMARY KEY (codigo_dpto, DNI),
+  5  FOREIGN KEY (DNI) References Empleado,
+  6  FOREIGN KEY (codigo_dpto) References Departamento);
+
+Tabla creada.
+
+SQL> CREATE TABLE ECN
+  2  (DNI Varchar2(9),
+  3  codigo_contrato Number (10),
+  4  codigo_nomina Number(10),
+  5  PRIMARY KEY (codigo_contrato, DNI, codigo_nomina),
+  6  FOREIGN KEY (DNI) References Empleado,
+  7  FOREIGN KEY (codigo_contrato) References Contrato,
+  8  FOREIGN KEY (codigo_nomina) References Nomina);
+
+Tabla creada.
+
+SQL> CREATE TABLE PROVEEDOR
+  2  (codigo_proveedor Number(10) PRIMARY KEY,
+  3  nombre_proveedor Char(20),
+  4  origen Varchar2(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE ACTIVIDAD
+  2  (codigo_actividad Number(5) PRIMARY KEY,
+  3  nombre_actividad Varchar2(50),
+  4  lugar Varchar2(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE PRODUCTO
+  2  (codigo_producto Number(5) PRIMARY KEY,
+  3  nombre_producto Varchar2(50),
+  4  precio Number(7),
+  5  codigo_proveedor(10));
+codigo_proveedor(10))
+                *
+ERROR en línea 5:
+ORA-00902: tipo de dato no válido 
+
+
+SQL> CREATE TABLE PRODUCTO
+  2  (codigo_producto Number(5) PRIMARY KEY,
+  3  nombre_producto Varchar2(50),
+  4  precio Number(7),
+  5  codigo_proveedor number(10));
+
+Tabla creada.
+
+SQL> CREATE TABLE MONITOR
+  2  (DNI_monitor Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20,
+  5  tlfno_empleado Varchar(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  anyo_nacimiento Number(4),
+ 10  formacion Varchar2(50));
+apellido Char(20,
+                *
+ERROR en línea 4:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> CREATE TABLE MONITOR
+  2  (DNI_monitor Varchar2(9) PRIMARY KEY,
+  3  nombre Char(20),
+  4  apellido Char(20),
+  5  tlfno_empleado Varchar(12),
+  6  pais Varchar2 (56),
+  7  dia_nacimiento Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  8  mes_nacimiento Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  9  anyo_nacimiento Number(4),
+ 10  formacion Varchar2(50));
+
+Tabla creada.
+
+SQL> CREATE TABLE PROPORCIONAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_producto Number(5),
+  4  incluido Char(2) CHECK (incluido in("si", "no")),
+  5  PRIMARY KEY (codigo_producto, DNI_cliente),
+  6  FOREIGN KEY (codigo_producto) References Producto,
+  7  FOREIGN KEY (DNI_cliente) References Cliente);
+incluido Char(2) CHECK (incluido in("si", "no")),
+                                                *
+ERROR en línea 4:
+ORA-02438: La restricción de control de columna no puede hacer referencia a otras columnas 
+
+
+SQL> CREATE TABLE PROPORCIONAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_producto Number(5),
+  4  incluido Char(2) CHECK (incluido in('si', 'no')),
+  5  PRIMARY KEY (codigo_producto, DNI_cliente),
+  6  FOREIGN KEY (codigo_producto) References Producto,
+  7  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> CREATE TABLE ORGANIZAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_proveedor Number(5),
+  4  DNI_monitor Varchar2(9),
+  5  PRIMARY KEY (codigo_proveedor , DNI_monitor, DNI_cliente),
+  6  FOREIGN KEY (codigo_proveedor ) References Proveedor,
+  7  FOREIGN KEY (DNI_monitor) References Monitor,
+  8  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> CREATE TABLE PARTICIPAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_actividad Number(5),
+  4  dia Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+  5  mes Number(2) CHECK (mes_nacimiento>0 AND mes_nacimiento<13),
+  6  anyo Number(4) CHECK (a¤o>2022)),
+  7  n_participantes Number(2) CHECK(n_participantes>5),
+  8  PRIMARY KEY (codigo_actividad, DNI_cliente),
+  9  FOREIGN KEY (codigo_actividad) References Actividad,
+ 10  FOREIGN KEY (DNI_cliente) References Cliente);
+dia Number(2) CHECK (dia_nacimiento>0 AND dia_nacimiento<32),
+                                                            *
+ERROR en línea 4:
+ORA-02438: La restricción de control de columna no puede hacer referencia a otras columnas 
+
+
+SQL> CREATE TABLE PARTICIPAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_actividad Number(5),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4) CHECK (a¤o>2022)),
+  7  n_participantes Number(2) CHECK(n_participantes>5),
+  8  PRIMARY KEY (codigo_actividad, DNI_cliente),
+  9  FOREIGN KEY (codigo_actividad) References Actividad,
+ 10  FOREIGN KEY (DNI_cliente) References Cliente);
+anyo Number(4) CHECK (a¤o>2022)),
+                       *
+ERROR en línea 6:
+ORA-00911: carácter no válido 
+
+
+SQL> CREATE TABLE PARTICIPAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_actividad Number(5),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4) CHECK (anyo>2022)),
+  7  n_participantes Number(2) CHECK(n_participantes>5),
+  8  PRIMARY KEY (codigo_actividad, DNI_cliente),
+  9  FOREIGN KEY (codigo_actividad) References Actividad,
+ 10  FOREIGN KEY (DNI_cliente) References Cliente);
+anyo Number(4) CHECK (anyo>2022)),
+                                 *
+ERROR en línea 6:
+ORA-00922: falta la opción o no es válida 
+
+
+SQL> CREATE TABLE PARTICIPAR
+  2  (DNI_cliente Varchar2(9),
+  3  codigo_actividad Number(5),
+  4  dia Number(2) CHECK (dia>0 AND dia<32),
+  5  mes Number(2) CHECK (mes>0 AND mes<13),
+  6  anyo Number(4) CHECK (anyo>2022),
+  7  n_participantes Number(2) CHECK(n_participantes>5),
+  8  PRIMARY KEY (codigo_actividad, DNI_cliente),
+  9  FOREIGN KEY (codigo_actividad) References Actividad,
+ 10  FOREIGN KEY (DNI_cliente) References Cliente);
+
+Tabla creada.
+
+SQL> select table_name from user_tables
+  2  
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                                                                                                                                                                                                                                                  
+------------------------------                                                                                                                                                                                                                                                                              
+DEPARTAMENTO                                                                                                                                                                                                                                                                                                
+CURSO                                                                                                                                                                                                                                                                                                       
+ENTIDADBANCARIA                                                                                                                                                                                                                                                                                             
+NOMINA                                                                                                                                                                                                                                                                                                      
+CONTRATO                                                                                                                                                                                                                                                                                                    
+CURSAR                                                                                                                                                                                                                                                                                                      
+ENSENYAR                                                                                                                                                                                                                                                                                                    
+TRABAJAR                                                                                                                                                                                                                                                                                                    
+ECN                                                                                                                                                                                                                                                                                                         
+PROVEEDOR                                                                                                                                                                                                                                                                                                   
+ACTIVIDAD                                                                                                                                                                                                                                                                                                   
+PRODUCTO                                                                                                                                                                                                                                                                                                    
+MONITOR                                                                                                                                                                                                                                                                                                     
+PROPORCIONAR                                                                                                                                                                                                                                                                                                
+ORGANIZAR                                                                                                                                                                                                                                                                                                   
+PARTICIPAR                                                                                                                                                                                                                                                                                                  
+W                                                                                                                                                                                                                                                                                                           
+DEPART                                                                                                                                                                                                                                                                                                      
+EMPLE                                                                                                                                                                                                                                                                                                       
+CLIENTE                                                                                                                                                                                                                                                                                                     
+SUCURSAL                                                                                                                                                                                                                                                                                                    
+DEPT_RECURSOS_HUMANOS                                                                                                                                                                                                                                                                                       
+RESERVAR                                                                                                                                                                                                                                                                                                    
+HABITACION                                                                                                                                                                                                                                                                                                  
+SH                                                                                                                                                                                                                                                                                                          
+EMPLEADO                                                                                                                                                                                                                                                                                                    
+
+26 filas seleccionadas.
+
+SQL> exit

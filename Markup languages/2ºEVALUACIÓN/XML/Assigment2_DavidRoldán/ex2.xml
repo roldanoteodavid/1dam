@@ -1,0 +1,19 @@
+<books xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="schema/ex2.xsd">
+    <book id="123asd">
+        <author>J.R.R.Tolkien</author>
+        <title>The Fellowship of the Ring</title>
+        <genre>Fantasy</genre>
+        <price>27.09</price>
+        <pub_date>1954-07-29</pub_date>
+        <review>One Ring to rule them all, One Ring to find them, One Ring to bring them all, and in the darkness bind them</review>
+    </book>
+    <book id="456fgh">
+        <author>Ernest Cline</author>
+        <title>Ready Player One</title>
+        <genre>Science Fiction</genre>
+        <price>15.65</price>
+        <pub_date>1911-08-16</pub_date>
+        <review>Nice book</review>
+    </book>
+</books>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="items">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="shirt" type="ItemsType" minOccurs="0" />
+                <xs:element name="hat" type="ItemsType" minOccurs="0" />
+                <xs:element name="umbrella" type="ItemsType" minOccurs="0" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="ItemsType">
+        <xs:sequence>
+            <xs:element name="number" type="xs:string" />
+            <xs:element name="name" type="xs:string" />
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="size" type="sizeType" />
+                <xs:element name="color" type="colorType" />
+                <xs:element name="description" type="xs:string" />
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="effDate" type="xs:date" default="1900-01-01" />
+        <xs:anyAttribute namespace="##other" />
+    </xs:complexType>
+    <xs:complexType name="sizeType">
+        <xs:simpleContent>
+            <xs:extension base="xs:integer">
+                <xs:attribute name="system" type="xs:token" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="colorType">
+        <xs:attribute name="value" type="xs:string" />
+    </xs:complexType>
+</xs:schema>

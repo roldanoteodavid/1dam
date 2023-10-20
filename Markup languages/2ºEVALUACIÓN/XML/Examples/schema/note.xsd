@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="to" type="xs:string" />
+        <xs:element name="from" type="xs:string" />
+        <xs:element name="heading" type="xs:string" />
+        <xs:element name="body" type="xs:string" />
+        <xs:element name="job" type="xs:string" default="unemployed" />
+        <xs:element name="language" type="xs:string" fixed="Spanish" />
+
+        <xs:element name="brothers">
+          <xs:simpleType>
+            <xs:restriction base="xs:integer">
+              <xs:minInclusive value="0" />
+              <xs:maxInclusive value="10" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+        <xs:element name="mobile">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Huawey" />
+              <xs:enumeration value="Samsung" />
+              <xs:enumeration value="Xiaomi" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

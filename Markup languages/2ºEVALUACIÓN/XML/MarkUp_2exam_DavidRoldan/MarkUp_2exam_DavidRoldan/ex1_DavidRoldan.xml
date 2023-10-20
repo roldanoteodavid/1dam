@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<restaurant xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="Schema/ex1_DavidRoldan.xsd">
+    <order orderId="C101">
+      <table_id>1</table_id>
+      <order_date>2023-02-28</order_date>
+      <total>25.99</total>
+      <status>pending</status>
+      <items>
+        <item>
+          <name>Burger</name>
+          <price>10.99</price>
+        </item>
+        <item>
+          <name>Soda</name>
+          <price>2.99</price>
+        </item>
+        <item>      
+          <description>Vanilla ice cream with chocolate sauce</description>
+          <price>12.01</price>
+        </item>
+      </items>
+    </order>
+    <order orderId="A201">
+      <table_id>2</table_id>
+      <order_date>2023-02-28</order_date>
+      <total>42.50</total>
+      <status>completed</status>
+      <items>
+        <item>
+          <description>A juicy steak with mashed potatoes</description>
+          <price>28.50</price>
+        </item>
+        <item>
+          <name>Wine</name>
+          <price>14.00</price>
+        </item>
+      </items>
+    </order>
+</restaurant>

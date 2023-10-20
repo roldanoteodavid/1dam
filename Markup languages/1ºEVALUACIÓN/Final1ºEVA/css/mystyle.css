@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: burlywood;
+    border: dotted black;
+    text-align: center;
+    padding: 1em;
+    color: white;
+}
+#left {
+    float: left;
+    width: 30%;
+    padding: 1em;
+    text-align: center;
+    margin-left: 1em;
+}
+
+#lista {
+    background-color: burlywood;
+    margin-bottom: 2em;
+    font-weight: bold;
+    list-style-type: none;
+    border-top: black solid 2px;
+    border-right: black solid 2px;
+    border-left: black solid 2px;
+}
+
+.element {
+    border-bottom: black solid 2px;
+    padding: 1em;
+}
+
+#center {
+    float: left;
+    width: 35%;
+    padding: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+table, td, th {
+    border: 1px solid;
+}
+
+th {
+    padding: 0.5em;
+}
+
+table {
+    background-color: burlywood;
+    border-collapse: collapse;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+#welcome {
+    text-decoration: underline;
+}
+
+#right {
+    float: right;
+    width: 30%;
+    padding: 1em;
+    margin-right: 1em;
+}
+
+img {
+    border-radius: 15%;
+    width: 20em;
+}
+
+footer {
+    padding-top: 1em;
+    text-align: center;
+    clear: both;
+    color: white;
+    background-color: burlywood;
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+form {
+    font-size: 0.8em;
+    background-color: burlywood;
+    text-align: center;
+}
+
+.namesur {
+    width: 50%;
+    float: left;
+    padding: 1em;
+    font-weight: bold;
+}
+
+#comments {
+    margin-top: 1em;
+    width: 100%;
+}
+
+.subsection {
+    background-color: aliceblue;
+    margin: 0.5em;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+#send{
+    margin: 0.5em;
+    margin-right: 3em;
+}
+#delete{
+    margin: 0.5em;
+    margin-left: 3em;
+}

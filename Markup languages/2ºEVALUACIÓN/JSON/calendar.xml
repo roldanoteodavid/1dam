@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calendar>
+    <event>
+        <eventname>Dentist</eventname> 
+        <startdate>2015-10-12</startdate>
+        <starttime>9:30:00</starttime>
+        <duration units="hours">1.5</duration>
+    </event>
+    <event></event>
+</calendar>

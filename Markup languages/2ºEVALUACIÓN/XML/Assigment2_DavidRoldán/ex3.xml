@@ -1,0 +1,45 @@
+<Companies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="schema/ex3.xsd">
+<Company>
+    <Name>Bean Shoot Trading</Name>
+    <Employee>
+        <Name>Joe Bloggs</Name>
+        <Age>43</Age>
+        <Address>
+            <HouseNo>50</HouseNo>
+            <Street>Vanilla Crescent</Street>
+            <ZipCode>123456</ZipCode>
+        </Address>
+    </Employee>
+    <Employee>
+        <Name>Jane Doe</Name>
+        <Age>35</Age>
+        <Address>
+            <HouseNo>1245</HouseNo>
+            <Street>Mornington Crescent</Street>
+            <ZipCode>66475</ZipCode>
+        </Address>
+    </Employee>
+</Company>
+<Company>
+    <Name>Abacus Inc</Name>
+    <Employee>
+        <Name>Jane Doe</Name>
+        <Age>35</Age>
+        <Address>
+            <HouseNo>1245</HouseNo>
+            <Street>Mornington Crescent</Street>
+            <ZipCode>66475</ZipCode>
+        </Address>
+    </Employee>
+    <Employee>
+        <Name>Average Joe</Name>
+        <Age>26</Age>
+        <Address>
+            <HouseNo>50</HouseNo>
+            <Street>New Street</Street>
+            <ZipCode>954674</ZipCode>
+        </Address>
+    </Employee>
+</Company>
+</Companies>

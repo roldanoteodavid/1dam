@@ -1,0 +1,60 @@
+public boolean borrarHabitacion(int numeroHab) {
+        Habitacion habitacion = hotel.getHabitaciones()
+                .stream()
+                .filter(h -> h.getNumero() == numeroHab)
+                .findFirst()
+                .orElse(null);
+        return hotel.getHabitaciones().remove(habitacion);
+    }
+
+public List<Habitacion> listarHabitaciones(boolean ascendente) {
+        List<Habitacion> lista2;
+        lista2 = this.hotel.getHabitaciones();
+        Collections.sort(lista2);
+        if (!ascendente) {
+            Collections.reverse(lista2);
+        }
+        return lista2;
+    }
+
+public boolean addReserva(Reserva reserva, String dni) {
+        return hotel.getClientes().stream()
+                .filter(cliente -> cliente.getDni().equalsIgnoreCase(dni))
+                .findFirst()
+                .map(cliente -> {
+                    List<Reserva> reservas = cliente.getReservas();
+                    reservas.add(reserva);
+                    cliente.setReservas(reservas);
+                    return true;
+                })
+                .orElse(false);
+    }
+
+public boolean borrarCliente(String dni) {
+        return hotel.getClientes().removeIf(cliente -> (dni).equalsIgnoreCase(cliente.getDni()));
+    }
+
+public boolean modificarNombreCliente(String DNI, String nombre) {
+        Cliente cliente = hotel.getClientes()
+                .stream()
+                .filter(c -> c.getDni().equals(DNI))
+                .findFirst()
+                .orElse(null);
+        hotel.getClientes().remove(cliente);
+        cliente.setNombre(nombre);
+        return hotel.getClientes().add(cliente);
+    }
+
+public List<Alojamiento> consulta(String provincia, double precio1, double precio2) {
+        return database.getListaAlojamientos().stream().filter(alojamiento -> alojamiento.getProvincia().equals(provincia)
+                && alojamiento.getPrecio() >= precio1
+                && alojamiento.getPrecio() <= precio2).collect(Collectors.toList());
+    }
+
+@Override
+    public List<Alojamiento> listarAlojamientosValoracionMedia(String provincia) {
+        return getListaAlojamientos().stream()
+                .filter(alojamiento -> alojamiento.getProvincia().equals(provincia))
+                .sorted(new ComparacionValoracionMedia())
+                .collect(Collectors.toList());
+    }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="articles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="article" type="articleType" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="articleType">
+        <xs:sequence>
+            <xs:element name="detail" type="detailType" />
+            <xs:element name="price" type="xs:integer" />
+            <xs:element name="order" type="orderType" />
+            <xs:element name="reference" type="referenceType" />
+        </xs:sequence>
+        <xs:attribute name="type" type="typeType" use="required"/>
+    </xs:complexType>
+    <xs:simpleType name="typeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="jersey" />
+            <xs:enumeration value="complements" />
+            <xs:enumeration value="sock" />
+            <xs:enumeration value="t-shirts" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="detailType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="orderType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="referenceType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[S,C,J,M][0-9][0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

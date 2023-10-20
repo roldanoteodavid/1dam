@@ -1,0 +1,671 @@
+SQL> connect davidroldan
+Conectado.
+SQL> REM 1.- Seleccionar el apellido de los empleados que trabajen en Madrid o Barcelona.
+SQL> set linesize 300;
+SQL> set pagesize 300;
+SQL> select apellido from emple where dept_no in (select dept_no from depart where loc in ('MADRID','BARCELONA'));
+
+APELLIDO                                                                                                                                                                                                                                                                                                    
+----------                                                                                                                                                                                                                                                                                                  
+SANCHEZ                                                                                                                                                                                                                                                                                                     
+ARROYO                                                                                                                                                                                                                                                                                                      
+SALA                                                                                                                                                                                                                                                                                                        
+JIMENEZ                                                                                                                                                                                                                                                                                                     
+MARTIN                                                                                                                                                                                                                                                                                                      
+NEGRO                                                                                                                                                                                                                                                                                                       
+GIL                                                                                                                                                                                                                                                                                                         
+TOVAR                                                                                                                                                                                                                                                                                                       
+ALONSO                                                                                                                                                                                                                                                                                                      
+JIMENO                                                                                                                                                                                                                                                                                                      
+FERNANDEZ                                                                                                                                                                                                                                                                                                   
+
+11 filas seleccionadas.
+
+SQL> REM 2.- Seleccionar el apellido y el oficio de todos los empleados del departamento 20 cuyo trabajo sea id‚ntico al de los empleados del departamento ventas.
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION    DEPT_NO                                                                                                                                                                                                                       
+---------- ---------- ---------- ---------- -------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                    20                                                                                                                                                                                                                       
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      43000         30                                                                                                                                                                                                                       
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000         30                                                                                                                                                                                                                       
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                    20                                                                                                                                                                                                                       
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000         30                                                                                                                                                                                                                       
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                    30                                                                                                                                                                                                                       
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                    10                                                                                                                                                                                                                       
+      7788 GIL        ANALISTA         7566 09/11/81     390000                    20                                                                                                                                                                                                                       
+      7839 REY        PRESIDENTE            17/11/81      50000                    10                                                                                                                                                                                                                       
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0         30                                                                                                                                                                                                                       
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                    20                                                                                                                                                                                                                       
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                    30                                                                                                                                                                                                                       
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                    20                                                                                                                                                                                                                       
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                    10                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> select * from depar;
+select * from depar
+              *
+ERROR en línea 1:
+ORA-00942: la tabla o vista no existe 
+
+
+SQL> select * from depart;
+
+   DEPT_NO DNOMBRE        LOC              TELEFONO                                                                                                                                                                                                                                                         
+---------- -------------- -------------- ----------                                                                                                                                                                                                                                                         
+        10 CONTABILIDAD   SEVILLA         679334586                                                                                                                                                                                                                                                         
+        20 INVESTIGACION  MADRID          684987723                                                                                                                                                                                                                                                         
+        30 VENTAS         BARCELONA       623009872                                                                                                                                                                                                                                                         
+        40 PRODUCCION     BILBAO          682074902                                                                                                                                                                                                                                                         
+        50 otros                                                                                                                                                                                                                                                                                            
+        99 RECURSOSHUM    CUENCA                                                                                                                                                                                                                                                                            
+        22                                                                                                                                                                                                                                                                                                  
+        32                CACERES                                                                                                                                                                                                                                                                           
+
+8 filas seleccionadas.
+
+SQL> select apellido,oficio from emple where dept_no='20';
+
+APELLIDO   OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+SANCHEZ    EMPLEADO                                                                                                                                                                                                                                                                                         
+JIMENEZ    DIRECTOR                                                                                                                                                                                                                                                                                         
+GIL        ANALISTA                                                                                                                                                                                                                                                                                         
+ALONSO     EMPLEADO                                                                                                                                                                                                                                                                                         
+FERNANDEZ  ANALISTA                                                                                                                                                                                                                                                                                         
+
+SQL> REM 3.- Obtener el departamento de los empleados con el mismo oficio y el salario de GIL.
+SQL> select dept_no from emple where oficio in (select oficio from emple where apellido='JIMENEZ') and salario in (select salario from emple where apellido='JIMENEZ');
+
+   DEPT_NO                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        20                                                                                                                                                                                                                                                                                                  
+
+SQL> select dept_no,apellido from emple where oficio in (select oficio from emple where apellido='JIMENEZ') and salario in (select salario from emple where apellido='JIMENEZ');
+
+   DEPT_NO APELLIDO                                                                                                                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                                                                                                                       
+        20 JIMENEZ                                                                                                                                                                                                                                                                                          
+
+SQL> REM 4.- Obtener el nombre de alumno, su asignatura y su nota.
+SQL> select * from alumnos;
+
+ninguna fila seleccionada
+
+SQL> select * from asignaturas;
+
+ninguna fila seleccionada
+
+SQL> select * from notas_alumnos;
+
+NOMBRE_ALUMNO                  NOTA1      NOTA2      NOTA3                                                                                                                                                                                                                                                  
+------------------------- ---------- ---------- ----------                                                                                                                                                                                                                                                  
+Alcalde Garc¡a, M.                 5          5          5                                                                                                                                                                                                                                                  
+Luisa                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                            
+Benito Mart¡n, Luis                7          6          8                                                                                                                                                                                                                                                  
+Casas Mart¡nez,                    7          5          5                                                                                                                                                                                                                                                  
+Manuel                                                                                                                                                                                                                                                                                                      
+                                                                                                                                                                                                                                                                                                            
+Corregidor S nchez,                6          9          8                                                                                                                                                                                                                                                  
+Ana                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                            
+D¡az S nchez,                                            7                                                                                                                                                                                                                                                  
+Mar¡a                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                            
+
+SQL> select * from libreria;
+
+TEMA            E EJEMPLARES                                                                                                                                                                                                                                                                                
+--------------- - ----------                                                                                                                                                                                                                                                                                
+Inform tica     A         15                                                                                                                                                                                                                                                                                
+Econom¡a        A         10                                                                                                                                                                                                                                                                                
+Deportes        B          8                                                                                                                                                                                                                                                                                
+Filosof¡a       C          7                                                                                                                                                                                                                                                                                
+Dibujo          C         10                                                                                                                                                                                                                                                                                
+Medicina        C         16                                                                                                                                                                                                                                                                                
+Biolog¡a        A         11                                                                                                                                                                                                                                                                                
+Geolog¡a        D          7                                                                                                                                                                                                                                                                                
+Sociedad        D          9                                                                                                                                                                                                                                                                                
+Labores         B         20                                                                                                                                                                                                                                                                                
+Jardiner¡a      E          6                                                                                                                                                                                                                                                                                
+
+11 filas seleccionadas.
+
+SQL> REM ** TABLAS ALUMNOS, ASIGNATURAS, NOTAS: **
+SQL> DROP TABLE ALUMNOS cascade constraints;
+
+Tabla borrada.
+
+SQL> CREATE TABLE ALUMNOS
+  2  (
+  3   DNI VARCHAR2(10) NOT NULL,
+  4   APENOM VARCHAR2(30),
+  5   DIREC VARCHAR2(30),
+  6   POBLA VARCHAR2(15),
+  7   TELEF VARCHAR2(10)
+  8  );
+
+Tabla creada.
+
+SQL> DROP TABLE ASIGNATURAS cascade constraints;
+
+Tabla borrada.
+
+SQL> CREATE TABLE ASIGNATURAS
+  2  (
+  3   COD NUMBER(2) NOT NULL,
+  4   NOMBRE VARCHAR2(25)
+  5  );
+
+Tabla creada.
+
+SQL> DROP TABLE NOTAS cascade constraints;
+
+Tabla borrada.
+
+SQL> CREATE TABLE NOTAS
+  2  (
+  3   DNI VARCHAR2(10) NOT NULL,
+  4   COD NUMBER(2) NOT NULL,
+  5   NOTA NUMBER(2)
+  6  );
+
+Tabla creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (1,'Prog. Leng. Estr.');
+
+1 fila creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (2,'Sist. Inform ticos');
+
+1 fila creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (3,'An lisis');
+
+1 fila creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (4,'FOL');
+
+1 fila creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (5,'RET');
+
+1 fila creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (6,'Entornos Gr ficos');
+
+1 fila creada.
+
+SQL> INSERT INTO ASIGNATURAS VALUES (7,'Aplic. Entornos 4¦Gen');
+
+1 fila creada.
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('12344345','Alcalde Garc¡a, Elena', 'C/Las Matas,
+  3  24','Madrid','917766545');
+
+1 fila creada.
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('4448242','Cerrato Vela, Luis', 'C/Mina 28 - 3A',
+  3  'Madrid','916566545');
+
+1 fila creada.
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('56882942','D¡az Fern ndez, Mar¡a', 'C/Luis Vives 25',
+  3  'M¢stoles','915577545');
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('12344345', 1,6);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('12344345', 2,5);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('12344345', 3,6);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('4448242', 4,6);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('4448242', 5,8);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('4448242', 6,4);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('4448242', 7,5);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('56882942', 4,8);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('56882942', 5,7);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('56882942', 6,8);
+
+1 fila creada.
+
+SQL> INSERT INTO NOTAS VALUES('56882942', 7,9);
+
+1 fila creada.
+
+SQL> select * fro alumnos;
+select * fro alumnos
+         *
+ERROR en línea 1:
+ORA-00923: palabra clave FROM no encontrada donde se esperaba 
+
+
+SQL> select * from alumnos;
+
+DNI        APENOM                         DIREC                          POBLA           TELEF                                                                                                                                                                                                              
+---------- ------------------------------ ------------------------------ --------------- ----------                                                                                                                                                                                                         
+12344345   Alcalde Garc¡a, Elena          C/Las Matas,                   Madrid          917766545                                                                                                                                                                                                          
+                                          24                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                            
+4448242    Cerrato Vela, Luis             C/Mina 28 - 3A                 Madrid          916566545                                                                                                                                                                                                          
+56882942   D¡az Fern ndez, Mar¡a          C/Luis Vives 25                M¢stoles        915577545                                                                                                                                                                                                          
+
+SQL> select * from asignaturas;
+
+       COD NOMBRE                                                                                                                                                                                                                                                                                           
+---------- -------------------------                                                                                                                                                                                                                                                                        
+         1 Prog. Leng. Estr.                                                                                                                                                                                                                                                                                
+         2 Sist. Inform ticos                                                                                                                                                                                                                                                                               
+         3 An lisis                                                                                                                                                                                                                                                                                         
+         4 FOL                                                                                                                                                                                                                                                                                              
+         5 RET                                                                                                                                                                                                                                                                                              
+         6 Entornos Gr ficos                                                                                                                                                                                                                                                                                
+         7 Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                            
+
+7 filas seleccionadas.
+
+SQL> select * from notas;
+
+DNI               COD       NOTA                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+12344345            1          6                                                                                                                                                                                                                                                                            
+12344345            2          5                                                                                                                                                                                                                                                                            
+12344345            3          6                                                                                                                                                                                                                                                                            
+4448242             4          6                                                                                                                                                                                                                                                                            
+4448242             5          8                                                                                                                                                                                                                                                                            
+4448242             6          4                                                                                                                                                                                                                                                                            
+4448242             7          5                                                                                                                                                                                                                                                                            
+56882942            4          8                                                                                                                                                                                                                                                                            
+56882942            5          7                                                                                                                                                                                                                                                                            
+56882942            6          8                                                                                                                                                                                                                                                                            
+56882942            7          9                                                                                                                                                                                                                                                                            
+
+11 filas seleccionadas.
+
+SQL> select apenom from alumnos,nombre from asignaturas,nota from notas where alumnos.DNI=notas.DNI and notas.cod=asignaturas.cod;
+select apenom from alumnos,nombre from asignaturas,nota from notas where alumnos.DNI=notas.DNI and notas.cod=asignaturas.cod
+                                  *
+ERROR en línea 1:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> select apenom from alumnos,nombre from asignaturas,nota from notas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD;
+select apenom from alumnos,nombre from asignaturas,nota from notas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD
+                                  *
+ERROR en línea 1:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> rem 2 -
+> 
+SQL> select apellido,oficio from emple where dept_no=20 and oficio in(select oficio from emple where dept_no in(select dept_no from depart where dnombre='VENTAS');
+select apellido,oficio from emple where dept_no=20 and oficio in(select oficio from emple where dept_no in(select dept_no from depart where dnombre='VENTAS')
+                                                                                                                                                            *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select apellido,oficio from emple where dept_no=20 and oficio in(select oficio from emple where dept_no in(select dept_no from depart where dnombre='VENTAS'));
+
+APELLIDO   OFICIO                                                                                                                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                                                                                                                       
+JIMENEZ    DIRECTOR                                                                                                                                                                                                                                                                                         
+ALONSO     EMPLEADO                                                                                                                                                                                                                                                                                         
+SANCHEZ    EMPLEADO                                                                                                                                                                                                                                                                                         
+
+SQL> rem 4;
+SQL> rem 3.
+SQL> 
+SQL>  select dept_no,apellido from emple where oficio in (select oficio from emple where apellido='GIL') and salario in (select salario from emple where apellido='GIL');
+
+   DEPT_NO APELLIDO                                                                                                                                                                                                                                                                                         
+---------- ----------                                                                                                                                                                                                                                                                                       
+        20 GIL                                                                                                                                                                                                                                                                                              
+        20 FERNANDEZ                                                                                                                                                                                                                                                                                        
+
+SQL> rem 4;
+SQL> select apenom from alumnos,nombre from asignaturas,nota from notas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD;
+select apenom from alumnos,nombre from asignaturas,nota from notas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD
+                                  *
+ERROR en línea 1:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('56882942','D¡az Fern ndez, Mar¡a', 'C/Luis Vives 25',
+  3  'M¢stoles','915577545');
+
+1 fila creada.
+
+SQL> select * from alumnos;
+
+DNI        APENOM                         DIREC                          POBLA           TELEF                                                                                                                                                                                                              
+---------- ------------------------------ ------------------------------ --------------- ----------                                                                                                                                                                                                         
+12344345   Alcalde Garc¡a, Elena          C/Las Matas,                   Madrid          917766545                                                                                                                                                                                                          
+                                          24                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                            
+4448242    Cerrato Vela, Luis             C/Mina 28 - 3A                 Madrid          916566545                                                                                                                                                                                                          
+56882942   D¡az Fern ndez, Mar¡a          C/Luis Vives 25                M¢stoles        915577545                                                                                                                                                                                                          
+56882942   D¡az Fern ndez, Mar¡a          C/Luis Vives 25                M¢stoles        915577545                                                                                                                                                                                                          
+
+SQL> DROP TABLE ALUMNOS cascade constraints;
+
+Tabla borrada.
+
+SQL> CREATE TABLE ALUMNOS
+  2  (
+  3   DNI VARCHAR2(10) NOT NULL,
+  4   APENOM VARCHAR2(30),
+  5   DIREC VARCHAR2(30),
+  6   POBLA VARCHAR2(15),
+  7   TELEF VARCHAR2(10)
+  8  );
+
+Tabla creada.
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('12344345','Alcalde Garc¡a, Elena', 'C/Las Matas,
+  3  24','Madrid','917766545');
+
+1 fila creada.
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('4448242','Cerrato Vela, Luis', 'C/Mina 28 - 3A',
+  3  'Madrid','916566545');
+
+1 fila creada.
+
+SQL> INSERT INTO ALUMNOS VALUES
+  2  ('56882942','D¡az Fern ndez, Mar¡a', 'C/Luis Vives 25',
+  3  'M¢stoles','915577545');
+
+1 fila creada.
+
+SQL> select * from alumnos;
+
+DNI        APENOM                         DIREC                          POBLA           TELEF                                                                                                                                                                                                              
+---------- ------------------------------ ------------------------------ --------------- ----------                                                                                                                                                                                                         
+12344345   Alcalde Garc¡a, Elena          C/Las Matas,                   Madrid          917766545                                                                                                                                                                                                          
+                                          24                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                            
+4448242    Cerrato Vela, Luis             C/Mina 28 - 3A                 Madrid          916566545                                                                                                                                                                                                          
+56882942   D¡az Fern ndez, Mar¡a          C/Luis Vives 25                M¢stoles        915577545                                                                                                                                                                                                          
+
+SQL> select * from asignaturas;
+
+       COD NOMBRE                                                                                                                                                                                                                                                                                           
+---------- -------------------------                                                                                                                                                                                                                                                                        
+         1 Prog. Leng. Estr.                                                                                                                                                                                                                                                                                
+         2 Sist. Inform ticos                                                                                                                                                                                                                                                                               
+         3 An lisis                                                                                                                                                                                                                                                                                         
+         4 FOL                                                                                                                                                                                                                                                                                              
+         5 RET                                                                                                                                                                                                                                                                                              
+         6 Entornos Gr ficos                                                                                                                                                                                                                                                                                
+         7 Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                            
+
+7 filas seleccionadas.
+
+SQL> select * from notas;
+
+DNI               COD       NOTA                                                                                                                                                                                                                                                                            
+---------- ---------- ----------                                                                                                                                                                                                                                                                            
+12344345            1          6                                                                                                                                                                                                                                                                            
+12344345            2          5                                                                                                                                                                                                                                                                            
+12344345            3          6                                                                                                                                                                                                                                                                            
+4448242             4          6                                                                                                                                                                                                                                                                            
+4448242             5          8                                                                                                                                                                                                                                                                            
+4448242             6          4                                                                                                                                                                                                                                                                            
+4448242             7          5                                                                                                                                                                                                                                                                            
+56882942            4          8                                                                                                                                                                                                                                                                            
+56882942            5          7                                                                                                                                                                                                                                                                            
+56882942            6          8                                                                                                                                                                                                                                                                            
+56882942            7          9                                                                                                                                                                                                                                                                            
+
+11 filas seleccionadas.
+
+SQL> REM 4.- Obtener el nombre de alumno, su asignatura y su nota.
+SQL> select * from emple;
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION    DEPT_NO                                                                                                                                                                                                                       
+---------- ---------- ---------- ---------- -------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7369 SANCHEZ    EMPLEADO         7902 17/12/80     104000                    20                                                                                                                                                                                                                       
+      7499 ARROYO     VENDEDOR         7698 20/02/80     208000      43000         30                                                                                                                                                                                                                       
+      7521 SALA       VENDEDOR         7698 22/02/81     162500      65000         30                                                                                                                                                                                                                       
+      7566 JIMENEZ    DIRECTOR         7839 02/04/81     386750                    20                                                                                                                                                                                                                       
+      7654 MARTIN     VENDEDOR         7698 29/09/81     162500     182000         30                                                                                                                                                                                                                       
+      7698 NEGRO      DIRECTOR         7839 01/05/81     370500                    30                                                                                                                                                                                                                       
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                    10                                                                                                                                                                                                                       
+      7788 GIL        ANALISTA         7566 09/11/81     390000                    20                                                                                                                                                                                                                       
+      7839 REY        PRESIDENTE            17/11/81      50000                    10                                                                                                                                                                                                                       
+      7844 TOVAR      VENDEDOR         7698 08/09/81     195000          0         30                                                                                                                                                                                                                       
+      7876 ALONSO     EMPLEADO         7788 23/09/81     143000                    20                                                                                                                                                                                                                       
+      7900 JIMENO     EMPLEADO         7698 03/12/81     123500                    30                                                                                                                                                                                                                       
+      7902 FERNANDEZ  ANALISTA         7566 03/12/81     390000                    20                                                                                                                                                                                                                       
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                    10                                                                                                                                                                                                                       
+
+14 filas seleccionadas.
+
+SQL> select * from emple where fecha_al>='08/09/61' and fecha_al<='27/02/82';
+select * from emple where fecha_al>='08/09/61' and fecha_al<='27/02/82'
+                                                   *
+ERROR en línea 1:
+ORA-00904: "FECHA_AL": identificador no válido 
+
+
+SQL> select apenom,DNI from alumnos,nombre,DNI,COD from asignaturas,nota,COD,DNI from notas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD;
+select apenom,DNI from alumnos,nombre,DNI,COD from asignaturas,nota,COD,DNI from notas where alumnos.DNI=notas.DNI and notas.COD=asignaturas.COD
+                                              *
+ERROR en línea 1:
+ORA-00933: comando SQL no terminado correctamente 
+
+
+SQL> select * from emple where dept_no not in(20,30,40);
+
+    EMP_NO APELLIDO   OFICIO            DIR FECHA_AL    SALARIO   COMISION    DEPT_NO                                                                                                                                                                                                                       
+---------- ---------- ---------- ---------- -------- ---------- ---------- ----------                                                                                                                                                                                                                       
+      7782 CEREZO     DIRECTOR         7839 09/06/81     318500                    10                                                                                                                                                                                                                       
+      7839 REY        PRESIDENTE            17/11/81      50000                    10                                                                                                                                                                                                                       
+      7934 MUNOZ      EMPLEADO         7782 23/01/82     169000                    10                                                                                                                                                                                                                       
+
+SQL> select apenom, nombre, nota from alumnos,notas,asignaturas where alumnos.dni=notas.dni and notas.cod=asignaturas.cod;
+
+APENOM                         NOMBRE                          NOTA                                                                                                                                                                                                                                         
+------------------------------ ------------------------- ----------                                                                                                                                                                                                                                         
+Alcalde Garc¡a, Elena          Prog. Leng. Estr.                  6                                                                                                                                                                                                                                         
+Alcalde Garc¡a, Elena          Sist. Inform ticos                 5                                                                                                                                                                                                                                         
+Alcalde Garc¡a, Elena          An lisis                           6                                                                                                                                                                                                                                         
+D¡az Fern ndez, Mar¡a          FOL                                8                                                                                                                                                                                                                                         
+Cerrato Vela, Luis             FOL                                6                                                                                                                                                                                                                                         
+D¡az Fern ndez, Mar¡a          RET                                7                                                                                                                                                                                                                                         
+Cerrato Vela, Luis             RET                                8                                                                                                                                                                                                                                         
+D¡az Fern ndez, Mar¡a          Entornos Gr ficos                  8                                                                                                                                                                                                                                         
+Cerrato Vela, Luis             Entornos Gr ficos                  4                                                                                                                                                                                                                                         
+D¡az Fern ndez, Mar¡a          Aplic. Entornos 4¦Gen              9                                                                                                                                                                                                                                         
+Cerrato Vela, Luis             Aplic. Entornos 4¦Gen              5                                                                                                                                                                                                                                         
+
+11 filas seleccionadas.
+
+SQL> select * from asignaturas;
+
+       COD NOMBRE                                                                                                                                                                                                                                                                                           
+---------- -------------------------                                                                                                                                                                                                                                                                        
+         1 Prog. Leng. Estr.                                                                                                                                                                                                                                                                                
+         2 Sist. Inform ticos                                                                                                                                                                                                                                                                               
+         3 An lisis                                                                                                                                                                                                                                                                                         
+         4 FOL                                                                                                                                                                                                                                                                                              
+         5 RET                                                                                                                                                                                                                                                                                              
+         6 Entornos Gr ficos                                                                                                                                                                                                                                                                                
+         7 Aplic. Entornos 4¦Gen                                                                                                                                                                                                                                                                            
+
+7 filas seleccionadas.
+
+SQL> select apenom from alumnos,asignaturas,notas where alumnos.dni=notas.dni and notas.cod=asignaturas.cod and nombre='FOL';
+
+APENOM                                                                                                                                                                                                                                                                                                      
+------------------------------                                                                                                                                                                                                                                                                              
+Cerrato Vela, Luis                                                                                                                                                                                                                                                                                          
+D¡az Fern ndez, Mar¡a                                                                                                                                                                                                                                                                                       
+
+SQL> REM 6.- seleccionar de la tabla emple aquellas filas cuyo apellido empiece por A y el oficio tenga una e en cualquier posici¢n.
+SQL> select apellido from emple where apellido like 'A%' or oficio like '%E%';
+
+APELLIDO                                                                                                                                                                                                                                                                                                    
+----------                                                                                                                                                                                                                                                                                                  
+SANCHEZ                                                                                                                                                                                                                                                                                                     
+ARROYO                                                                                                                                                                                                                                                                                                      
+SALA                                                                                                                                                                                                                                                                                                        
+JIMENEZ                                                                                                                                                                                                                                                                                                     
+MARTIN                                                                                                                                                                                                                                                                                                      
+NEGRO                                                                                                                                                                                                                                                                                                       
+CEREZO                                                                                                                                                                                                                                                                                                      
+REY                                                                                                                                                                                                                                                                                                         
+TOVAR                                                                                                                                                                                                                                                                                                       
+ALONSO                                                                                                                                                                                                                                                                                                      
+JIMENO                                                                                                                                                                                                                                                                                                      
+MUNOZ                                                                                                                                                                                                                                                                                                       
+
+12 filas seleccionadas.
+
+SQL> select apellido from emple where apellido like 'A%' and oficio like '%E%';
+
+APELLIDO                                                                                                                                                                                                                                                                                                    
+----------                                                                                                                                                                                                                                                                                                  
+ARROYO                                                                                                                                                                                                                                                                                                      
+ALONSO                                                                                                                                                                                                                                                                                                      
+
+SQL> REM 7.- Seleccionar el apellido, el oficio y la localidad de los departamentos donde trabajan los analistas.
+SQL> select apellido,oficio,loc from emple,depart where oficio='ANALISTA';
+
+APELLIDO   OFICIO     LOC                                                                                                                                                                                                                                                                                   
+---------- ---------- --------------                                                                                                                                                                                                                                                                        
+GIL        ANALISTA   SEVILLA                                                                                                                                                                                                                                                                               
+GIL        ANALISTA   MADRID                                                                                                                                                                                                                                                                                
+GIL        ANALISTA   BARCELONA                                                                                                                                                                                                                                                                             
+GIL        ANALISTA   BILBAO                                                                                                                                                                                                                                                                                
+GIL        ANALISTA                                                                                                                                                                                                                                                                                         
+GIL        ANALISTA   CUENCA                                                                                                                                                                                                                                                                                
+GIL        ANALISTA                                                                                                                                                                                                                                                                                         
+GIL        ANALISTA   CACERES                                                                                                                                                                                                                                                                               
+FERNANDEZ  ANALISTA   SEVILLA                                                                                                                                                                                                                                                                               
+FERNANDEZ  ANALISTA   MADRID                                                                                                                                                                                                                                                                                
+FERNANDEZ  ANALISTA   BARCELONA                                                                                                                                                                                                                                                                             
+FERNANDEZ  ANALISTA   BILBAO                                                                                                                                                                                                                                                                                
+FERNANDEZ  ANALISTA                                                                                                                                                                                                                                                                                         
+FERNANDEZ  ANALISTA   CUENCA                                                                                                                                                                                                                                                                                
+FERNANDEZ  ANALISTA                                                                                                                                                                                                                                                                                         
+FERNANDEZ  ANALISTA   CACERES                                                                                                                                                                                                                                                                               
+
+16 filas seleccionadas.
+
+SQL> REM 8.- Mostrar los empleados (nombre, oficio ,salario y fecha de alta) que desempe¤en el mismo oficio que JIMNEZ o que tengan el salario mayor o igual a FERNµNDEZ.
+SQL> select apellido,oficio,salario,fecha_alt from emple where oficio in(select oficio from emple where apellido='JIMENEZ') or salario>=(select salario from emple where apellido='FERNANDEZ');
+
+APELLIDO   OFICIO        SALARIO FECHA_AL                                                                                                                                                                                                                                                                   
+---------- ---------- ---------- --------                                                                                                                                                                                                                                                                   
+JIMENEZ    DIRECTOR       386750 02/04/81                                                                                                                                                                                                                                                                   
+NEGRO      DIRECTOR       370500 01/05/81                                                                                                                                                                                                                                                                   
+CEREZO     DIRECTOR       318500 09/06/81                                                                                                                                                                                                                                                                   
+GIL        ANALISTA       390000 09/11/81                                                                                                                                                                                                                                                                   
+FERNANDEZ  ANALISTA       390000 03/12/81                                                                                                                                                                                                                                                                   
+
+SQL> REM 9.- Mostrar por pantalla el nombre, el oficio y el salario de los empleados del departamento de FERNµNDEZ que tengan su mismo salario.
+SQL> rem 7
+SQL> select apellido,oficio,loc from emple,depart where oficio = (select oficio from emple where oficio='ANALISTA');
+select apellido,oficio,loc from emple,depart where oficio = (select oficio from emple where oficio='ANALISTA')
+                                                             *
+ERROR en línea 1:
+ORA-01427: la subconsulta de una sola fila devuelve más de una fila 
+
+
+SQL> select apellido,oficio,loc from emple,depart where oficio in(select oficio from emple where oficio='ANALISTA');
+
+APELLIDO   OFICIO     LOC                                                                                                                                                                                                                                                                                   
+---------- ---------- --------------                                                                                                                                                                                                                                                                        
+GIL        ANALISTA   SEVILLA                                                                                                                                                                                                                                                                               
+GIL        ANALISTA   MADRID                                                                                                                                                                                                                                                                                
+GIL        ANALISTA   BARCELONA                                                                                                                                                                                                                                                                             
+GIL        ANALISTA   BILBAO                                                                                                                                                                                                                                                                                
+GIL        ANALISTA                                                                                                                                                                                                                                                                                         
+GIL        ANALISTA   CUENCA                                                                                                                                                                                                                                                                                
+GIL        ANALISTA                                                                                                                                                                                                                                                                                         
+GIL        ANALISTA   CACERES                                                                                                                                                                                                                                                                               
+FERNANDEZ  ANALISTA   SEVILLA                                                                                                                                                                                                                                                                               
+FERNANDEZ  ANALISTA   MADRID                                                                                                                                                                                                                                                                                
+FERNANDEZ  ANALISTA   BARCELONA                                                                                                                                                                                                                                                                             
+FERNANDEZ  ANALISTA   BILBAO                                                                                                                                                                                                                                                                                
+FERNANDEZ  ANALISTA                                                                                                                                                                                                                                                                                         
+FERNANDEZ  ANALISTA   CUENCA                                                                                                                                                                                                                                                                                
+FERNANDEZ  ANALISTA                                                                                                                                                                                                                                                                                         
+FERNANDEZ  ANALISTA   CACERES                                                                                                                                                                                                                                                                               
+
+16 filas seleccionadas.
+
+SQL> select * from depart;
+
+   DEPT_NO DNOMBRE        LOC              TELEFONO                                                                                                                                                                                                                                                         
+---------- -------------- -------------- ----------                                                                                                                                                                                                                                                         
+        10 CONTABILIDAD   SEVILLA         679334586                                                                                                                                                                                                                                                         
+        20 INVESTIGACION  MADRID          684987723                                                                                                                                                                                                                                                         
+        30 VENTAS         BARCELONA       623009872                                                                                                                                                                                                                                                         
+        40 PRODUCCION     BILBAO          682074902                                                                                                                                                                                                                                                         
+        50 otros                                                                                                                                                                                                                                                                                            
+        99 RECURSOSHUM    CUENCA                                                                                                                                                                                                                                                                            
+        22                                                                                                                                                                                                                                                                                                  
+        32                CACERES                                                                                                                                                                                                                                                                           
+
+8 filas seleccionadas.
+
+SQL> REM 9.- Mostrar por pantalla el nombre, el oficio y el salario de los empleados del departamento de FERNµNDEZ que tengan su mismo salario.
+SQL> select apellido,oficio,salario from emple where dept_no =(select dept_no from emple where apellido='FERNANDEZ' and salario=(select salario from emple apellido='FERNANDEZ');
+select apellido,oficio,salario from emple where dept_no =(select dept_no from emple where apellido='FERNANDEZ' and salario=(select salario from emple apellido='FERNANDEZ')
+                                                          *
+ERROR en línea 1:
+ORA-00921: fin inesperado de un comando SQL 
+
+
+SQL> select apellido,oficio,salario from emple where dept_no =(select dept_no from emple where apellido='FERNANDEZ') and salario=(select salario from emple apellido='FERNANDEZ');
+select apellido,oficio,salario from emple where dept_no =(select dept_no from emple where apellido='FERNANDEZ') and salario=(select salario from emple apellido='FERNANDEZ')
+                                                                                                                                                               *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> select apellido,oficio,salario from emple where dept_no in(select dept_no from emple where apellido='FERNANDEZ') and salario in(select salario from emple apellido='FERNANDEZ');
+select apellido,oficio,salario from emple where dept_no in(select dept_no from emple where apellido='FERNANDEZ') and salario in(select salario from emple apellido='FERNANDEZ')
+                                                                                                                                                                  *
+ERROR en línea 1:
+ORA-00907: falta el paréntesis derecho 
+
+
+SQL> exit

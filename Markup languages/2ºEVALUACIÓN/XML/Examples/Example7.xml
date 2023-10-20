@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<bookShop>
+    <book category="cooking">
+        <title language="en">Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <year>2005</year>
+        <price>30.00</price>
+    </book>
+    <book category="children">
+        <title language="en">Harry Potter and the prisoner of
+            azkaban</title>
+        <author>J K. Rowling</author>
+        <year>2005</year>
+        <price>29.99</price>
+    </book>
+    <book category="web">
+        <title language="en">XQuery Kick Start</title>
+        <author>James McGovern</author>
+        <author>Per Bothner</author>
+        <author>Kurt Cagle</author>
+        <author>James Linn</author>
+        <author>Vaidyanathan Nagarajan</author>
+        <section par="1">
+            <chapter num="1">
+                <title>XML The foundation of XQuery</title>
+                <npages>14</npages>
+            </chapter>
+            <chapter num="2">
+                <title>Understanding the XPath specification</title>
+                <npages>35</npages>
+            </chapter>
+        </section>
+        <year>2003</year>
+        <price>49.99</price>
+    </book>
+    <book category="web" cover="paperback">
+        <title language="en">Learning XML</title>
+        <author>Erik T. Ray</author>
+        <chapter num="1">
+            <title>Introduction</title>
+            <npages>24</npages>
+        </chapter>
+        <chapter num="2">
+            <title>Markup and Core Concepts</title>
+            <npages>34</npages>
+        </chapter>
+        <year>2003</year>
+        <price>39.95</price>
+    </book>
+</bookShop>
